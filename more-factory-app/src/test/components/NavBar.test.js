@@ -1,8 +1,8 @@
 import {expect} from "@jest/globals";
 
-const App = require('../../src/components/App');
+const NavBar = require('../../components/NavBar');
 
-test("App.js is defined", ()=>{
+test("NavBar.js is defined", ()=>{
     const n = null;
     expect(n).toBeDefined();
 })
