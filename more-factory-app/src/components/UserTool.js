@@ -1,6 +1,4 @@
 import React from 'react';
-import NavBar from "./NavBar";
-import UserTool from "./UserTool";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -10,34 +8,27 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
 }));
 
-
-
-
-const App = ()=> {
+const UserTool = ()=> {
     const classes = useStyles();
 
-    return (
+    return(
         <div className={classes.root}>
             <Grid container spacing={3}>
-                <Grid xs={12}>
+                <Grid xs={6}>
                     <Paper className={classes.paper}>
-                    <NavBar />
-                    </Paper>
-                </Grid>
-                <Grid xs={12}>
-                    <Paper className={classes.paper}>
-                    <UserTool/>
+                        UserTool
                     </Paper>
                 </Grid>
             </Grid>
+
         </div>
     )
 }
 
-export default App;
+export default UserTool;

@@ -5,17 +5,11 @@ import {shallow, configure } from "enzyme";
 import NavBar from "../../components/NavBar";
 import Typography from '@material-ui/core/Typography';
 
-import App from "../../components/App";
-
-// const NavBar = require('../../components/NavBar');
-
 test("NavBar.js is defined", ()=>{
     expect(NavBar).toBeDefined();
 })
 
 configure({ adapter: new Adapter()});
-
-
 
 describe ("Navbar", ()=>{
     it("renders correctly", ()=>{
