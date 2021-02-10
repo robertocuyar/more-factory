@@ -5,6 +5,8 @@ import {createStore} from "redux";
 import reducers from './reducers';
 import {Provider} from 'react-redux';
 
+import './css/index.css';
+
 const store = createStore(reducers);
 
 ReactDOM.render(
