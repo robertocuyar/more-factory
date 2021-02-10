@@ -3,7 +3,8 @@ import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure } from "enzyme";
 import UserTool from "../../components/UserTool";
-import Typography from '@material-ui/core/Typography';
+import UserBag from "../../components/UserBag";
+import UserStats from "../../components/UserStats";
 
 test("UserTool.js is defined", ()=>{
     expect(UserTool).toBeDefined();

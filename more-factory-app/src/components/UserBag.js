@@ -1,10 +1,12 @@
 import React from 'react';
 
 const UserBag = ()=> {
+
     return (
-        <div>
-            UserBag
-        </div>
+           <div>
+                UserBag
+           </div>
+
     )
 }
 

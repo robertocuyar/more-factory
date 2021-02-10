@@ -25,12 +25,10 @@ const App = ()=> {
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
-                <Grid xs={12}>
-                    <Paper className={classes.paper}>
+                <Grid item xs={12}>
                     <NavBar />
-                    </Paper>
                 </Grid>
-                <Grid xs={12}>
+                <Grid item xs={12}>
                     <Paper className={classes.paper}>
                     <UserTool/>
                     </Paper>
