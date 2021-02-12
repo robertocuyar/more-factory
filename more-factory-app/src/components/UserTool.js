@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -17,21 +17,32 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserTool = ()=> {
+    const [bag, setBag] = useState("closed")
     const classes = useStyles();
+
+    const displayContent = bag =>{
+        if (bag === "closed"){
+            return (
+                <React.Fragment>
+                    <Grid item xs={6}>
+                        <Paper className={classes.paper}>
+                            <UserBag/>
+                        </Paper>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Paper className={classes.paper}>
+                            <UserStats/>
+                        </Paper>
+                    </Grid>
+                </React.Fragment>
+            )
+        }
+    }
 
     return(
         <div className={classes.root}>
             <Grid container spacing={3}>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                        <UserBag/>
-                    </Paper>
-                </Grid>
-                <Grid item xs={6}>
-                    <Paper className={classes.paper}>
-                        <UserStats/>
-                    </Paper>
-                </Grid>
+                {displayContent(bag)}
             </Grid>
 
         </div>
