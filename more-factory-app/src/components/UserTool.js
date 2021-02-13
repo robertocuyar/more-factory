@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import UserBag from "./UserBag";
 import UserStats from "./UserStats";
 import UserInventory from "./UserInventory";
+import Box from "@material-ui/core/Box";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,6 +45,10 @@ const UserTool = ()=> {
             <React.Fragment>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
+                        <Box display={"flex"} justifyContent={"flex-end"}>
+                           <Box display={"flex"} alignItems={"center"} m={1} id={"back-arrow"} onClick={()=>{setBag("closed")}}><ArrowBackIcon/></Box>
+                           <Box onClick={()=>{setBag("closed")}} m={1}><p>Close Bag</p></Box>
+                        </Box>
                         <UserInventory/>
                     </Paper>
                 </Grid>
@@ -51,8 +57,6 @@ const UserTool = ()=> {
         }
 
     }
-
-
 
     return(
         <div className={classes.root}>

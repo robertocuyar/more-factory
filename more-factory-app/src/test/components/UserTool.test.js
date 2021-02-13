@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import React, {useState as useStateMock} from "react";
+import React, {useState} from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure } from "enzyme";
 import UserTool from "../../components/UserTool";
@@ -22,7 +22,7 @@ describe ("UserTool", ()=>{
     const setState = jest.fn();
 
     beforeEach(()=>{
-        useStateMock.mockImplementation((init)=> [init, setState]);
+        useState.mockImplementation((init)=> [init, setState]);
         wrapper =  shallow(<UserTool/>);
     });
 
@@ -36,13 +36,16 @@ describe ("UserTool", ()=>{
     it("Contains bag container", ()=>{
         expect(wrapper.containsAnyMatchingElements([
             <UserBag/>,
-            <UserStats/>,
-            <UserInventory/>
+            <UserStats/>
         ])).toEqual(true);
     });
 
     it('UserBag onclick changes state of UserTool to open', ()=>{
-        wrapper.find('#bag-container').props().onClick();
+        wrapper.find('#bag-container').simulate('click');
         expect(setState).toHaveBeenCalledWith('open');
+    })
+
+    it('Back Icon onclick changes state of UserTool to closed', ()=>{
+
     })
 })
