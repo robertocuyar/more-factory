@@ -1,0 +1,1 @@
+export const INVENTORY_SLOTS = "INVENTORY_SLOTS";
