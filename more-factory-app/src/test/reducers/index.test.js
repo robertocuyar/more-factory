@@ -1,6 +1,5 @@
 import {expect} from "@jest/globals";
-
-const index = require("../../reducers/index");
+import index from "../../reducers/index";
 
 test("Reducer Index is defined", ()=>{
     expect(index).toBeDefined();
