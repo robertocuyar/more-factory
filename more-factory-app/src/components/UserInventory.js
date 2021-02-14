@@ -5,10 +5,13 @@ import {useSelector} from "react-redux";
 const UserInventory = ()=> {
     const slots = useSelector(state => state.slots);
 
+    const slotDisplay = ()=> {
 
+    }
 
     return (
         <Box display={"flex"}>
+            {slotDisplay()}
         </Box>
     )
 }
