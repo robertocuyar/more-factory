@@ -12,13 +12,18 @@ test("NavBar.js is defined", ()=>{
 configure({ adapter: new Adapter()});
 
 describe ("Navbar", ()=>{
+    let wrapper;
+
+    beforeEach(()=>{
+        wrapper = shallow(<NavBar/>)
+    });
+
     it("renders correctly", ()=>{
-        shallow(<NavBar/>)
-    })
+        wrapper;
+    });
 
     it("Contains app name", ()=>{
-        const wrapper = shallow(<NavBar/>);
         expect(wrapper.containsAnyMatchingElements([<Typography>More-Factory</Typography>])).toEqual(true);
-    })
+    });
 })
 
