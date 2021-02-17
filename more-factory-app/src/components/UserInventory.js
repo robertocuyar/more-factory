@@ -12,7 +12,7 @@ const UserInventory = ()=> {
             numDisplay.push(n);
         }
        return numDisplay.map(space=> {
-          return <InventoryItem/>
+          return <InventoryItem content={null}/>
        })
     }
 
