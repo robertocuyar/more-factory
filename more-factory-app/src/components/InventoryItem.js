@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box"
 
 const InventoryItem = ()=>{
     return (
-        <Box>
+        <Box className={"inventory-box"}>
             InventoryItem
         </Box>
     )

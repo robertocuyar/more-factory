@@ -1,13 +1,13 @@
 import {expect} from "@jest/globals";
 import React from 'react';
 import Adapter from "enzyme-adapter-react-16";
-import {shallow, configure} from "enzyme";
+import {shallow, configure, mount} from "enzyme";
 import {Provider, useSelector} from "react-redux";
 import UserInventory from "../../components/UserInventory";
 import InventoryItem from "../../components/InventoryItem";
-import App from "../../components/App";
 import {createStore} from "redux";
 import reducers from "../../reducers";
+import configureStore from 'redux-mock-store';
 
 test("UserInventory.js is defined", ()=>{
     expect(UserInventory).toBeDefined();
@@ -16,21 +16,27 @@ test("UserInventory.js is defined", ()=>{
 configure({ adapter: new Adapter()});
 
 describe ("UserInventory", ()=>{
-    let wrapper;
+
+    let wrapper, store, mountWrapper;
+    const initialState = {slots: 8};
+   const mockStore = configureStore();
+
    beforeEach(()=>{
-       wrapper = shallow( <Provider store={createStore(reducers)}><UserInventory/></Provider>);
+       store = mockStore(initialState);
+       wrapper = shallow( <Provider store={store}><UserInventory/></Provider>);
+       mountWrapper = shallow(<UserInventory/>);
    })
     it("Renders correctly", ()=>{
         wrapper;
+        console.log(wrapper.debug());
     })
 
-    it("Contains InventoryItem component", ()=>{
-    expect(wrapper.containsAnyMatchingElements([<InventoryItem/>]));
+    it("Contains UserInventory component", ()=>{
+    expect(wrapper.find(UserInventory).length).toEqual(1);
     });
 
-   it("Default render of 8 InventoryItem components", ()=>{
-        expect(wrapper.find(<InventoryItem/>)).toHaveLength(8);
-   });
+   // it("Default render of 8 InventoryItem components", ()=>{
+   //      expect(mountWrapper.find(".inventory-box").length).toEqual(8);
+   // });
 
 })
-
