@@ -1,5 +1,12 @@
-.user-bag-img{
+.user-bag-img, .inventory-box{
     border: 1px black solid;
+
+}
+
+.user-bag-img{
     border-radius: 30%;
     padding: 32px;
+}
+#user-inventory{
+    margin: 0 2rem !important;
 }

@@ -2,11 +2,9 @@ import {expect} from "@jest/globals";
 import React from 'react';
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure, mount} from "enzyme";
-import {Provider, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import UserInventory from "../../components/UserInventory";
 import InventoryItem from "../../components/InventoryItem";
-import {createStore} from "redux";
-import reducers from "../../reducers";
 import configureStore from 'redux-mock-store';
 
 test("UserInventory.js is defined", ()=>{

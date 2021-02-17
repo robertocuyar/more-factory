@@ -17,7 +17,7 @@ const UserInventory = ()=> {
     }
 
     return (
-        <Box display={"flex"}>
+        <Box display={"flex"} flexWrap={"wrap"} alignItems={"center"} justifyContent={"left"}>
             {slotDisplay()}
         </Box>
     )

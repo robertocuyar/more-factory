@@ -49,7 +49,9 @@ const UserTool = ()=> {
                            <Box display={"flex"} alignItems={"center"} m={1} id={"back-arrow"} onClick={()=>{setBag("closed")}}><ArrowBackIcon/></Box>
                            <Box onClick={()=>{setBag("closed")}} m={1}><p>Close Bag</p></Box>
                         </Box>
-                        <UserInventory/>
+                        <div id={"user-inventory"}>
+                            <UserInventory/>
+                        </div>
                     </Paper>
                 </Grid>
             </React.Fragment>
