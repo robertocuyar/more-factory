@@ -5,7 +5,6 @@ import {shallow, configure} from "enzyme";
 import UserTool from "../../components/UserTool";
 import UserBag from "../../components/UserBag";
 import UserStats from "../../components/UserStats";
-import UserInventory from "../../components/UserInventory";
 
 test("UserTool.js is defined", () => {
     expect(UserTool).toBeDefined();
