@@ -2,6 +2,7 @@ import React from 'react';
 import {makeStyles} from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import Badge from "@material-ui/core/Badge"
+import Box from "@material-ui/core/Box"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const InventoryItem = props =>{
     const classes = useStyles();
 
-    if (props.content === null){
+    if (props.item.content === null){
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
@@ -29,7 +30,16 @@ const InventoryItem = props =>{
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
-                    InventoryItem
+                    <Box height={"100%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                    <Badge badgeContent={props.item.numContent} color={"primary"}
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                    }}
+                    >
+                        {props.item.content}
+                    </Badge>
+                    </Box>
                 </Paper>
             </div>
         )

@@ -4,8 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure, mount} from "enzyme";
 import {Provider} from "react-redux";
 import UserInventory from "../../components/UserInventory";
-import InventoryItem from "../../components/InventoryItem";
 import configureStore from 'redux-mock-store';
+import {defaultBag} from "../../reducers/initialStates";
 
 test("UserInventory.js is defined", ()=>{
     expect(UserInventory).toBeDefined();
@@ -15,18 +15,16 @@ configure({ adapter: new Adapter()});
 
 describe ("UserInventory", ()=>{
 
-    let wrapper, store, mountWrapper;
-    const initialState = {slots: 8};
+    let wrapper, store;
+    const initialState = {slots: defaultBag.slots};
    const mockStore = configureStore();
 
    beforeEach(()=>{
        store = mockStore(initialState);
        wrapper = shallow( <Provider store={store}><UserInventory/></Provider>);
-       mountWrapper = shallow(<UserInventory/>);
    })
     it("Renders correctly", ()=>{
         wrapper;
-        console.log(wrapper.debug());
     })
 
     it("Contains UserInventory component", ()=>{

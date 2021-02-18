@@ -5,14 +5,10 @@ import InventoryItem from "./InventoryItem";
 
 const UserInventory = ()=> {
     const slots = useSelector(state => state.slots);
-
     const slotDisplay = ()=> {
-        let numDisplay = [];
-        for(let n = 1; n<= slots; n++){
-            numDisplay.push(n);
-        }
-       return numDisplay.map((space, index)=> {
-          return <InventoryItem key={"i" + index} content={null}/>
+
+       return slots.slots.map(slot=> {
+          return <InventoryItem key={"i" + slot.id } item={slot}/>
        })
     }
 
