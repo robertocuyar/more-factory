@@ -1,10 +1,11 @@
-import React from 'react';
+import React from "react";
+import Box from "@material-ui/core/Box"
 
 const Field = ()=>{
     return (
-        <div>
+        <Box p={12} id={"field-img"}>
             Field
-        </div>
+        </Box>
     )
 }
 

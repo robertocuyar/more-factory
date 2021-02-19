@@ -10,3 +10,11 @@
 #user-inventory{
     margin: 0 2rem !important;
 }
+
+#field-img{
+    background: url(../img/field2.png) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
