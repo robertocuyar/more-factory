@@ -4,6 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
 import TabOptions from "../../components/TabOptions"
 import Tab from "@material-ui/core/Tab";
+import MiningMenu from "../../components/MiningMenu";
 
 test("TabOptions.js is defined", ()=>{
     expect(TabOptions).toBeDefined();
