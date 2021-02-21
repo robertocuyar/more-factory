@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UserOptions = () => {
+const MiningMenu = () => {
     return (
         <div>
-            UserOptions
+            MiningMenu
         </div>
     )
 }
 
-export default UserOptions;
+export default MiningMenu;

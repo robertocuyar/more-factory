@@ -6,7 +6,7 @@ import NavBar from "./NavBar";
 import UserTool from "./UserTool";
 import Field from "./Field";
 import TabOptions from "./TabOptions";
-import UserOptions from "./UserOptions";
+import MiningMenu from "./MiningMenu";
 import Footer from "./Footer";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +44,7 @@ const App = ()=> {
                 </Grid>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                        <UserOptions/>
+                        <MiningMenu/>
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>

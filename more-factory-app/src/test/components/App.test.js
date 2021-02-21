@@ -7,7 +7,7 @@ import NavBar from "../../components/NavBar";
 import UserTool from "../../components/UserTool";
 import Field from "../../components/Field";
 import TabOptions from "../../components/TabOptions";
-import UserOptions from "../../components/UserOptions";
+import MiningMenu from "../../components/MiningMenu";
 import Footer from "../../components/Footer";
 
 test("App.js is defined", ()=>{
@@ -33,7 +33,6 @@ describe ("App", ()=>{
             <UserTool/>,
             <Field/>,
             <TabOptions/>,
-            <UserOptions/>,
             <Footer/>
         ])).toEqual(true);
     })
