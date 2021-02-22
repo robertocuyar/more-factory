@@ -29,7 +29,7 @@ describe("UserTool", () => {
         jest.clearAllMocks();
     });
     it("renders correctly", () => {
-        wrapper
+        wrapper;
     });
 
     it("Contains bag container", () => {
@@ -42,10 +42,10 @@ describe("UserTool", () => {
     it('UserBag onclick changes state of UserTool to open', () => {
         expect(setState).toBeCalledTimes(0);
         wrapper.find('#bag-container').simulate('click');
+        expect(setState).toBeCalledTimes(1);
         expect(setState).toHaveBeenCalledWith('open');
     })
 
     it('Back Icon onclick changes state of UserTool to closed', () => {
-
     })
 })

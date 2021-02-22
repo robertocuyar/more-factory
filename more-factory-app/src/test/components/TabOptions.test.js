@@ -20,6 +20,7 @@ describe ("TabOptions", ()=>{
     });
 
     it("renders correctly", ()=>{
+        console.log(wrapper.find("#tab-control").debug())
         wrapper;
     });
 
@@ -31,5 +32,11 @@ describe ("TabOptions", ()=>{
             <Tab label="Orders" />,
             <Tab label="Upgrades" />
         ])).toEqual(true);
-    })
+    });
+
+    it("Has MiningMenu component as a default", ()=>{
+        expect(wrapper.containsAllMatchingElements([
+            <MiningMenu/>
+        ])).toEqual(true);
+    });
 })

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import BuildMenu from "./BuildMenu";
+import MachinesMenu from "./MachinesMenu";
+import MiningMenu from "./MiningMenu";
+import OrdersMenu from "./OrdersMenu";
+import UpgradesMenu from "./UpgradesMenu";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -50,6 +53,7 @@ export default function CenteredTabs() {
     return (
         <div>
             <Tabs
+                id={"tab-control"}
                 value={value}
                 onChange={handleChange}
                 aria-label="user options tab"
@@ -64,7 +68,7 @@ export default function CenteredTabs() {
                 <Tab label="Upgrades" {...a11yProps(4)} />
             </Tabs>
             <TabPanel value={value} index={0}>
-                Mine
+                <MiningMenu id={"mining-menu"}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 Machines
