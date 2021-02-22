@@ -62,10 +62,10 @@ export default function CenteredTabs() {
                 centered
             >
                 <Tab label="Mine" {...a11yProps(0)}/>
-                <Tab label="Machines" {...a11yProps(1)}/>
-                <Tab label="Build" {...a11yProps(2)} />
-                <Tab label="Orders" {...a11yProps(3)} />
-                <Tab label="Upgrades" {...a11yProps(4)} />
+                <Tab label="Machines" {...a11yProps(1)} disabled />
+                <Tab label="Build" {...a11yProps(2)} disabled />
+                <Tab label="Orders" {...a11yProps(3)} disabled />
+                <Tab label="Upgrades" {...a11yProps(4)} disabled />
             </Tabs>
             <TabPanel value={value} index={0}>
                 <MiningMenu id={"mining-menu"}/>
