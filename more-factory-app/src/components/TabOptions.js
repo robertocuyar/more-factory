@@ -71,16 +71,16 @@ export default function CenteredTabs() {
                 <MiningMenu id={"mining-menu"}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                Machines
+                <MachinesMenu/>
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Build
+                <BuildMenu/>
             </TabPanel>
             <TabPanel value={value} index={3}>
-                Orders
+                <OrdersMenu/>
             </TabPanel>
             <TabPanel value={value} index={4}>
-                Upgrades
+              <UpgradesMenu/>
             </TabPanel>
         </div>
     );
