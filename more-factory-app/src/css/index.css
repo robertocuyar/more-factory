@@ -18,3 +18,11 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.button-image{
+    margin-left: 1rem;
+}
+
+.button-text{
+    font-size: 16px;
+}
