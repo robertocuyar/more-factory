@@ -6,3 +6,15 @@ export const inventorySlots = slots => {
         payload: slots
     }
 }
+
+export const mineCoal = coal => {
+
+}
+
+export const mineIron = iron => {
+
+}
+
+export const mineCopper = copper =>{
+
+}
