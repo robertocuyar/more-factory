@@ -1,4 +1,5 @@
 import coal from "../img/coal_inv.png";
+import iron from "../img/iron_inv.png";
 
 export const defaultBag =
     {
@@ -57,7 +58,7 @@ export const defaultBag =
 export const firstIron = {
     content: "Iron",
     numContent: 1,
-    imgUrl: ""
+    imgUrl: iron
 };
 
 export const firstCoal = {

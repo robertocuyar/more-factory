@@ -3,6 +3,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
 import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
+import iron from "../../img/iron_inv.png";
 
 configure({adapter: new Adapter()});
 
@@ -73,7 +74,7 @@ describe("initialState", ()=>{
     it("firstIron has correct default values", ()=>{
         expect(firstIron.content).toEqual("Iron");
         expect(firstIron.numContent).toEqual(1);
-        expect(firstIron.imgUrl).toEqual("");
+        expect(firstIron.imgUrl).toEqual(iron);
     });
 
     it("firstCoal has correct default values", ()=>{
