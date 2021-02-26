@@ -1,3 +1,5 @@
+import coal from "../img/coal_inv.png";
+
 export const defaultBag =
     {
         slots:
@@ -61,7 +63,7 @@ export const firstIron = {
 export const firstCoal = {
     content: "Coal",
     numContent: 1,
-    imgUrl: ""
+    imgUrl: coal
 };
 
 export const firstCopper = {
