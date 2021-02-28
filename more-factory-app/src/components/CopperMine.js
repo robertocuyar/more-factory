@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
+import copper from "../img/copper.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -44,7 +45,7 @@ const CopperMine = ()=>{
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={12} justify={'center'}>
-                    <Avatar alt={"Copper"} src={""} className={classes.large}/>
+                    <Avatar alt={"Copper"} src={copper} className={classes.large}/>
                     <Box display={"flex"} alignContent={"center"}>
                         <h1>Copper Ore</h1>
                     </Box>
