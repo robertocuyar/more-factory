@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
-import coalImg from "../img/coal2.png";
+import coalImg from "../img/coal.png";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
 
