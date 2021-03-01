@@ -4,6 +4,7 @@ import {configure} from "enzyme";
 import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
+import copper from "../../img/copper_inv.png";
 
 configure({adapter: new Adapter()});
 
@@ -86,7 +87,7 @@ describe("initialState", ()=>{
     it("firstCopper has correct default values", ()=>{
         expect(firstCopper.content).toEqual("Copper");
         expect(firstCopper.numContent).toEqual(1);
-        expect(firstCopper.imgUrl).toEqual("");
+        expect(firstCopper.imgUrl).toEqual(copper);
     });
 
     it("fistLimestone has correct default values", ()=>{

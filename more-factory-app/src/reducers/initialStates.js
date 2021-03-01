@@ -1,5 +1,6 @@
 import coal from "../img/coal_inv.png";
 import iron from "../img/iron_inv.png";
+import copper from "../img/copper_inv.png";
 
 export const defaultBag =
     {
@@ -70,7 +71,7 @@ export const firstCoal = {
 export const firstCopper = {
     content: "Copper",
     numContent: 1,
-    imgUrl: ""
+    imgUrl: copper
 }
 
 export const firstLimestone = {
