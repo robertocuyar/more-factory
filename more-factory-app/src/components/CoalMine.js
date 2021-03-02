@@ -42,7 +42,7 @@ const CoalMine = ()=>{
             return null;
         } else {
             return (
-                <Box height={"100%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
+                <Box height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
                     <div>{coal.content}</div>
                     <Badge badgeContent={coal.numContent} color={"primary"}
                            anchorOrigin={{
@@ -62,8 +62,9 @@ const CoalMine = ()=>{
         if (coal === null){
             return dispatch(mineCoal(firstCoal));
         } else {
-            coal.numContent ++;
-            return dispatch(mineCoal(coal));
+            let newCoal = JSON.parse(JSON.stringify(coal));
+            newCoal.numContent ++;
+            return dispatch(mineCoal(newCoal));
         }
     }
     return (
