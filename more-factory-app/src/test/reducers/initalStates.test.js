@@ -5,6 +5,7 @@ import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone} from "../
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
+import lime from "../../img/limestone_inv.png"
 
 configure({adapter: new Adapter()});
 
@@ -93,6 +94,6 @@ describe("initialState", ()=>{
     it("fistLimestone has correct default values", ()=>{
         expect(firstLimestone.content).toEqual("Limestone");
         expect(firstLimestone.numContent).toEqual(1);
-        expect(firstLimestone.imgUrl).toEqual("");
+        expect(firstLimestone.imgUrl).toEqual(lime);
     })
 })
