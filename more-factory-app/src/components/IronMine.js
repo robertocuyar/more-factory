@@ -4,11 +4,13 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
 import ironImg from "../img/iron.png";
 import {useSelector, useDispatch} from "react-redux";
+import MineInventoryContainer from "./MineInventoryContainer";
+import {mineIron} from "../actions";
+import {firstIron} from "../reducers/initialStates";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,24 +38,17 @@ const IronMine = ()=>{
     const dispatch = useDispatch();
 
     const containerDisplay = ()=> {
-        if (iron === null){
-            return null;
-        } else {
-            return (
-                <Box height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
-                    <div>{iron.content}</div>
-                    <Badge badgeContent={iron.numContent} color={"primary"}
-                           anchorOrigin={{
-                               vertical: 'bottom',
-                               horizontal: 'right',
-                           }}
-                    >
-                        <img src={iron.imgUrl} alt={iron.content}/>
-                    </Badge>
-                </Box>
-            )
-        }
+        return iron === null? null : <MineInventoryContainer content={iron.content} numContent={iron.numContent} imgUrl={iron.imgUrl}/>
+    }
 
+    const mine = ()=>{
+        if(iron === null){
+            return dispatch(mineIron(firstIron));
+        } else {
+            let newIron = JSON.parse(JSON.stringify(iron));
+            newIron.numContent++;
+            return dispatch(mineIron(newIron));
+        }
     }
 
     return (
@@ -66,7 +61,7 @@ const IronMine = ()=>{
                     </Box>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={"outlined"}>
+                    <Button variant={"outlined"} onClick={()=> mine()}>
                         <span className={"button-text"}>Mine</span>
                         <img className={"button-image"} src={pickImg} alt="Pickaxe"/>
                     </Button>
