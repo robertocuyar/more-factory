@@ -4,10 +4,13 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
-import copper from "../img/copper.png";
+import copperImg from "../img/copper.png";
+import {useSelector, useDispatch} from "react-redux";
+import MineInventoryContainer from "./MineInventoryContainer";
+import {mineCopper} from "../actions";
+import {firstCopper} from "../reducers/initialStates";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,33 +34,44 @@ const useStyles = makeStyles((theme) => ({
 
 const CopperMine = ()=>{
     const classes = useStyles();
+    const copper = useSelector(state => state.copperMined);
+    const dispatch = useDispatch();
 
-    const containerDisplay = copper => {
-        return (
-            <div className={classes.containerRoot}>
-                <Paper className={"inventory-box"}>
-                </Paper>
-            </div>
-        )
+    const containerDisplay = () => {
+        return copper === null ? null : <MineInventoryContainer content={copper.content} numContent={copper.numContent} imgUrl={copper.imgUrl}/>
+    }
+
+    const mine = ()=>{
+        if(copper === null){
+            return dispatch(mineCopper(firstCopper));
+        } else {
+            let newCopper = JSON.parse(JSON.stringify(copper));
+            newCopper.numContent++;
+            return dispatch(mineCopper(newCopper));
+        }
     }
 
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={12} justify={'center'}>
-                    <Avatar alt={"Copper"} src={copper} className={classes.large}/>
+                    <Avatar alt={"Copper"} src={copperImg} className={classes.large}/>
                     <Box display={"flex"} alignContent={"center"}>
                         <h1>Copper Ore</h1>
                     </Box>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={"outlined"}>
+                    <Button variant={"outlined"} onClick={()=> mine()}>
                         <span className={"button-text"}>Mine</span>
                         <img className={"button-image"} src={pickImg} alt="Pickaxe"/>
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    {containerDisplay()}
+                    <div className={classes.containerRoot}>
+                        <Paper className={"inventory-box"}>
+                            {containerDisplay()}
+                        </Paper>
+                    </div>
                 </Grid>
             </Grid>
         </div>
