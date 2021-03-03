@@ -4,13 +4,13 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
 import coalImg from "../img/coal.png";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
 import {useSelector, useDispatch} from "react-redux";
 import {firstCoal} from "../reducers/initialStates";
 import {mineCoal} from "../actions";
+import MineInventoryContainer from "./MineInventoryContainer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,24 +38,7 @@ const CoalMine = ()=>{
     const dispatch = useDispatch();
 
     const containerDisplay = () => {
-        if (coal === null) {
-            return null;
-        } else {
-            return (
-                <Box height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
-                    <div>{coal.content}</div>
-                    <Badge badgeContent={coal.numContent} color={"primary"}
-                           anchorOrigin={{
-                               vertical: 'bottom',
-                               horizontal: 'right',
-                           }}
-                    >
-                        <img src={coal.imgUrl} alt={coal.content}/>
-                    </Badge>
-
-                </Box>
-            )
-        }
+        return coal === null ? null : <MineInventoryContainer content={coal.content} numContent={coal.numContent} imgUrl={coal.imgUrl}/>
     }
 
     const mine = ()=>{

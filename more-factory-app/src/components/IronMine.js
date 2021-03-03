@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
 import pickImg from "../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
-import iron from "../img/iron.png";
+import ironImg from "../img/iron.png";
+import {useSelector, useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,21 +32,35 @@ const useStyles = makeStyles((theme) => ({
 
 const IronMine = ()=>{
     const classes = useStyles();
+    const iron = useSelector(state => state.ironMined);
+    const dispatch = useDispatch();
 
-    const containerDisplay = iron => {
-        return (
-            <div className={classes.containerRoot}>
-                <Paper className={"inventory-box"}>
-                </Paper>
-            </div>
-        )
+    const containerDisplay = ()=> {
+        if (iron === null){
+            return null;
+        } else {
+            return (
+                <Box height={"100%"} display={"flex"} flexDirection={"column"} alignItems={"center"} justifyContent={"center"}>
+                    <div>{iron.content}</div>
+                    <Badge badgeContent={iron.numContent} color={"primary"}
+                           anchorOrigin={{
+                               vertical: 'bottom',
+                               horizontal: 'right',
+                           }}
+                    >
+                        <img src={iron.imgUrl} alt={iron.content}/>
+                    </Badge>
+                </Box>
+            )
+        }
+
     }
 
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={12} justify={'center'}>
-                    <Avatar alt={"Iron"} src={iron} className={classes.large}/>
+                    <Avatar alt={"Iron"} src={ironImg} className={classes.large}/>
                     <Box display={"flex"} alignContent={"center"}>
                         <h1>Iron Ore</h1>
                     </Box>
@@ -57,7 +72,11 @@ const IronMine = ()=>{
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    {containerDisplay()}
+                    <div className={classes.containerRoot}>
+                        <Paper className={"inventory-box"}>
+                            {containerDisplay()}
+                        </Paper>
+                    </div>
                 </Grid>
             </Grid>
         </div>
