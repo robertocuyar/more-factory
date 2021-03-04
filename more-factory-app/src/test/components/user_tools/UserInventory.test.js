@@ -3,9 +3,9 @@ import React from 'react';
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
 import {Provider} from "react-redux";
-import UserInventory from "../../components/UserInventory";
+import UserInventory from "../../../components/user_tools/UserInventory";
 import configureStore from 'redux-mock-store';
-import {defaultBag} from "../../reducers/initialStates";
+import {defaultBag} from "../../../reducers/initialStates";
 
 test("UserInventory.js is defined", ()=>{
     expect(UserInventory).toBeDefined();

@@ -1,10 +1,10 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import CoalMine from "./CoalMine";
-import IronMine from "./IronMine";
-import CopperMine from "./CopperMine";
-import LimeStoneMine from "./LimeStoneMine";
+import CoalMine from "./mines/CoalMine";
+import IronMine from "./mines/IronMine";
+import CopperMine from "./mines/CopperMine";
+import LimeStoneMine from "./mines/LimeStoneMine";
 
 const useStyles = makeStyles((theme) => ({
     root: {

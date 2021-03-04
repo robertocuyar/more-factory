@@ -5,9 +5,9 @@ import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
-import pickImg from "../img/pickaxe.png"
+import pickImg from "../../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
-import lime from "../img/limestone.png";
+import lime from "../../img/limestone.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {

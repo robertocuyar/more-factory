@@ -3,10 +3,10 @@ import React from 'react';
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
 import MiningMenu from '../../components/MiningMenu';
-import CoalMine from "../../components/CoalMine";
-import IronMine from "../../components/IronMine";
-import CopperMine from "../../components/CopperMine";
-import LimeStoneMine from "../../components/LimeStoneMine";
+import CoalMine from "../../components/mines/CoalMine";
+import IronMine from "../../components/mines/IronMine";
+import CopperMine from "../../components/mines/CopperMine";
+import LimeStoneMine from "../../components/mines/LimeStoneMine";
 
 test("MiningMenu.js is defined", ()=>{
     expect(MiningMenu).toBeDefined();

@@ -2,7 +2,7 @@ import {expect} from "@jest/globals";
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
-import MineInventoryContainer from "../../components/MineInventoryContainer";
+import MineInventoryContainer from "../../../components/mines/MineInventoryContainer";
 
 test("MineInventoryContainer.js to be defined", ()=>{
     expect(MineInventoryContainer).toBeDefined();
@@ -10,7 +10,7 @@ test("MineInventoryContainer.js to be defined", ()=>{
 
 configure ({adapter : new Adapter()});
 
-describe ("MineINventoryContainer", ()=>{
+describe ("MineInventoryContainer", ()=>{
     let wrapper;
 
     beforeEach(()=>{
@@ -26,7 +26,6 @@ describe ("MineINventoryContainer", ()=>{
            <div>Coal</div>,
             <img src="" alt="Coal"/>
         ])).toEqual(true);
-    })
-
+    });
 });
 

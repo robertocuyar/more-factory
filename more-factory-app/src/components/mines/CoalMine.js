@@ -4,12 +4,12 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import coalImg from "../img/coal.png";
-import pickImg from "../img/pickaxe.png"
+import coalImg from "../../img/coal.png";
+import pickImg from "../../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
 import {useSelector, useDispatch} from "react-redux";
-import {firstCoal} from "../reducers/initialStates";
-import {mineCoal} from "../actions";
+import {firstCoal} from "../../reducers/initialStates";
+import {mineCoal} from "../../actions";
 import MineInventoryContainer from "./MineInventoryContainer";
 
 const useStyles = makeStyles((theme) => ({

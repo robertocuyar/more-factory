@@ -1,5 +1,5 @@
 import React from 'react';
-import bagIcon from "../img/user_bag.png";
+import bagIcon from "../../img/user_bag.png";
 
 const UserBag = ()=> {
 

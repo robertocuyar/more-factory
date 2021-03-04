@@ -3,8 +3,8 @@ import React, {useState} from "react";
 import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
 import UserTool from "../../components/UserTool";
-import UserBag from "../../components/UserBag";
-import UserStats from "../../components/UserStats";
+import UserBag from "../../components/user_tools/UserBag";
+import UserStats from "../../components/user_tools/UserStats";
 
 test("UserTool.js is defined", () => {
     expect(UserTool).toBeDefined();

@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import UserBag from "./UserBag";
-import UserStats from "./UserStats";
-import UserInventory from "./UserInventory";
+import UserBag from "./user_tools/UserBag";
+import UserStats from "./user_tools/UserStats";
+import UserInventory from "./user_tools/UserInventory";
 import Box from "@material-ui/core/Box";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 

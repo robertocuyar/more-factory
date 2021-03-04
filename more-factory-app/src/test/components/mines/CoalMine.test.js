@@ -1,24 +1,24 @@
 import {expect} from "@jest/globals";
 import React from "react";
 import Adapter from "enzyme-adapter-react-16";
-import IronMine from "../../components/IronMine";
+import CoalMine from "../../../components/mines/CoalMine";
 import {shallow, configure} from "enzyme";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
-test("IronMine.js is defined.", ()=>{
-    expect(IronMine).toBeDefined();
-})
+test("CoalMine.js is defined", ()=>{
+    expect(CoalMine).toBeDefined();
+});
 
 configure({adapter: new Adapter()});
 
-describe("IronMine", ()=>{
-    let wrapper, store;
-    const initialState = {ironMined: null};
+describe ("CoalMine", ()=>{
+    let wrapper,store;
+    const initialState = {coalMined : null};
     const mockStore = configureStore();
 
     it("Renders correctly", ()=>{
         store = mockStore(initialState);
-        wrapper = shallow(<Provider store={store}><IronMine/></Provider>);
+        wrapper = shallow(<Provider store = {store}><CoalMine/></Provider>);
     });
 });
