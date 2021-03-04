@@ -8,4 +8,4 @@ test("ironMineReducer.js is defined", ()=>{
 
 test("ironMineReducer changes current state from null to a different value", ()=>{
     expect(ironMineReducer(null, mineIron("iron"))).toEqual("iron");
-})
+});

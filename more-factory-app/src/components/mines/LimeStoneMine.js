@@ -4,10 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
-import Badge from "@material-ui/core/Badge";
 import pickImg from "../../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
-import lime from "../../img/limestone.png";
+import limeImg from "../../img/limestone.png";
+import {useSelector, useDispatch} from "react-redux";
+import {firstLimestone} from "../../reducers/initialStates";
+import{mineLimestone} from "../../actions";
+import MineInventoryContainer from "./MineInventoryContainer"
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,33 +35,45 @@ const useStyles = makeStyles((theme) => ({
 
 const LimeStoneMine = ()=>{
     const classes = useStyles();
+    const limestone = useSelector(state => state.limeMined);
+    const dispatch = useDispatch();
 
-    const containerDisplay = limestone => {
-        return (
-            <div className={classes.containerRoot}>
-                <Paper className={"inventory-box"}>
-                </Paper>
-            </div>
-        )
+    const containerDisplay = () => {
+        return limestone === null ? null : <MineInventoryContainer content={limestone.content} numContent={limestone.numContent} imgUrl={limestone.imgUrl}/>
+
+    }
+
+    const mine = ()=>{
+        if(limestone === null){
+            return dispatch(mineLimestone(firstLimestone));
+        } else {
+            let newLime = JSON.parse(JSON.stringify(limestone));
+            newLime.numContent++;
+            return dispatch(mineLimestone(newLime));
+        }
     }
 
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={12} justify={'center'}>
-                    <Avatar alt={"Limestone"} src={lime} className={classes.large}/>
+                    <Avatar alt={"Limestone"} src={limeImg} className={classes.large}/>
                     <Box display={"flex"} alignContent={"center"}>
                         <h1>Limestone</h1>
                     </Box>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={"outlined"}>
+                    <Button variant={"outlined"} onClick={()=> mine()}>
                         <span className={"button-text"}>Mine</span>
                         <img className={"button-image"} src={pickImg} alt="Pickaxe"/>
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    {containerDisplay()}
+                    <div className={classes.containerRoot}>
+                        <Paper className={"inventory-box"}>
+                            {containerDisplay()}
+                        </Paper>
+                    </div>
                 </Grid>
             </Grid>
         </div>

@@ -3,10 +3,12 @@ import slotReducer from "./slotReducer";
 import coalMineReducer from "./coalMineReducer";
 import ironMineReducer from "./ironMineReducer";
 import copperMineReducer from "./copperMineReducer";
+import limeMineReducer from "./limeMineReducer";
 
 export default combineReducers({
     slots: slotReducer,
     coalMined: coalMineReducer,
     ironMined: ironMineReducer,
-    copperMined: copperMineReducer
+    copperMined: copperMineReducer,
+    limeMined: limeMineReducer
 });
