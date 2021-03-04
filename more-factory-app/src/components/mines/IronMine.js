@@ -44,6 +44,8 @@ const IronMine = ()=>{
     const mine = ()=>{
         if(iron === null){
             return dispatch(mineIron(firstIron));
+        } else if (iron.numContent === 20) {
+            return dispatch(mineIron(iron));
         } else {
             let newIron = JSON.parse(JSON.stringify(iron));
             newIron.numContent++;

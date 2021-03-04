@@ -41,10 +41,12 @@ const CopperMine = ()=>{
         return copper === null ? null : <MineInventoryContainer content={copper.content} numContent={copper.numContent} imgUrl={copper.imgUrl}/>
     }
 
-    const mine = ()=>{
-        if(copper === null){
+    const mine = ()=> {
+        if (copper === null) {
             return dispatch(mineCopper(firstCopper));
-        } else {
+        } else if (copper.numContent === 20){
+            return dispatch(mineCopper(copper));
+            } else {
             let newCopper = JSON.parse(JSON.stringify(copper));
             newCopper.numContent++;
             return dispatch(mineCopper(newCopper));

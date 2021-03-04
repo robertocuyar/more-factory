@@ -46,6 +46,8 @@ const LimeStoneMine = ()=>{
     const mine = ()=>{
         if(limestone === null){
             return dispatch(mineLimestone(firstLimestone));
+        } else if (limestone.numContent === 20) {
+            return dispatch(mineLimestone(limestone));
         } else {
             let newLime = JSON.parse(JSON.stringify(limestone));
             newLime.numContent++;

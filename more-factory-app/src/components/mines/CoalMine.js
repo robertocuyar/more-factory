@@ -44,6 +44,8 @@ const CoalMine = ()=>{
     const mine = ()=>{
         if (coal === null){
             return dispatch(mineCoal(firstCoal));
+        } else if(coal.numContent === 20){
+            return dispatch(mineCoal(coal));
         } else {
             let newCoal = JSON.parse(JSON.stringify(coal));
             newCoal.numContent++;
