@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import InventoryItem from "./InventoryItem";
 
 const UserInventory = ()=> {
-    const slots = useSelector(state => state.slots);
+    const slots = useSelector(state => state.slotsInv);
     const slotDisplay = ()=> {
 
        return slots.slots.map(slot=> {

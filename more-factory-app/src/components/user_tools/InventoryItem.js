@@ -1,8 +1,7 @@
 import React from 'react';
 import {makeStyles} from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
-import Badge from "@material-ui/core/Badge"
-import Box from "@material-ui/core/Box"
+import MineInventoryContainer from "../mines/MineInventoryContainer";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const InventoryItem = props =>{
+const InventoryItem = ({item}) =>{
     const classes = useStyles();
 
-    if (props.item.content === null){
+    if (item.content === null){
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
@@ -30,16 +29,7 @@ const InventoryItem = props =>{
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
-                    <Box height={"100%"} display={"flex"} alignItems={"center"} justifyContent={"center"}>
-                    <Badge badgeContent={props.item.numContent} color={"primary"}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
-                    >
-                        {props.item.content}
-                    </Badge>
-                    </Box>
+                   <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl} />
                 </Paper>
             </div>
         )

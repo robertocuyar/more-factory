@@ -9,7 +9,8 @@ import pickImg from "../../img/pickaxe.png"
 import Paper from "@material-ui/core/Paper";
 import {useSelector, useDispatch} from "react-redux";
 import {firstCoal} from "../../reducers/initialStates";
-import {mineCoal} from "../../actions";
+import {mineCoal, inventorySlots} from "../../actions";
+import invManager from "../../methods/invManager";
 import MineInventoryContainer from "./MineInventoryContainer";
 
 const useStyles = makeStyles((theme) => ({
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const CoalMine = ()=>{
     const classes = useStyles();
     const coal = useSelector(state => state.coalMined);
+    const inv = useSelector(state => state.slotsInv);
     const dispatch = useDispatch();
 
     const containerDisplay = () => {
@@ -52,6 +54,21 @@ const CoalMine = ()=>{
             return dispatch(mineCoal(newCoal));
         }
     }
+
+    const inventoryMove = ()=> {
+        if (coal === null){
+            return;
+        }
+        let newInv = {
+            slots: invManager(coal, inv)
+        }
+        dispatch(inventorySlots(newInv));
+        if(coal.numContent === 0){
+            dispatch(mineCoal(null));
+        }
+    }
+
+
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
@@ -68,7 +85,7 @@ const CoalMine = ()=>{
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <div className={classes.containerRoot}>
+                    <div className={classes.containerRoot} onDoubleClick={()=> inventoryMove()}>
                         <Paper className={"inventory-box"}>
                             {containerDisplay()}
                         </Paper>

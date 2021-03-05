@@ -4,10 +4,10 @@ export default (item, inventory)=>{
             slot.content = item.content;
             slot.numContent += item.numContent;
             slot.imgUrl = item.imgUrl;
-            item.numContent = -100;
-            if (slot.numContent > 100){
-                item.numContent = slot.numContent - 100;
-                slot.numContent = 100;
+            item.numContent = -80;
+            if (slot.numContent > 80){
+                item.numContent = slot.numContent - 80;
+                slot.numContent = 80;
             }
             if(item.numContent < 0){
                 item.numContent = 0;

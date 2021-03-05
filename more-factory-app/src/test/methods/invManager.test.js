@@ -22,17 +22,17 @@ test("invManager returns a new inventory array, after taking in the default arra
     expect(inventory[0].numContent).toEqual(20);
 });
 
-test("invManager keeps a maximum of 100 units of an item per slot and passes the remaining items to the next empty slot.", ()=>{
+test("invManager keeps a maximum of 80 units of an item per slot and passes the remaining items to the next empty slot.", ()=>{
    const firstItem = defaultBag.slots[0];
    firstItem.content= "Iron";
-   firstItem.numContent = 90;
+   firstItem.numContent = 70;
    firstItem.imgUrl = "";
 
     const inventory = invManager(initialItem, defaultBag);
 
     expect(inventory[0].content).toEqual(initialItem.content);
    expect(inventory[0].imgUrl).toEqual(initialItem.imgUrl);
-   expect(inventory[0].numContent).toEqual(100);
+   expect(inventory[0].numContent).toEqual(80);
    expect(inventory[1].content).toEqual(initialItem.content);
    expect(inventory[1].imgUrl).toEqual(initialItem.imgUrl);
    expect(inventory[1].numContent).toEqual(10);
@@ -57,14 +57,14 @@ test("invManager updates item numContent in inventory when two different items a
     firstItem.imgUrl = "";
 
     secondItem.content = "Iron";
-    secondItem.numContent = 95;
+    secondItem.numContent = 75;
     secondItem.imgUrl = "";
 
     const inventory = invManager(initialItem, defaultBag);
     expect(inventory[0].content).toEqual("Coal");
     expect(inventory[1].content).toEqual("Iron");
     expect(inventory[2].content).toEqual("Iron");
-    expect(inventory[1].numContent).toEqual(100);
+    expect(inventory[1].numContent).toEqual(80);
     expect(inventory[2].numContent).toEqual(15);
 
 });
@@ -81,13 +81,13 @@ test("Given item will not change values if inventory slots are full or will prov
     fourthItem.content = "Sulfur"
     fourthItem.numContent = 77;
     fifthItem.content = "Iron Plate";
-    fifthItem.numContent = 90;
+    fifthItem.numContent = 80;
     sixthItem.content = "Copper Sheet";
-    sixthItem.numContent = 88;
+    sixthItem.numContent = 78;
     seventhItem.content = "Concrete";
     seventhItem.numContent = 33;
     eightItem.content = "Iron";
-    eightItem.numContent = 95;
+    eightItem.numContent = 75;
 
     const testItem = {
         content: "Copper",
