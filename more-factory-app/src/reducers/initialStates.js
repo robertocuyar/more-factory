@@ -40,7 +40,8 @@ export const defaultBag =
                 {
                     id : 6,
                     content: null,
-                    numContent: null
+                    numContent: null,
+                    imgUrl: ""
                 },
                 {
                     id : 7,
