@@ -9,8 +9,9 @@ import Paper from "@material-ui/core/Paper";
 import copperImg from "../../img/copper.png";
 import {useSelector, useDispatch} from "react-redux";
 import MineInventoryContainer from "./MineInventoryContainer";
-import {mineCopper} from "../../actions";
+import {mineCopper, inventorySlots, mineCoal} from "../../actions";
 import {firstCopper} from "../../reducers/initialStates";
+import invManager from "../../methods/invManager";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const CopperMine = ()=>{
     const classes = useStyles();
     const copper = useSelector(state => state.copperMined);
+    const inv = useSelector(state => state.slotsInv);
     const dispatch = useDispatch();
 
     const containerDisplay = () => {
@@ -43,6 +45,7 @@ const CopperMine = ()=>{
 
     const mine = ()=> {
         if (copper === null) {
+            firstCopper.numContent = 1;
             return dispatch(mineCopper(firstCopper));
         } else if (copper.numContent === 20){
             return dispatch(mineCopper(copper));
@@ -50,6 +53,18 @@ const CopperMine = ()=>{
             let newCopper = JSON.parse(JSON.stringify(copper));
             newCopper.numContent++;
             return dispatch(mineCopper(newCopper));
+        }
+    }
+    const inventoryMove = ()=> {
+        if (copper === null){
+            return;
+        }
+        let newInv = {
+            slots: invManager(copper, inv)
+        }
+        dispatch(inventorySlots(newInv));
+        if(copper.numContent === 0){
+            dispatch(mineCopper(null));
         }
     }
 
@@ -69,7 +84,7 @@ const CopperMine = ()=>{
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <div className={classes.containerRoot}>
+                    <div className={classes.containerRoot} onDoubleClick={()=> inventoryMove()}>
                         <Paper className={"inventory-box"}>
                             {containerDisplay()}
                         </Paper>

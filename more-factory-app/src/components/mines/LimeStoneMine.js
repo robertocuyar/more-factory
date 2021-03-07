@@ -9,8 +9,9 @@ import Paper from "@material-ui/core/Paper";
 import limeImg from "../../img/limestone.png";
 import {useSelector, useDispatch} from "react-redux";
 import {firstLimestone} from "../../reducers/initialStates";
-import{mineLimestone} from "../../actions";
-import MineInventoryContainer from "./MineInventoryContainer"
+import {mineLimestone, inventorySlots} from "../../actions";
+import MineInventoryContainer from "./MineInventoryContainer";
+import invManager from "../../methods/invManager";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -36,15 +37,16 @@ const useStyles = makeStyles((theme) => ({
 const LimeStoneMine = ()=>{
     const classes = useStyles();
     const limestone = useSelector(state => state.limeMined);
+    const inv = useSelector(state=> state.slotsInv);
     const dispatch = useDispatch();
 
     const containerDisplay = () => {
         return limestone === null ? null : <MineInventoryContainer content={limestone.content} numContent={limestone.numContent} imgUrl={limestone.imgUrl}/>
-
     }
 
     const mine = ()=>{
         if(limestone === null){
+            firstLimestone.numContent = 1;
             return dispatch(mineLimestone(firstLimestone));
         } else if (limestone.numContent === 20) {
             return dispatch(mineLimestone(limestone));
@@ -52,6 +54,18 @@ const LimeStoneMine = ()=>{
             let newLime = JSON.parse(JSON.stringify(limestone));
             newLime.numContent++;
             return dispatch(mineLimestone(newLime));
+        }
+    }
+    const inventoryMove = ()=> {
+        if (limestone === null){
+            return;
+        }
+        let newInv = {
+            slots: invManager(limestone, inv)
+        }
+        dispatch(inventorySlots(newInv));
+        if(limestone.numContent === 0){
+            dispatch(mineLimestone(null));
         }
     }
 
@@ -71,7 +85,7 @@ const LimeStoneMine = ()=>{
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <div className={classes.containerRoot}>
+                    <div className={classes.containerRoot} onDoubleClick={()=> inventoryMove()}>
                         <Paper className={"inventory-box"}>
                             {containerDisplay()}
                         </Paper>

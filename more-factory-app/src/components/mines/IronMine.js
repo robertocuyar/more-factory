@@ -9,8 +9,9 @@ import Paper from "@material-ui/core/Paper";
 import ironImg from "../../img/iron.png";
 import {useSelector, useDispatch} from "react-redux";
 import MineInventoryContainer from "./MineInventoryContainer";
-import {mineIron} from "../../actions";
+import {mineIron, inventorySlots} from "../../actions";
 import {firstIron} from "../../reducers/initialStates";
+import invManager from "../../methods/invManager";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 const IronMine = ()=>{
     const classes = useStyles();
     const iron = useSelector(state => state.ironMined);
+    const inv = useSelector(state => state.slotsInv);
     const dispatch = useDispatch();
 
     const containerDisplay = ()=> {
@@ -43,6 +45,7 @@ const IronMine = ()=>{
 
     const mine = ()=>{
         if(iron === null){
+            firstIron.numContent = 1;
             return dispatch(mineIron(firstIron));
         } else if (iron.numContent === 20) {
             return dispatch(mineIron(iron));
@@ -50,6 +53,18 @@ const IronMine = ()=>{
             let newIron = JSON.parse(JSON.stringify(iron));
             newIron.numContent++;
             return dispatch(mineIron(newIron));
+        }
+    }
+    const inventoryMove = ()=> {
+        if (iron === null){
+            return;
+        }
+        let newInv = {
+            slots: invManager(iron, inv)
+        }
+        dispatch(inventorySlots(newInv));
+        if(iron.numContent === 0){
+            dispatch(mineIron(null));
         }
     }
 
@@ -69,7 +84,7 @@ const IronMine = ()=>{
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <div className={classes.containerRoot}>
+                    <div className={classes.containerRoot} onDoubleClick={()=> inventoryMove()}>
                         <Paper className={"inventory-box"}>
                             {containerDisplay()}
                         </Paper>
