@@ -1,10 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import CoalMine from "./mines/CoalMine";
-import IronMine from "./mines/IronMine";
-import CopperMine from "./mines/CopperMine";
-import LimeStoneMine from "./mines/LimeStoneMine";
+import Mines from "./mines/Mines";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,16 +16,16 @@ const MiningMenu = () => {
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={6}>
-                    <CoalMine/>
+                    <Mines type={"Coal"}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <IronMine/>
+                    <Mines type = {"Iron"}/>
                 </Grid>
                 <Grid item xs={6}>
-                   <CopperMine/>
+                   <Mines type={"Copper"}/>
                 </Grid>
                 <Grid item xs={6}>
-                    <LimeStoneMine/>
+                    <Mines type={"Limestone"}/>
                 </Grid>
             </Grid>
         </div>
