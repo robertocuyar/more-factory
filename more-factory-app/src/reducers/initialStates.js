@@ -81,3 +81,14 @@ export const firstLimestone = {
     numContent: 1,
     imgUrl: lime
 }
+
+export const defaultMachine = {
+    machines: [
+        {
+            content: "Iron Furnace",
+            description: "Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.",
+            needsPower: false,
+            isOn: false
+        }
+    ]
+}

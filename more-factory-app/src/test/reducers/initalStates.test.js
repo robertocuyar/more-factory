@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
-import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone} from "../../reducers/initialStates";
+import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
@@ -95,5 +95,14 @@ describe("initialState", ()=>{
         expect(firstLimestone.content).toEqual("Limestone");
         expect(firstLimestone.numContent).toEqual(1);
         expect(firstLimestone.imgUrl).toEqual(lime);
+    });
+
+    it("defaultMachine has correct default values", ()=>{
+        const firstMachine = defaultMachine.machines[0];
+        expect(firstMachine.content).toEqual("Iron Furnace");
+        expect(firstMachine.needsPower).toEqual(false);
+        expect(firstMachine.description).toEqual("Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.");
+        expect(firstMachine.isOn).toEqual(false);
+
     })
-})
+});

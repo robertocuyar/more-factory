@@ -1,4 +1,4 @@
-import {INVENTORY_SLOTS, MINE_COAL, MINE_COPPER, MINE_IRON, MINE_LIMESTONE} from "./types";
+import {INVENTORY_SLOTS, MINE_COAL, MINE_COPPER, MINE_IRON, MINE_LIMESTONE, MACHINE_RENDER} from "./types";
 
 export const inventorySlots = slots => {
     return {
@@ -32,5 +32,12 @@ export const mineLimestone = limestone =>{
     return {
         type: MINE_LIMESTONE,
         payload: limestone
+    }
+}
+
+export const machineRender = machines => {
+    return {
+        type: MACHINE_RENDER,
+        payload: machines
     }
 }

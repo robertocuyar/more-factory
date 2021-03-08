@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone} from "../../actions";
-import {INVENTORY_SLOTS, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE} from "../../actions/types";
-import {firstCoal, firstIron, firstCopper, firstLimestone} from "../../reducers/initialStates";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender} from "../../actions";
+import {INVENTORY_SLOTS, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER} from "../../actions/types";
+import {firstCoal, firstIron, firstCopper, firstLimestone, defaultMachine} from "../../reducers/initialStates";
 
 test("inventorySlots to be defined", ()=>{
     expect(inventorySlots).toBeDefined();
@@ -45,7 +45,7 @@ test("mineCopper to return correct payload", ()=>{
         type: MINE_COPPER,
         payload: firstCopper
     });
-})
+});
 
 test ("mineLimestone to be defined", ()=>{
     expect(mineLimestone).toBeDefined();
@@ -56,4 +56,15 @@ test("mineLimestone to return correct payload", ()=>{
         type: MINE_LIMESTONE,
         payload: firstLimestone
     });
-})
+});
+
+test("machineRender to be defined", ()=>{
+    expect(machineRender).toBeDefined();
+});
+
+test("machineRender to return correct payload", ()=>{
+    expect(machineRender(defaultMachine)).toEqual({
+        type: MACHINE_RENDER,
+        payload: defaultMachine
+    });
+});

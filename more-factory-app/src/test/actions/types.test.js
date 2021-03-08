@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {INVENTORY_SLOTS, SLOT_FILL, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE} from "../../actions/types";
+import {INVENTORY_SLOTS, SLOT_FILL, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER} from "../../actions/types";
 
 test("INVENTORY_SLOTS returns correct string", ()=>{
     expect(INVENTORY_SLOTS).toBe("INVENTORY_SLOTS");
@@ -24,3 +24,7 @@ test("MINE_COPPER returns correct string", ()=>{
 test("MINE_LIMESTONE returns correct string", ()=>{
     expect(MINE_LIMESTONE).toBe("MINE_LIMESTONE");
 });
+
+test("MACHINE_RENDER returns correct string", ()=>{
+    expect(MACHINE_RENDER).toBe("MACHINE_RENDER");
+})
