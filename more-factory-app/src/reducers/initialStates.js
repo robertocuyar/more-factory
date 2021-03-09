@@ -88,7 +88,31 @@ export const defaultMachine = {
             content: "Iron Furnace",
             description: "Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.",
             needsPower: false,
-            isOn: false
+            isOn: false,
+            input: [
+                {
+                    iron: {
+                        numContent: 0,
+                        content: "Iron",
+                        imgUrl: iron
+                    }
+                },
+                {
+                    coal: {
+                        numContent: 0,
+                        content: "Coal",
+                        imgUrl: coal
+                    }
+                }
+                ],
+            output: [
+                {
+                ironBar: {
+                    numContent: 0,
+                    content: "Iron Ingot"
+                }
+            }
+            ]
         }
     ]
 }
