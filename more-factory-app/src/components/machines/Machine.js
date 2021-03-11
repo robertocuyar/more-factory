@@ -45,11 +45,30 @@ const Machine = ({machine})=> {
                             {inventoryDisplay(item)}
                         </Paper>
                     </div>
-
                 </Grid>
             </Grid>
             )
         });
+    }
+
+    const contentDisplay = ()=>{
+        return (
+            <React.Fragment>
+                <Grid item xs={12}>
+                    <img src={machine.imgUrl} alt={machine.content}/>
+                </Grid>
+                <Grid item xs={12}>
+                    <h1>
+                        {machine.content}
+                    </h1>
+                </Grid>
+                <Grid item xs={12}>
+                    <p>
+                        {machine.description}
+                    </p>
+                </Grid>
+            </React.Fragment>
+        )
     }
 
     return (
@@ -58,8 +77,8 @@ const Machine = ({machine})=> {
                 <Grid item container xs={3} justify={'center'} alignItems={'center'} direction={"column"} spacing={2}>
                     {inputDisplay()}
                 </Grid>
-                <Grid item container xs={6} justify={'center'}>
-                    Content
+                <Grid item container xs={6} justify={'center'} alignItems={'center'} direction={'column'} spacing={0}>
+                    {contentDisplay()}
                 </Grid>
                 <Grid item container xs={3} justify={'center'}>
                     Output
