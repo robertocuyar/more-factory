@@ -3,6 +3,7 @@ import iron from "../img/iron_inv.png";
 import copper from "../img/copper_inv.png";
 import lime from "../img/limestone_inv.png";
 import ironBar from "../img/iron_bar.png";
+import ironFurnace from "../img/iron_furnace.png";
 
 export const defaultBag =
     {
@@ -88,6 +89,7 @@ export const defaultMachine = {
         {
             content: "Iron Furnace",
             description: "Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.",
+            imgUrl: ironFurnace,
             needsPower: false,
             isOn: false,
             input: [

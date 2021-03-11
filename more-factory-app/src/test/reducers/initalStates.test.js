@@ -7,6 +7,7 @@ import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
 import lime from "../../img/limestone_inv.png";
 import ironBar from "../../img/iron_bar.png";
+import ironFurnace from "../../img/iron_furnace.png";
 
 configure({adapter: new Adapter()});
 
