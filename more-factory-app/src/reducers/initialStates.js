@@ -2,6 +2,7 @@ import coal from "../img/coal_inv.png";
 import iron from "../img/iron_inv.png";
 import copper from "../img/copper_inv.png";
 import lime from "../img/limestone_inv.png";
+import ironBar from "../img/iron_bar.png";
 
 export const defaultBag =
     {
@@ -109,7 +110,8 @@ export const defaultMachine = {
                 {
                 ironBar: {
                     numContent: 0,
-                    content: "Iron Ingot"
+                    content: "Iron Ingot",
+                    imgUrl: ironBar
                 }
             }
             ]

@@ -6,6 +6,7 @@ import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
 import lime from "../../img/limestone_inv.png";
+import ironBar from "../../img/iron_bar.png";
 
 configure({adapter: new Adapter()});
 
@@ -103,6 +104,7 @@ describe("initialState", ()=>{
         expect(firstMachine.needsPower).toEqual(false);
         expect(firstMachine.description).toEqual("Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.");
         expect(firstMachine.isOn).toEqual(false);
+        expect(firstMachine.imgUrl).toEqual(ironFurnace);
         expect(firstMachine.input[0].iron.numContent).toEqual(0);
         expect(firstMachine.input[0].iron.content).toEqual("Iron");
         expect(firstMachine.input[0].iron.imgUrl).toEqual(iron);
