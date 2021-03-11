@@ -94,18 +94,15 @@ export const defaultMachine = {
             isOn: false,
             input: [
                 {
-                    iron: {
-                        numContent: 0,
-                        content: "Iron",
-                        imgUrl: iron
-                    }
+                    numContent: 0,
+                    content: "Iron Ore",
+                    imgUrl: iron
                 },
                 {
-                    coal: {
-                        numContent: 0,
-                        content: "Coal",
-                        imgUrl: coal
-                    }
+                    numContent: 0,
+                    content: "Coal",
+                    imgUrl: coal
+
                 }
                 ],
             output: [

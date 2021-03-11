@@ -106,12 +106,12 @@ describe("initialState", ()=>{
         expect(firstMachine.description).toEqual("Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.");
         expect(firstMachine.isOn).toEqual(false);
         expect(firstMachine.imgUrl).toEqual(ironFurnace);
-        expect(firstMachine.input[0].iron.numContent).toEqual(0);
-        expect(firstMachine.input[0].iron.content).toEqual("Iron");
-        expect(firstMachine.input[0].iron.imgUrl).toEqual(iron);
-        expect(firstMachine.input[1].coal.numContent).toEqual(0);
-        expect(firstMachine.input[1].coal.content).toEqual("Coal");
-        expect(firstMachine.input[1].coal.imgUrl).toEqual(coal);
+        expect(firstMachine.input[0].numContent).toEqual(0);
+        expect(firstMachine.input[0].content).toEqual("Iron Ore");
+        expect(firstMachine.input[0].imgUrl).toEqual(iron);
+        expect(firstMachine.input[1].numContent).toEqual(0);
+        expect(firstMachine.input[1].content).toEqual("Coal");
+        expect(firstMachine.input[1].imgUrl).toEqual(coal);
         expect(firstMachine.output[0].ironBar.numContent).toEqual(0);
         expect(firstMachine.output[0].ironBar.content).toEqual("Iron Ingot");
         expect(firstMachine.output[0].ironBar.imgUrl).toEqual(ironBar);
