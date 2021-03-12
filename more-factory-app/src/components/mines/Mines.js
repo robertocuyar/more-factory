@@ -14,7 +14,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {firstCoal, firstLimestone, firstCopper, firstIron} from "../../reducers/initialStates";
 import {mineLimestone, inventorySlots, mineCoal, mineIron, mineCopper} from "../../actions";
 import MineInventoryContainer from "./MineInventoryContainer";
-import invManager from "../../methods/invManager";
+import invManager from "../../util/invManager";
 
 
 const useStyles = makeStyles((theme) => ({

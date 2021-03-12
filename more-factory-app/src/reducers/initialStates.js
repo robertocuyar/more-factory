@@ -107,11 +107,9 @@ export const defaultMachine = {
                 ],
             output: [
                 {
-                ironBar: {
                     numContent: 0,
                     content: "Iron Ingot",
                     imgUrl: ironBar
-                }
             }
             ]
         }

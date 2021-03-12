@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MineInventoryContainer from "../mines/MineInventoryContainer";
+import green from "../../img/green_light.png";
+import red from "../../img/red_light.png";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,12 +34,16 @@ const Machine = ({machine})=> {
         return item.numContent === 0 ? null : <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
     }
 
-    const inputDisplay = ()=>{
-        return machine.input.map(item =>{
+    const ioDisplay = (machArr, type)=>{
+        const buttonType = content=> {
+            return type === 'input' ? <Button variant={"outlined"}>Add {content}</Button> : <Button variant={"outlined"}>Take {content}</Button>
+        }
+
+        return machArr.map(item =>{
             return(
             <Grid item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
                 <Grid item xs={12}>
-                    <Button variant={"outlined"}>Add {item.content}</Button>
+                    {buttonType(item.content)}
                 </Grid>
                 <Grid item xs={12}>
                     <div className={classes.containerRoot}>
@@ -52,6 +58,9 @@ const Machine = ({machine})=> {
     }
 
     const contentDisplay = ()=>{
+        const light = ()=>{
+            return machine.isOn ? <img src={green} alt={"Green Light"}/> : <img src={red} alt = "Red Light"/>
+        }
         return (
             <React.Fragment>
                 <Grid item xs={12}>
@@ -67,7 +76,23 @@ const Machine = ({machine})=> {
                         {machine.description}
                     </p>
                 </Grid>
+                <Grid item container alignItems={"center"} justify={"center"} spacing={2} xs={12}>
+                    <Grid item>
+                        <Button variant={"outlined"}>Turn on</Button>
+                        </Grid>
+                    <Grid item>
+                        {light()}
+                    </Grid>
+                </Grid>
             </React.Fragment>
+        )
+    }
+
+    const outputDisplay = ()=>{
+        return (
+            <div>
+                Output
+            </div>
         )
     }
 
@@ -75,13 +100,13 @@ const Machine = ({machine})=> {
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={3} justify={'center'} alignItems={'center'} direction={"column"} spacing={2}>
-                    {inputDisplay()}
+                    {ioDisplay(machine.input, 'input')}
                 </Grid>
                 <Grid item container xs={6} justify={'center'} alignItems={'center'} direction={'column'} spacing={0}>
                     {contentDisplay()}
                 </Grid>
                 <Grid item container xs={3} justify={'center'}>
-                    Output
+                    {ioDisplay(machine.output, 'output')}
                 </Grid>
             </Grid>
         </div>

@@ -112,8 +112,8 @@ describe("initialState", ()=>{
         expect(firstMachine.input[1].numContent).toEqual(0);
         expect(firstMachine.input[1].content).toEqual("Coal");
         expect(firstMachine.input[1].imgUrl).toEqual(coal);
-        expect(firstMachine.output[0].ironBar.numContent).toEqual(0);
-        expect(firstMachine.output[0].ironBar.content).toEqual("Iron Ingot");
-        expect(firstMachine.output[0].ironBar.imgUrl).toEqual(ironBar);
+        expect(firstMachine.output[0].numContent).toEqual(0);
+        expect(firstMachine.output[0].content).toEqual("Iron Ingot");
+        expect(firstMachine.output[0].imgUrl).toEqual(ironBar);
     })
 });
