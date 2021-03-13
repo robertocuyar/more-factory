@@ -88,14 +88,6 @@ const Machine = ({machine})=> {
         )
     }
 
-    const outputDisplay = ()=>{
-        return (
-            <div>
-                Output
-            </div>
-        )
-    }
-
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>

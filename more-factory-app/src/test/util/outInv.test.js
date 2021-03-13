@@ -1,0 +1,33 @@
+import {expect} from "@jest/globals";
+import {outInv} from "../../util/outInv";
+import {defaultBag} from "../../reducers/initialStates";
+import {defaultMachine} from "../../reducers/initialStates";
+import ironFurnace from "../../img/iron_furnace.png";
+import iron from "../../img/iron_inv.png";
+import coal from "../../img/coal_inv.png";
+import ironBar from "../../img/iron_bar.png";
+
+const testItem = {
+    content: "Coal",
+    numContent: 5,
+    imgUrl: ""
+}
+
+const testMachine = defaultMachine.machines[0];
+const testInput = testMachine.input[1];
+
+
+test("outInv.js is defined", ()=>{
+   expect(outInv).toBeDefined();
+});
+
+test("outInv returns inventory that is not changed if requested item is not present in inventory",()=>{
+   expect(outInv(testInput, defaultBag, testMachine).inventory.slots[0].content).toBe(defaultBag.slots[0].content);
+});
+
+test("outInv returns inventory and machine that is not changed if requested item in input slot is already full.", ()=>{
+   testInput.numContent = 80;
+   const invMachineResult = outInv(testInput, defaultBag, testMachine);
+   expect(invMachineResult.inventory.slots[0].content).toBe(defaultBag.slots[0].content);
+   // expect(invMachineResult.machine.input[1].)
+});
