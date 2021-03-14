@@ -9,8 +9,9 @@ export const outInv = (itemReq, inventoryCur, machineCur)=>{
     const resultInv = inventoryCur.slots.map(slot =>{
         if (itemReq.content === slot.content){
         }
+        return slot;
     });
 
-    return {inventory: resultInv, machine: machineCur};
+    return {inventory: {slots: resultInv}, machine: machineCur};
 
 }
