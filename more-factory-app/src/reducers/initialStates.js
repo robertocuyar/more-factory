@@ -96,12 +96,14 @@ export const defaultMachine = {
                 {
                     numContent: 0,
                     content: "Iron Ore",
-                    imgUrl: iron
+                    imgUrl: iron,
+                    type: "ifi"
                 },
                 {
                     numContent: 0,
                     content: "Coal",
-                    imgUrl: coal
+                    imgUrl: coal,
+                    type: "ifc"
 
                 }
                 ],
