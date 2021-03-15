@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender} from "../../actions";
-import {INVENTORY_SLOTS, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER} from "../../actions/types";
-import {firstCoal, firstIron, firstCopper, firstLimestone, defaultMachine} from "../../reducers/initialStates";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem} from "../../actions";
+import {INVENTORY_SLOTS, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER, REMOVE_ITEM} from "../../actions/types";
+import {firstCoal, firstIron, firstCopper, firstLimestone, defaultMachine, defaultBag} from "../../reducers/initialStates";
 
 test("inventorySlots to be defined", ()=>{
     expect(inventorySlots).toBeDefined();
@@ -67,4 +67,15 @@ test("machineRender to return correct payload", ()=>{
         type: MACHINE_RENDER,
         payload: defaultMachine
     });
+});
+
+test("removeItem to be defined", ()=>{
+    expect(removeItem).toBeDefined();
+});
+
+test("removeItem to return correct payload", ()=>{
+    expect(removeItem(defaultBag)).toEqual({
+        type: REMOVE_ITEM,
+        payload: defaultBag
+    })
 });

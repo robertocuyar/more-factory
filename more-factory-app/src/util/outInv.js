@@ -14,6 +14,11 @@ export const outInv = (itemReq, machContent, inventoryCur, machineCur)=>{
                 slot.numContent = remainder;
                 itemReq.numContent = 80;
             }
+            if (remainder <= 0 ){
+                slot.numContent = null;
+                slot.content = null;
+                slot.imgUrl = null;
+            }
 
         }
         return slot;
