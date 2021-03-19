@@ -61,7 +61,7 @@ export const defaultBag =
     };
 
 export const firstIron = {
-    content: "Iron",
+    content: "Iron Ore",
     numContent: 1,
     imgUrl: iron
 };

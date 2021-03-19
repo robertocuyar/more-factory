@@ -6,6 +6,9 @@ import Paper from "@material-ui/core/Paper";
 import MineInventoryContainer from "../mines/MineInventoryContainer";
 import green from "../../img/green_light.png";
 import red from "../../img/red_light.png";
+import {useSelector, useDispatch} from "react-redux";
+import {outInv} from "../../util/outInv";
+import {inventorySlots, machineRender} from "../../actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,21 +32,30 @@ const useStyles = makeStyles((theme) => ({
 
 const Machine = ({machine})=> {
     const classes = useStyles();
+    const inv = useSelector(state=> state.slotsInv);
+    const mach = useSelector(state=> state.machines);
+    const dispatch = useDispatch();
+
+    const inputChange = inputReq => {
+        let res = outInv(inputReq, machine.content, inv, mach);
+        dispatch(inventorySlots(res.inventory));
+        dispatch(machineRender(res.machine));
+    }
 
     const inventoryDisplay = item =>{
         return item.numContent === 0 ? null : <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
     }
 
     const ioDisplay = (machArr, type)=>{
-        const buttonType = content=> {
-            return type === 'input' ? <Button variant={"outlined"}>Add {content}</Button> : <Button variant={"outlined"}>Take {content}</Button>
+        const buttonType = (content, inputReq)=> {
+            return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(inputReq)}>Add {content}</Button> : <Button variant={"outlined"}>Take {content}</Button>
         }
 
         return machArr.map(item =>{
             return(
             <Grid item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
                 <Grid item xs={12}>
-                    {buttonType(item.content)}
+                    {buttonType(item.content, item)}
                 </Grid>
                 <Grid item xs={12}>
                     <div className={classes.containerRoot}>
