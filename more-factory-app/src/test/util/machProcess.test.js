@@ -2,7 +2,7 @@ import {expect} from "@jest/globals";
 import {machProcess} from "../../util/machProcess";
 import {defaultMachine} from "../../reducers/initialStates";
 
-const machContent = "Iron Furnace";
+const machContent = 'Iron Furnace';
 const machineCur = defaultMachine;
 
 test("machProcess.js is defined", ()=>{
