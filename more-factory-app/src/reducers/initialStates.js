@@ -92,6 +92,7 @@ export const defaultMachine = {
             imgUrl: ironFurnace,
             needsPower: false,
             isOn: false,
+            process: 1000,
             input: [
                 {
                     numContent: 0,

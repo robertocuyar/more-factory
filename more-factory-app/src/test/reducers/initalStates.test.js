@@ -76,7 +76,7 @@ describe("initialState", ()=>{
     });
 
     it("firstIron has correct default values", ()=>{
-        expect(firstIron.content).toEqual("Iron");
+        expect(firstIron.content).toEqual("Iron Ore");
         expect(firstIron.numContent).toEqual(1);
         expect(firstIron.imgUrl).toEqual(iron);
     });
@@ -105,6 +105,7 @@ describe("initialState", ()=>{
         expect(firstMachine.needsPower).toEqual(false);
         expect(firstMachine.description).toEqual("Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.");
         expect(firstMachine.isOn).toEqual(false);
+        expect(firstMachine.process).toEqual(1000);
         expect(firstMachine.imgUrl).toEqual(ironFurnace);
         expect(firstMachine.input[0].numContent).toEqual(0);
         expect(firstMachine.input[0].content).toEqual("Iron Ore");
@@ -115,5 +116,5 @@ describe("initialState", ()=>{
         expect(firstMachine.output[0].numContent).toEqual(0);
         expect(firstMachine.output[0].content).toEqual("Iron Ingot");
         expect(firstMachine.output[0].imgUrl).toEqual(ironBar);
-    })
+    });
 });
