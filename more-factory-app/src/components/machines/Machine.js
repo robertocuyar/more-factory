@@ -71,7 +71,29 @@ const Machine = ({machine})=> {
 
     const contentDisplay = ()=>{
         const light = ()=>{
-            return machine.isOn ? <img src={green} alt={"Green Light"}/> : <img src={red} alt = "Red Light"/>
+            if (machine.isOn){
+                return (
+                    <React.Fragment>
+                    <Grid item>
+                        <Button variant={"outlined"} disabled>Turn on</Button>
+                    </Grid>
+                <Grid item>
+                    <img src={green} alt={"Green Light"}/>
+                </Grid>
+                    </React.Fragment>
+                )
+            } else{
+                return (
+                <React.Fragment>
+                    <Grid item>
+                        <Button variant={"outlined"}>Turn on</Button>
+                    </Grid>
+                    <Grid item>
+                        <img src={red} alt = "Red Light"/>
+                    </Grid>
+                </React.Fragment>
+                )
+            }
         }
         return (
             <React.Fragment>
@@ -89,12 +111,7 @@ const Machine = ({machine})=> {
                     </p>
                 </Grid>
                 <Grid item container alignItems={"center"} justify={"center"} spacing={2} xs={12}>
-                    <Grid item>
-                        <Button variant={"outlined"}>Turn on</Button>
-                        </Grid>
-                    <Grid item>
-                        {light()}
-                    </Grid>
+                    {light()}
                 </Grid>
             </React.Fragment>
         )
