@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -9,6 +9,7 @@ import red from "../../img/red_light.png";
 import {useSelector, useDispatch} from "react-redux";
 import {outInv} from "../../util/outInv";
 import {inventorySlots, machineRender} from "../../actions";
+import {machProcess} from "../../util/machProcess";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +36,24 @@ const Machine = ({machine})=> {
     const inv = useSelector(state=> state.slotsInv);
     const mach = useSelector(state=> state.machines);
     const dispatch = useDispatch();
+
+    useEffect(()=>{
+        if(machine.isOn){
+            setTimeout(()=>{
+                dispatch(machineRender(machProcess(machine.content, machine.input, machine.output, mach)))
+            }, machine.process)
+        }
+    });
+    const toggleOn = ()=>{
+        let result = {machines: null};
+        result.machines = mach.machines.map(item=>{
+            if(item.content === machine.content){
+                item.isOn = true;
+            }
+            return item;
+        });
+        dispatch(machineRender(result));
+    }
 
     const inputChange = inputReq => {
         let res = outInv(inputReq, machine.content, inv, mach);
@@ -86,7 +105,7 @@ const Machine = ({machine})=> {
                 return (
                 <React.Fragment>
                     <Grid item>
-                        <Button variant={"outlined"}>Turn on</Button>
+                        <Button variant={"outlined"} onClick={()=> toggleOn()}>Turn on</Button>
                     </Grid>
                     <Grid item>
                         <img src={red} alt = "Red Light"/>
