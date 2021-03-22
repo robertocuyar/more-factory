@@ -16,7 +16,6 @@ import {mineLimestone, inventorySlots, mineCoal, mineIron, mineCopper} from "../
 import MineInventoryContainer from "./MineInventoryContainer";
 import {invManager} from "../../util/invManager";
 
-
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
