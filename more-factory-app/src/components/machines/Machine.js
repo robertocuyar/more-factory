@@ -10,6 +10,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {outInv} from "../../util/outInv";
 import {inventorySlots, machineRender} from "../../actions";
 import {machProcess} from "../../util/machProcess";
+import {invManager} from "../../util/invManager";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,6 +37,7 @@ const Machine = ({machine})=> {
     const inv = useSelector(state=> state.slotsInv);
     const mach = useSelector(state=> state.machines);
     const dispatch = useDispatch();
+    let resultMachines = {machines: []};
 
     useEffect(()=>{
         if(machine.isOn){
@@ -45,14 +47,13 @@ const Machine = ({machine})=> {
         }
     });
     const toggleOn = ()=>{
-        let result = {machines: null};
-        result.machines = mach.machines.map(item=>{
+        resultMachines.machines = mach.machines.map(item=>{
             if(item.content === machine.content){
                 item.isOn = true;
             }
             return item;
         });
-        dispatch(machineRender(result));
+        dispatch(machineRender(resultMachines));
     }
 
     const inputChange = inputReq => {
@@ -61,13 +62,35 @@ const Machine = ({machine})=> {
         dispatch(machineRender(res.machine));
     }
 
+    const inventoryMove = output =>{
+        if(output.numContent === 0){
+            return;
+        }
+        let newInv = {
+            slots: invManager(output, inv)
+        }
+        dispatch(inventorySlots(newInv));
+        resultMachines.machines = mach.machines.map(item=>{
+            if(item.content === machine.content){
+                item.output = item.output.map(product => {
+                    if(product.content === output.content){
+                        product.numContent = output.numContent;
+                    }
+                    return product;
+                });
+            }
+            return item;
+        });
+        dispatch(machineRender(resultMachines));
+    }
+
     const inventoryDisplay = item =>{
         return item.numContent === 0 ? null : <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
     }
 
     const ioDisplay = (machArr, type)=>{
-        const buttonType = (content, inputReq)=> {
-            return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(inputReq)}>Add {content}</Button> : <Button variant={"outlined"}>Take {content}</Button>
+        const buttonType = (content, req)=> {
+            return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(req)}>Add {content}</Button> : <Button variant={"outlined"} onClick={()=> inventoryMove(req)}>Take {content}</Button>
         }
 
         return machArr.map(item =>{

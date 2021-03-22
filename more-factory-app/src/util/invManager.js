@@ -1,4 +1,4 @@
-export default (item, inventory)=>{
+export const invManager = (item, inventory)=>{
     return inventory.slots.map(slot =>{
         if ((slot.content === null || slot.content === item.content) && item.numContent > 0) {
             slot.content = item.content;
