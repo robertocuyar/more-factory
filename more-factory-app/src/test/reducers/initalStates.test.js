@@ -1,13 +1,15 @@
 import {expect} from "@jest/globals";
 import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
-import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine} from "../../reducers/initialStates";
+import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
 import lime from "../../img/limestone_inv.png";
 import ironBar from "../../img/iron_bar.png";
 import ironFurnace from "../../img/iron_furnace.png";
+import copperBar from "../../img/copper_bar.png";
+import copperFurnace from "../../img/copper_furnace.png";
 
 configure({adapter: new Adapter()});
 
@@ -119,5 +121,35 @@ describe("initialState", ()=>{
         expect(firstMachine.output[0].content).toEqual("Iron Ingot");
         expect(firstMachine.output[0].imgUrl).toEqual(ironBar);
         expect(firstMachine.output[0].give).toEqual(1);
+    });
+
+    it("defaultBuild has correct default values", ()=>{
+        const firstOption = defaultBuild.options[0];
+        expect(firstOption.content).toEqual("Copper Furnace");
+        expect(firstOption.needsPower).toEqual(false);
+        expect(firstOption.description).toEqual("Uses 1 COPPER ORE and 1 COAl to make 1 COPPER INGOT");
+        expect(firstOption.isOn).toEqual(false);
+        expect(firstOption.process).toEqual(1200);
+        expect(firstOption.imgUrl).toEqual(copperFurnace);
+        expect(firstOption.build[0].content).toEqual("Limestone");
+        expect(firstOption.build[0].numContent).toEqual(0);
+        expect(firstOption.build[0].imgUrl).toEqual(lime);
+        expect(firstOption.build[0].need).toEqual(40);
+        expect(firstOption.build[1].content).toEqual("Iron Ingot");
+        expect(firstOption.build[1].numContent).toEqual(0);
+        expect(firstOption.build[1].imgUrl).toEqual(ironBar);
+        expect(firstOption.build[1].need).toEqual(20);
+        expect(firstOption.input[0].numContent).toEqual(0);
+        expect(firstOption.input[0].content).toEqual("Copper Ore");
+        expect(firstOption.input[0].imgUrl).toEqual(copper);
+        expect(firstOption.input[0].use).toEqual(1);
+        expect(firstOption.input[1].numContent).toEqual(0);
+        expect(firstOption.input[1].content).toEqual("Coal");
+        expect(firstOption.input[1].imgUrl).toEqual(coal);
+        expect(firstOption.input[1].use).toEqual(1);
+        expect(firstOption.output[0].numContent).toEqual(0);
+        expect(firstOption.output[0].content).toEqual("Copper Ingot");
+        expect(firstOption.output[0].imgUrl).toEqual(copperBar);
+        expect(firstOption.output[0].give).toEqual(1);
     });
 });

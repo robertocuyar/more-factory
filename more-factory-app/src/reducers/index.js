@@ -5,6 +5,7 @@ import ironMineReducer from "./ironMineReducer";
 import copperMineReducer from "./copperMineReducer";
 import limeMineReducer from "./limeMineReducer";
 import machinesReducer from "./machinesReducer";
+import buildReducer from "./buildReducer";
 
 export default combineReducers({
     slotsInv: slotReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     ironMined: ironMineReducer,
     copperMined: copperMineReducer,
     limeMined: limeMineReducer,
-    machines: machinesReducer
+    machines: machinesReducer,
+    buildOpt: buildReducer
 });

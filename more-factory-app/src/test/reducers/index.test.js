@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import index from "../../reducers/index";
 import {createStore} from "redux";
-import {defaultBag, defaultMachine} from "../../reducers/initialStates";
+import {defaultBag, defaultMachine, defaultBuild} from "../../reducers/initialStates";
 
 test("Reducer Index is defined", ()=>{
     expect(index).toBeDefined();
@@ -16,6 +16,7 @@ test("Reducer Index contains all reducers in app", ()=>{
     expect(storeTest.copperMined).toEqual(null);
     expect(storeTest.limeMined).toEqual(null);
     expect(storeTest.machines).toEqual(defaultMachine);
+    expect(storeTest.buildOpt).toEqual(defaultBuild);
 });
 
 
