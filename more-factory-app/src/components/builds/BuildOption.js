@@ -107,7 +107,7 @@ const BuildOption = ({option})=>{
                     {inputDisplay()}
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    Button
+                    <Button variant={'outlined'}>Build</Button>
                 </Grid>
             </Grid>
         </div>
