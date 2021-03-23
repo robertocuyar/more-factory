@@ -43,7 +43,7 @@ const UserTool = ()=> {
         } else {
             return (
             <React.Fragment>
-                <Grid item xs={12}>
+                <Grid item xs={12} container justify={'center'}>
                     <Paper className={classes.paper}>
                         <Box display={"flex"} justifyContent={"flex-end"}>
                            <Box display={"flex"} alignItems={"center"} m={1} id={"back-arrow"} onClick={()=>{setBag("closed")}}><ArrowBackIcon/></Box>

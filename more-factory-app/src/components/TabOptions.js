@@ -63,7 +63,7 @@ export default function CenteredTabs() {
             >
                 <Tab label="Mine" {...a11yProps(0)}/>
                 <Tab label="Machines" {...a11yProps(1)} />
-                <Tab label="Build" {...a11yProps(2)} disabled />
+                <Tab label="Build" {...a11yProps(2)} />
                 <Tab label="Orders" {...a11yProps(3)} disabled />
                 <Tab label="Upgrades" {...a11yProps(4)} disabled />
             </Tabs>

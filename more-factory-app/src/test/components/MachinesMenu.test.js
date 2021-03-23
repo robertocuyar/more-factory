@@ -13,7 +13,7 @@ test("MachinesMenu.js is defined", ()=>{
 
 configure ({adapter: new Adapter()});
 
-describe("Machines", ()=>{
+describe("MachinesMenu", ()=>{
     let wrapper, store;
     const initialState = {machines: defaultMachine};
     const mockStore = configureStore();
@@ -21,5 +21,5 @@ describe("Machines", ()=>{
     it("Renders correctly", ()=>{
         store = mockStore(initialState);
         wrapper = shallow(<Provider store = {store}><MachinesMenu/></Provider>);
-    })
-})
+    });
+});
