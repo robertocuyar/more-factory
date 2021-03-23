@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import invManager from "../../util/invManager";
+import {invManager} from "../../util/invManager";
 import iron from "../../img/iron_inv.png";
 import {defaultBag} from "../../reducers/initialStates";
 

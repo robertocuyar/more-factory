@@ -11,6 +11,7 @@ import {outInv} from "../../util/outInv";
 import {inventorySlots, machineRender} from "../../actions";
 import {machProcess} from "../../util/machProcess";
 import {invManager} from "../../util/invManager";
+import {invDisplay} from "../../util/invDisplay";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,10 +85,6 @@ const Machine = ({machine})=> {
         dispatch(machineRender(resultMachines));
     }
 
-    const inventoryDisplay = item =>{
-        return item.numContent === 0 ? null : <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
-    }
-
     const ioDisplay = (machArr, type)=>{
         const buttonType = (content, req)=> {
             return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(req)}>Add {content}</Button> : <Button variant={"outlined"} onClick={()=> inventoryMove(req)}>Take {content}</Button>
@@ -102,7 +99,7 @@ const Machine = ({machine})=> {
                 <Grid item xs={12}>
                     <div className={classes.containerRoot}>
                         <Paper className={"inventory-box"}>
-                            {inventoryDisplay(item)}
+                            {invDisplay(item)}
                         </Paper>
                     </div>
                 </Grid>

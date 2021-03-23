@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import MineInventoryContainer from "../mines/MineInventoryContainer";
 import {useSelector, useDispatch} from "react-redux";
+import {invDisplay} from "../../util/invDisplay";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -75,8 +76,17 @@ const BuildOption = ({option})=>{
     const inputDisplay = ()=> {
         return option.build.map(item => {
             return (
-                <Grid item container justify={'center'} alignItems={'center'} spacing={1}>
-
+                <Grid item container justify={'center'} alignItems={'center'} xs spacing={1}>
+                    <Grid item container justify={'center'} xs={12}>
+                        <Button variant={"outlined"}>Add {item.content}</Button>
+                    </Grid>
+                    <Grid item container justify={'center'} xs={12}>
+                        <div className={classes.containerRoot}>
+                            <Paper className={"inventory-box"}>
+                                {invDisplay(item)}
+                            </Paper>
+                        </div>
+                    </Grid>
                 </Grid>
             )
         })
@@ -93,7 +103,7 @@ const BuildOption = ({option})=>{
                         {requireDisplay()}
                     </Grid>
                 </Grid>
-                <Grid item container xs={12} justify={'center'}>
+                <Grid item container xs={12} direction={'row'} alignItems={'center'} justify={'center'}>
                     {inputDisplay()}
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
