@@ -123,7 +123,7 @@ export const defaultMachine = {
 }
 
 export const defaultBuild = {
-    options: [
+    machines: [
         {
             content: "Copper Furnace",
             needsPower: false,

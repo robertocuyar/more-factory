@@ -57,7 +57,7 @@ const Machine = ({machine})=> {
     }
 
     const inputChange = inputReq => {
-        let res = outInv(inputReq, machine.content, inv, mach);
+        let res = outInv(inputReq, machine.content, inv, mach, 80);
         dispatch(inventorySlots(res.inventory));
         dispatch(machineRender(res.machine));
     }

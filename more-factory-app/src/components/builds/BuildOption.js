@@ -3,9 +3,10 @@ import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import MineInventoryContainer from "../mines/MineInventoryContainer";
 import {useSelector, useDispatch} from "react-redux";
 import {invDisplay} from "../../util/invDisplay";
+import {outInv} from "../../util/outInv";
+import {inventorySlots, buildRender} from "../../actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
 
 const BuildOption = ({option})=>{
     const classes = useStyles();
+    const inv = useSelector(state => state.slotsInv);
+    const opt = useSelector(state => state.buildOpt);
+    const dispatch = useDispatch();
 
     const imageDisplay = ()=>{
         return(
@@ -73,12 +77,18 @@ const BuildOption = ({option})=>{
         )
     }
 
+    const inputChange = buildReq => {
+        let res = outInv(buildReq, option.content, inv, opt, buildReq.need);
+        dispatch(inventorySlots(res.inventory));
+        dispatch(buildRender(res.machine));
+
+    }
     const inputDisplay = ()=> {
         return option.build.map(item => {
             return (
                 <Grid item container justify={'center'} alignItems={'center'} xs spacing={1}>
                     <Grid item container justify={'center'} xs={12}>
-                        <Button variant={"outlined"}>Add {item.content}</Button>
+                        <Button variant={"outlined"} onClick={()=> inputChange(item)}>Add {item.content}</Button>
                     </Grid>
                     <Grid item container justify={'center'} xs={12}>
                         <div className={classes.containerRoot}>

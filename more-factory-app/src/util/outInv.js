@@ -1,6 +1,6 @@
-export const outInv = (itemReq, machContent, inventoryCur, machineCur)=>{
+export const outInv = (itemReq, machContent, inventoryCur, machineCur, limit)=>{
 
-    let numReq = 80 - itemReq.numContent;
+    let numReq = limit - itemReq.numContent;
 
     if(numReq === 0){
        return {inventory: inventoryCur, machine: machineCur};
@@ -9,10 +9,10 @@ export const outInv = (itemReq, machContent, inventoryCur, machineCur)=>{
     const resultInv = inventoryCur.slots.map(slot =>{
         if (itemReq.content === slot.content){
             itemReq.numContent += slot.numContent;
-            let remainder = itemReq.numContent - 80;
+            let remainder = itemReq.numContent - limit;
             if(remainder > 0){
                 slot.numContent = remainder;
-                itemReq.numContent = 80;
+                itemReq.numContent = limit;
             }
             if (remainder <= 0 ){
                 slot.numContent = null;

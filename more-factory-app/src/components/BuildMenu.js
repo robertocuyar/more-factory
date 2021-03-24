@@ -15,7 +15,7 @@ const BuildMenu = ()=>{
     const buildList = useSelector(state => state.buildOpt);
 
     const buildDisplay = ()=>{
-        return buildList.options.map(option => {
+        return buildList.machines.map(option => {
             return (
                 <Grid item xs={12}>
                     <BuildOption option={option}/>
