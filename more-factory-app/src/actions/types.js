@@ -8,3 +8,5 @@ export const MINE_LIMESTONE = "MINE_LIMESTONE";
 export const MACHINE_RENDER = "MACHINE_RENDER";
 export const REMOVE_ITEM = "REMOVE_ITEM";
 export const BUILD_RENDER = "BUILD_RENDER";
+export const REMOVE_OPTION = "REMOVE_OPTION";
+export const ADD_MACHINE = "ADD_MACHINE";

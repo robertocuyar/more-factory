@@ -15,13 +15,21 @@ const BuildMenu = ()=>{
     const buildList = useSelector(state => state.buildOpt);
 
     const buildDisplay = ()=>{
-        return buildList.machines.map(option => {
+        if(buildList.machines.length !== 0) {
+            return buildList.machines.map(option => {
+                return (
+                    <Grid item xs={12}>
+                        <BuildOption option={option}/>
+                    </Grid>
+                )
+            });
+        }
             return (
                 <Grid item xs={12}>
-                    <BuildOption option={option}/>
+                    <h2>All Buildings Built!</h2>
                 </Grid>
             )
-        });
+
     }
 
     return (

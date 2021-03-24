@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import {useSelector, useDispatch} from "react-redux";
 import {invDisplay} from "../../util/invDisplay";
 import {outInv} from "../../util/outInv";
-import {inventorySlots, buildRender} from "../../actions";
+import {inventorySlots, buildRender, removeOption} from "../../actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -100,6 +100,20 @@ const BuildOption = ({option})=>{
                 </Grid>
             )
         })
+    }
+
+    const build = () => {
+        let confirm = true;
+        for (let req of option.build) {
+            if(req.numContent !== req.need ){
+                confirm = false;
+                break;
+            }
+        }
+        if(confirm){
+
+            dispatch(removeOption(option));
+        }
     }
 
     return (

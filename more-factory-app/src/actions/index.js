@@ -1,4 +1,14 @@
-import {INVENTORY_SLOTS, MINE_COAL, MINE_COPPER, MINE_IRON, MINE_LIMESTONE, MACHINE_RENDER, REMOVE_ITEM, BUILD_RENDER} from "./types";
+import {
+    INVENTORY_SLOTS,
+    MINE_COAL,
+    MINE_COPPER,
+    MINE_IRON,
+    MINE_LIMESTONE,
+    MACHINE_RENDER,
+    REMOVE_ITEM,
+    BUILD_RENDER,
+    ADD_MACHINE, REMOVE_OPTION
+} from "./types";
 
 export const inventorySlots = slots => {
     return {type: INVENTORY_SLOTS, payload: slots}
@@ -30,4 +40,12 @@ export const removeItem = inventory => {
 
 export const buildRender = build => {
     return {type: BUILD_RENDER, payload: build}
+}
+
+export const addMachine = machine => {
+    return {type: ADD_MACHINE, payload: machine}
+}
+
+export const removeOption = option => {
+    return {type: REMOVE_OPTION, payload: option}
 }
