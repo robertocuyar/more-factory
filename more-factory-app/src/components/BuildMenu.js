@@ -25,7 +25,7 @@ const BuildMenu = ()=>{
             });
         }
             return (
-                <Grid item xs={12}>
+                <Grid item xs={12} container justify={'center'}>
                     <h2>All Buildings Built!</h2>
                 </Grid>
             )

@@ -75,7 +75,7 @@ export const firstCoal = {
 };
 
 export const firstCopper = {
-    content: "Copper",
+    content: "Copper Ore",
     numContent: 1,
     imgUrl: copper
 }

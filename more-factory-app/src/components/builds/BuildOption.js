@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 import {useSelector, useDispatch} from "react-redux";
 import {invDisplay} from "../../util/invDisplay";
 import {outInv} from "../../util/outInv";
-import {inventorySlots, buildRender, removeOption} from "../../actions";
+import {inventorySlots, buildRender, removeOption, addMachine} from "../../actions";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -111,7 +111,7 @@ const BuildOption = ({option})=>{
             }
         }
         if(confirm){
-
+            dispatch(addMachine(option));
             dispatch(removeOption(option));
         }
     }
@@ -131,7 +131,7 @@ const BuildOption = ({option})=>{
                     {inputDisplay()}
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={'outlined'}>Build</Button>
+                    <Button variant={'outlined'} onClick={()=> build()}>Build</Button>
                 </Grid>
             </Grid>
         </div>
