@@ -10,3 +10,4 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const BUILD_RENDER = "BUILD_RENDER";
 export const REMOVE_OPTION = "REMOVE_OPTION";
 export const ADD_MACHINE = "ADD_MACHINE";
+export const STAT_RENDER = "STAT_RENDER";

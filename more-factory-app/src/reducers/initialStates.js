@@ -169,5 +169,9 @@ export const defaultBuild = {
             ]
         }
     ]
+}
 
+export const defaultUser = {
+    currency: 0,
+    power: 0
 }

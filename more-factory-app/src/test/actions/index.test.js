@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem, buildRender, addMachine, removeOption} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem, buildRender, addMachine, removeOption, statRender} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -10,9 +10,18 @@ import {
     REMOVE_ITEM,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION
+    REMOVE_OPTION, STAT_RENDER
 } from "../../actions/types";
-import {firstCoal, firstIron, firstCopper, firstLimestone, defaultMachine, defaultBag, defaultBuild} from "../../reducers/initialStates";
+import {
+    firstCoal,
+    firstIron,
+    firstCopper,
+    firstLimestone,
+    defaultMachine,
+    defaultBag,
+    defaultBuild,
+    defaultUser
+} from "../../reducers/initialStates";
 
 test("inventorySlots to be defined", ()=>{
     expect(inventorySlots).toBeDefined();
@@ -121,5 +130,16 @@ test("removeOption to return correct payload", ()=> {
     expect(removeOption(defaultBuild.machines[0])).toEqual({
         type: REMOVE_OPTION,
         payload: defaultBuild.machines[0]
-    })
+    });
+});
+
+test("statRender to be defined", ()=>{
+   expect(statRender).toBeDefined();
+});
+
+test("statRender to return correct payload", ()=> {
+    expect(statRender(defaultUser)).toEqual({
+        type: STAT_RENDER,
+        payload: defaultUser
+    });
 });
