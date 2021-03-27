@@ -6,6 +6,7 @@ import ironBar from "../img/iron_bar.png";
 import ironFurnace from "../img/iron_furnace.png";
 import copperFurnace from "../img/copper_furnace.png";
 import copperBar from "../img/copper_bar.png";
+import coalGen from "../img/coal_gen.png";
 
 export const defaultBag =
     {
@@ -165,6 +166,47 @@ export const defaultBuild = {
                     numContent: 0,
                     imgUrl: copperBar,
                     give: 1
+                }
+            ]
+        },
+        {
+            content: "Coal Generator",
+            needsPower: false,
+            description: "Burns coal to generate 50 MW of power",
+            isOn: false,
+            process: 1000,
+            imgUrl: coalGen,
+            build: [
+                {
+                    content: "Limestone",
+                    numContent: 0,
+                    imgUrl: lime,
+                    need: 60
+                },
+                {
+                    content: "Iron Ingot",
+                    numContent: 0,
+                    imgUrl: ironBar,
+                    need: 40
+                },
+                {
+                    content: "Copper Ingot",
+                    numContent: 0,
+                    imgUrl: copperBar,
+                    need: 20
+                }
+            ],
+            input: [
+                {
+                    content: "Coal",
+                    numContent: 0,
+                    imgUrl: coal,
+                    use: 1
+                }
+            ],
+            output: [
+                {
+                    content: "Power"
                 }
             ]
         }
