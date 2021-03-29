@@ -27,7 +27,11 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
                     return input;
                 });
                 mach.output = mach.output.map(output => {
-                    output.numContent += output.give;
+                    if(output.content === "Current Power Production"){
+                        output.numContent = output.give;
+                    } else {
+                        output.numContent += output.give;
+                    }
                     return output;
                 });
             }
@@ -38,6 +42,9 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
         newMachines = machineCur.machines.map(mach => {
             if (mach.content === machContent){
                 mach.isOn = false;
+                if(mach.output[0].content === "Current Power Production"){
+                    mach.output[0].numContent = 0;
+                }
             }
             return mach;
         });
