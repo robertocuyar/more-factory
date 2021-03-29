@@ -155,6 +155,7 @@ describe("initialState", ()=>{
 
     it("defaultUser has correct default values", ()=>{
         expect(defaultUser.currency).toEqual(0);
-        expect(defaultUser.power).toEqual(0);
+        expect(defaultUser.power.current).toEqual(0);
+        expect(defaultUser.power.capacity).toEqual(500)
     });
 });
