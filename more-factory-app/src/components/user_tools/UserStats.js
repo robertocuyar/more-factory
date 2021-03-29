@@ -1,11 +1,46 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import {useSelector} from "react-redux";
 
-const UserStats = ()=> {
-    return (
-        <div>
-            UserStats
-        </div>
-    )
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
+    },
+});
+
+function createData(name, value) {
+    return { name, value };
 }
 
-export default UserStats;
+
+export default function UserStats() {
+    const classes = useStyles();
+    const userStat = useSelector(state=> state.userStats);
+    const powerDisplay = `${userStat.power.current} / ${userStat.power.capacity} MW`
+    const rows = [
+        createData("Power", powerDisplay),
+    ];
+
+    return (
+        <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="simple table">
+                <TableBody>
+                    {rows.map((row) => (
+                        <TableRow key={row.name}>
+                            <TableCell component="th" scope="row">
+                                {row.name}
+                            </TableCell>
+                            <TableCell align="right">{row.value}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
+}
