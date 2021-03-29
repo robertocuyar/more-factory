@@ -119,6 +119,29 @@ export const defaultMachine = {
                     give: 1
             }
             ]
+        },
+        {
+            content: "Coal Generator",
+            needsPower: false,
+            description: "Burns coal to generate 50 MW of power",
+            isOn: false,
+            process: 1000,
+            imgUrl: coalGen,
+            input: [
+                {
+                    content: "Coal",
+                    numContent: 0,
+                    imgUrl: coal,
+                    use: 1
+                }
+            ],
+            output: [
+                {
+                    content: "Current Power Production",
+                    numContent: 0,
+                    give: 50
+                }
+            ]
         }
     ]
 }
@@ -206,7 +229,9 @@ export const defaultBuild = {
             ],
             output: [
                 {
-                    content: "Power"
+                    content: "Current Power Production",
+                    numContent: 0,
+                    give: 50
                 }
             ]
         }

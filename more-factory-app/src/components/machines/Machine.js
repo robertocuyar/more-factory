@@ -87,11 +87,14 @@ const Machine = ({machine})=> {
     const ioDisplay = (machArr, type)=>{
 
         const buttonType = (content, req)=> {
+            if (content === 'Current Power Production'){
+                return <h3>{content}</h3>
+            }
             return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(req)}>Add {content}</Button> : <Button variant={"outlined"} onClick={()=> inventoryMove(req)}>Take {content}</Button>
         }
 
         return machArr.map(item =>{
-                return (
+            return (
                     <Grid item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
                         <Grid item xs={12}>
                             {buttonType(item.content, item)}
