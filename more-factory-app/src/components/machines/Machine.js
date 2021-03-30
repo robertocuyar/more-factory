@@ -7,7 +7,7 @@ import green from "../../img/green_light.png";
 import red from "../../img/red_light.png";
 import {useSelector, useDispatch} from "react-redux";
 import {outInv} from "../../util/outInv";
-import {inventorySlots, machineRender} from "../../actions";
+import {inventorySlots, machineRender, powerChange} from "../../actions";
 import {machProcess} from "../../util/machProcess";
 import {invManager} from "../../util/invManager";
 import {invDisplay} from "../../util/invDisplay";
@@ -36,14 +36,18 @@ const Machine = ({machine})=> {
     const classes = useStyles();
     const inv = useSelector(state=> state.slotsInv);
     const mach = useSelector(state=> state.machines);
+    const user = useSelector(state=> state.userStats);
     const dispatch = useDispatch();
     let resultMachines = {machines: []};
 
     useEffect(()=>{
         if(machine.isOn){
+            const changeState = machProcess(machine.content, machine.input, machine.output, mach, user.power);
+
             setTimeout(()=>{
-                dispatch(machineRender(machProcess(machine.content, machine.input, machine.output, mach)))
-            }, machine.process)
+                dispatch(powerChange(changeState.power));
+                dispatch(machineRender({machines: changeState.machines}));
+            }, machine.process);
         }
     });
     const toggleOn = ()=>{

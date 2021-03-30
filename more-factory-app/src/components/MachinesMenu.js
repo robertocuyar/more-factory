@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 const MachinesMenu = ()=>{
     const classes = useStyles();
     const machineList = useSelector(state => state.machines);
-
     const machineDisplay = ()=>{
         return machineList.machines.map(machine => {
             return(

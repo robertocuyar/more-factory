@@ -6,8 +6,6 @@ export const machProcess = (machContent, machInput, machOutput, machineCur, powC
     let newPow = powCur.current;
     const powerTitle = "Current Power Production";
 
-
-
     for(let input of machInput){
         if (input.numContent < input.use){
             continueIn = false;
@@ -25,7 +23,13 @@ export const machProcess = (machContent, machInput, machOutput, machineCur, powC
     if(continueIn && continueOut){
          newMachines = machineCur.machines.map(mach => {
             if (mach.content === machContent){
-                mach.isOn = true;
+                if(mach.needsPower){
+                    newPow-= mach.consume;
+                    if (newPow < 0){
+                        newPow = powCur.current;
+                        return mach;
+                    }
+                }
                 mach.input = mach.input.map(input => {
                     input.numContent -= input.use;
                     return input;
@@ -33,8 +37,10 @@ export const machProcess = (machContent, machInput, machOutput, machineCur, powC
                 mach.output = mach.output.map(output => {
                     if(output.content === powerTitle){
                         output.numContent = output.give;
-
-
+                        newPow += output.give;
+                        if(newPow >= powCur.capacity){
+                            newPow = powCur.capacity;
+                        }
                     } else {
                         output.numContent += output.give;
                     }

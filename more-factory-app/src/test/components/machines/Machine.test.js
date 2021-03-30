@@ -5,7 +5,7 @@ import {shallow, configure} from "enzyme";
 import Machine from "../../../components/machines/Machine";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {defaultMachine, defaultBag} from "../../../reducers/initialStates";
+import {defaultMachine, defaultBag, defaultUser} from "../../../reducers/initialStates";
 
 test("Machine.js is defined", ()=>{
    expect(Machine).toBeDefined();
@@ -15,7 +15,7 @@ configure({adapter : new Adapter()});
 
 describe ("Machine", ()=>{
    let wrapper, store;
-   const initialState = {slotsInv: defaultBag, machines: defaultMachine};
+   const initialState = {slotsInv: defaultBag, machines: defaultMachine, userStats: defaultUser};
    const mockStore = configureStore();
 
    beforeEach(()=>{
