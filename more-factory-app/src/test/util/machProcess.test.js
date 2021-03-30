@@ -1,10 +1,6 @@
 import {expect} from "@jest/globals";
 import {machProcess} from "../../util/machProcess";
 import {defaultMachine} from "../../reducers/initialStates";
-import ironFurnace from "../../img/iron_furnace.png";
-import iron from "../../img/iron_inv.png";
-import coal from "../../img/coal_inv.png";
-import ironBar from "../../img/iron_bar.png";
 
 const machContent = 'Iron Furnace';
 const machContent2 = 'Bolt Assembler';
@@ -13,7 +9,8 @@ const boltAssem =
         content: machContent2,
         description: "Uses 1 IRON INGOT to make 2 IRON BOLTS.",
         imgUrl: "",
-        needsPower: false,
+        needsPower: true,
+        consume: 10,
         isOn: false,
         process: 1500,
         input: [
@@ -38,6 +35,33 @@ const boltAssem =
 const machineCur = defaultMachine;
 const machInput = defaultMachine.machines[0].input;
 const machOutput = defaultMachine.machines[0].output;
+
+
+const coalGen = {
+    content: "Coal Generator",
+        needsPower: false,
+    description: "Burns coal to generate 50 MW of power",
+    isOn: true,
+    process: 1000,
+    imgUrl: "",
+    input: [
+    {
+        content: "Coal",
+        numContent: 5,
+        imgUrl: "",
+        use: 1
+    }
+],
+    output: [
+    {
+        content: "Current Power Production",
+        numContent: 50,
+        give: 50
+    }
+]
+}
+
+const machContent3 = coalGen.content;
 
 test("machProcess.js is defined", ()=>{
    expect(machProcess).toBeDefined();
@@ -79,4 +103,36 @@ test("machProcess with Iron Furnace won't process input items if output slot is 
    expect(machUpdate.input[1].numContent).toBe(10);
    expect(machUpdate.output[0].numContent).toBe(80);
    expect(machUpdate.isOn).toBe(false);
+});
+
+test("machProcess with Coal Generator with numContent of 50 MW won't add on any extra MW.",()=>{
+    defaultMachine.machines[1] = coalGen;
+    const machUpdate = machProcess(machContent3, coalGen.input, coalGen.output, machineCur).machines[1];
+
+    expect(machUpdate.output[0].numContent).toBe(50);
+});
+
+test("machProcess returns unchanged power state if machines don't use power.", ()=>{
+    const machUpdate = machProcess(machContent, machInput, machOutput, machineCur, {current: 150, capacity: 500});
+    expect(machUpdate.power).toBe(150);
+
+});
+
+test("machProcess returns increased power state if generator adds power to the grid.",()=>{
+    defaultMachine.machines[1] = coalGen;
+    const machUpdate = machProcess(machContent3, coalGen.input, coalGen.output, machineCur, {current: 200, capacity: 500});
+
+
+});
+
+test("machProcess returns a full power state based on capacity after an attempt to add more power to the grid.", ()=>{
+
+});
+
+test("machProcess returns decreased power state if machine uses power to process", ()=>{
+
+});
+
+test("machProcess returns unchanged power state and unchanged input and output for a machine if there wasn't enough power to allow the machine to process", ()=>{
+
 });

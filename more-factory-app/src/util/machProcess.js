@@ -1,8 +1,12 @@
-export const machProcess = (machContent, machInput, machOutput, machineCur) => {
+export const machProcess = (machContent, machInput, machOutput, machineCur, powCur) => {
 
     let continueIn = true;
     let continueOut = true;
     let newMachines = {};
+    let newPow = powCur.current;
+    const powerTitle = "Current Power Production";
+
+
 
     for(let input of machInput){
         if (input.numContent < input.use){
@@ -27,8 +31,10 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
                     return input;
                 });
                 mach.output = mach.output.map(output => {
-                    if(output.content === "Current Power Production"){
+                    if(output.content === powerTitle){
                         output.numContent = output.give;
+
+
                     } else {
                         output.numContent += output.give;
                     }
@@ -42,12 +48,12 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
         newMachines = machineCur.machines.map(mach => {
             if (mach.content === machContent){
                 mach.isOn = false;
-                if(mach.output[0].content === "Current Power Production"){
+                if(mach.output[0].content === powerTitle){
                     mach.output[0].numContent = 0;
                 }
             }
             return mach;
         });
     }
-    return { machines: newMachines }
+    return { machines: newMachines, power: newPow }
 }

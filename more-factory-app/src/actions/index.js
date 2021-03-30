@@ -7,7 +7,7 @@ import {
     MACHINE_RENDER,
     REMOVE_ITEM,
     BUILD_RENDER,
-    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER
+    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, POWER_CHANGE
 } from "./types";
 
 export const inventorySlots = slots => {
@@ -52,4 +52,8 @@ export const removeOption = option => {
 
 export const statRender = stats => {
     return {type: STAT_RENDER, payload: stats}
+}
+
+export const powerChange = newMW => {
+    return {type: POWER_CHANGE, payload: newMW}
 }

@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem, buildRender, addMachine, removeOption, statRender} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem, buildRender, addMachine, removeOption, statRender, powerChange} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -10,7 +10,7 @@ import {
     REMOVE_ITEM,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION, STAT_RENDER
+    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE
 } from "../../actions/types";
 import {
     firstCoal,
@@ -142,4 +142,15 @@ test("statRender to return correct payload", ()=> {
         type: STAT_RENDER,
         payload: defaultUser
     });
+});
+
+test("powerChange to be defined", ()=>{
+   expect(powerChange).toBeDefined();
+});
+
+test("powerChange to return correct payload", ()=>{
+   expect(powerChange(50)).toEqual({
+       type: POWER_CHANGE,
+       payload: 50
+   });
 });
