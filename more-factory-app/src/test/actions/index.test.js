@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, removeItem, buildRender, addMachine, removeOption, statRender, powerChange} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, powerChange} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -10,7 +10,7 @@ import {
     REMOVE_ITEM,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE
+    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE, OPERATE_MACHINE
 } from "../../actions/types";
 import {
     firstCoal,
@@ -89,14 +89,14 @@ test("machineRender to return correct payload", ()=>{
     });
 });
 
-test("removeItem to be defined", ()=>{
-    expect(removeItem).toBeDefined();
+test("operateMachine to be defined", ()=>{
+    expect(operateMachine).toBeDefined();
 });
 
-test("removeItem to return correct payload", ()=>{
-    expect(removeItem(defaultBag)).toEqual({
-        type: REMOVE_ITEM,
-        payload: defaultBag
+test("operateMachine to return correct payload", ()=>{
+    expect(operateMachine(defaultMachine, 1000)).toEqual({
+        type: OPERATE_MACHINE,
+        payload: defaultMachine
     });
 });
 

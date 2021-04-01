@@ -5,7 +5,7 @@ import {
     MINE_IRON,
     MINE_LIMESTONE,
     MACHINE_RENDER,
-    REMOVE_ITEM,
+    OPERATE_MACHINE,
     BUILD_RENDER,
     ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, POWER_CHANGE
 } from "./types";
@@ -34,8 +34,11 @@ export const machineRender = machines => {
     return {type: MACHINE_RENDER, payload: machines}
 }
 
-export const removeItem = inventory => {
-    return {type: REMOVE_ITEM, payload: inventory}
+export const operateMachine = (inventory, time) => dispatch => {
+    setTimeout(()=>{
+        dispatch({type: OPERATE_MACHINE, payload: inventory})
+    }, time);
+
 }
 
 export const buildRender = build => {
