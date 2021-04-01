@@ -23,11 +23,11 @@ export const machProcess = (machContent, machInput, machOutput, machineCur, powC
     if(continueIn && continueOut){
          newMachines = machineCur.machines.map(mach => {
             if (mach.content === machContent){
-                if(mach.needsPower){
-                    newPow-= mach.consume;
+                    if(mach.needsPower){
+                        newPow-= mach.consume;
                     if (newPow < 0){
-                        newPow = powCur.current;
-                        return mach;
+                            newPow = powCur.current;
+                            return mach;
                     }
                 }
                 mach.input = mach.input.map(input => {

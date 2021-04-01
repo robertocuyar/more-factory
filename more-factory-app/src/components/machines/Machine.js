@@ -43,11 +43,9 @@ const Machine = ({machine})=> {
     useEffect(()=>{
         if(machine.isOn){
             const changeState = machProcess(machine.content, machine.input, machine.output, mach, user.power);
-
-            setTimeout(()=>{
-                dispatch(powerChange(changeState.power));
+            console.log("action");
+                // dispatch(powerChange(changeState.power));
                 dispatch(machineRender({machines: changeState.machines}));
-            }, machine.process);
         }
     });
     const toggleOn = ()=>{
