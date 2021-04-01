@@ -38,13 +38,12 @@ const Machine = ({machine})=> {
     const mach = useSelector(state=> state.machines);
     const user = useSelector(state=> state.userStats);
     const dispatch = useDispatch();
-    let resultMachines = {machines: []};
+    let resultMachines = {...mach, machines: []};
 
     useEffect(()=>{
         if(machine.isOn){
             const changeState = machProcess(machine.content, machine.input, machine.output, mach, user.power);
-                // dispatch(powerChange(changeState.power));
-                dispatch(operateMachine({machines: changeState.machines}, machine.process));
+                dispatch(operateMachine(changeState, machine.process));
         }
     });
     const toggleOn = ()=>{

@@ -103,6 +103,8 @@ describe("initialState", ()=>{
 
     it("defaultMachine has correct default values", ()=>{
         const firstMachine = defaultMachine.machines[0];
+        expect(defaultMachine.power.current).toEqual(0);
+        expect(defaultMachine.power.capacity).toEqual(500)
         expect(firstMachine.content).toEqual("Iron Furnace");
         expect(firstMachine.needsPower).toEqual(false);
         expect(firstMachine.description).toEqual("Uses 1 IRON ORE and 1 COAL to make 1 IRON INGOT.");
@@ -155,7 +157,5 @@ describe("initialState", ()=>{
 
     it("defaultUser has correct default values", ()=>{
         expect(defaultUser.currency).toEqual(0);
-        expect(defaultUser.power.current).toEqual(0);
-        expect(defaultUser.power.capacity).toEqual(500)
     });
 });

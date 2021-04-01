@@ -88,6 +88,10 @@ export const firstLimestone = {
 }
 
 export const defaultMachine = {
+    power: {
+      current: 0,
+      capacity: 500
+    },
     machines: [
         {
             content: "Iron Furnace",
@@ -239,9 +243,5 @@ export const defaultBuild = {
 }
 
 export const defaultUser = {
-    currency: 0,
-    power: {
-        current: 0,
-        capacity: 500
-    }
+    currency: 0
 }

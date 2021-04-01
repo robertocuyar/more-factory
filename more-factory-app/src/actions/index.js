@@ -38,7 +38,6 @@ export const operateMachine = (inventory, time) => dispatch => {
     setTimeout(()=>{
         dispatch({type: OPERATE_MACHINE, payload: inventory})
     }, time);
-
 }
 
 export const buildRender = build => {

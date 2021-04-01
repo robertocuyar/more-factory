@@ -22,7 +22,8 @@ function createData(name, value) {
 export default function UserStats() {
     const classes = useStyles();
     const userStat = useSelector(state=> state.userStats);
-    const powerDisplay = `${userStat.power.current} / ${userStat.power.capacity} MW`
+    const power = useSelector( state=> state.machines.power);
+    const powerDisplay = `${power.current} / ${power.capacity} MW`
     const rows = [
         createData("Power", powerDisplay),
     ];

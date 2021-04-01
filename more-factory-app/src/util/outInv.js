@@ -36,6 +36,6 @@ export const outInv = (itemReq, machContent, inventoryCur, machineCur, limit)=>{
        return machine;
     });
 
-    return {inventory: {slots: resultInv}, machine: {machines: resultMach}};
+    return {inventory: {slots: resultInv}, machine: {power: machineCur.power, machines: resultMach}};
 
 }
