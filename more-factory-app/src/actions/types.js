@@ -11,4 +11,4 @@ export const BUILD_RENDER = "BUILD_RENDER";
 export const REMOVE_OPTION = "REMOVE_OPTION";
 export const ADD_MACHINE = "ADD_MACHINE";
 export const STAT_RENDER = "STAT_RENDER";
-export const POWER_CHANGE = "POWER_CHANGE";
+export const UPGRADE_TIER = "UPGRADE_TIER";

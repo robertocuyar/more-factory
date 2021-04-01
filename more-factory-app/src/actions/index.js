@@ -7,7 +7,7 @@ import {
     MACHINE_RENDER,
     OPERATE_MACHINE,
     BUILD_RENDER,
-    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, POWER_CHANGE
+    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, POWER_CHANGE, UPGRADE_TIER
 } from "./types";
 
 export const inventorySlots = slots => {
@@ -56,6 +56,6 @@ export const statRender = stats => {
     return {type: STAT_RENDER, payload: stats}
 }
 
-export const powerChange = newMW => {
-    return {type: POWER_CHANGE, payload: newMW}
+export const upgradeTier = ()=>{
+    return {type: UPGRADE_TIER, payload: 1}
 }

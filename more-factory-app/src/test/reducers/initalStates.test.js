@@ -157,5 +157,6 @@ describe("initialState", ()=>{
 
     it("defaultUser has correct default values", ()=>{
         expect(defaultUser.currency).toEqual(0);
+        expect(defaultUser.tier).toEqual(1);
     });
 });

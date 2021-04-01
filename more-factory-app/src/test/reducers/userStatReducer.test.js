@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import userStatReducer from "../../reducers/userStatReducer";
-import {powerChange, statRender} from "../../actions";
 import {defaultUser} from "../../reducers/initialStates";
+import {statRender, upgradeTier} from "../../actions";
 
 
 test("userStatReducer.js is defined", ()=>{
@@ -12,7 +12,6 @@ test("userStatReducer changes state", ()=>{
    expect(userStatReducer({}, statRender(defaultUser))).toEqual(defaultUser);
 });
 
-test("userStatReducer with powerChange will change state to have the new current available power.",()=>{
-   const actualState = userStatReducer(defaultUser, powerChange(50));
-   expect(actualState.power.current).toEqual(50);
+test("userStatReducer changes state of the tier with upgradeTier", ()=>{
+   expect(userStatReducer(defaultUser, upgradeTier()).tier).toEqual(2);
 });
