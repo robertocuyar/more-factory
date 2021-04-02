@@ -100,6 +100,7 @@ export const defaultMachine = {
             needsPower: false,
             isOn: false,
             process: 1000,
+            tier: 1,
             input: [
                 {
                     numContent: 0,
@@ -123,29 +124,6 @@ export const defaultMachine = {
                     give: 1
             }
             ]
-        },
-        {
-            content: "Coal Generator",
-            needsPower: false,
-            description: "Burns coal to generate 50 MW of power",
-            isOn: false,
-            process: 1000,
-            imgUrl: coalGen,
-            input: [
-                {
-                    content: "Coal",
-                    numContent: 0,
-                    imgUrl: coal,
-                    use: 1
-                }
-            ],
-            output: [
-                {
-                    content: "Current Power Production",
-                    numContent: 0,
-                    give: 50
-                }
-            ]
         }
     ]
 }
@@ -159,6 +137,7 @@ export const defaultBuild = {
             isOn: false,
             process: 1200,
             imgUrl: copperFurnace,
+            tier: 1,
             build: [
                 {
                     content: "Limestone",
@@ -203,6 +182,7 @@ export const defaultBuild = {
             isOn: false,
             process: 1000,
             imgUrl: coalGen,
+            tier: 1,
             build: [
                 {
                     content: "Limestone",
@@ -245,4 +225,37 @@ export const defaultBuild = {
 export const defaultUser = {
     currency: 0,
     tier: 1
+}
+
+export const defaultMines = {
+    mines: [
+        {
+            content: "Coal",
+            tier: 1
+        },
+        {
+            content: "Iron",
+            tier: 1
+        },
+        {
+            content: "Copper",
+            tier: 1
+        },
+        {
+            content: "Limestone",
+            tier: 1
+        },
+        {
+            content: "Water",
+            tier: 2
+        },
+        {
+            content: "Oil",
+            tier: 2
+        },
+        {
+            content: "Sulfur",
+            tier: 3
+        },
+    ]
 }

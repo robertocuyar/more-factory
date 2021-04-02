@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
-import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild, defaultUser} from "../../reducers/initialStates";
+import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild, defaultUser, defaultMines} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
@@ -111,6 +111,7 @@ describe("initialState", ()=>{
         expect(firstMachine.isOn).toEqual(false);
         expect(firstMachine.process).toEqual(1000);
         expect(firstMachine.imgUrl).toEqual(ironFurnace);
+        expect(firstMachine.tier).toEqual(1);
         expect(firstMachine.input[0].numContent).toEqual(0);
         expect(firstMachine.input[0].content).toEqual("Iron Ore");
         expect(firstMachine.input[0].imgUrl).toEqual(iron);
@@ -158,5 +159,15 @@ describe("initialState", ()=>{
     it("defaultUser has correct default values", ()=>{
         expect(defaultUser.currency).toEqual(0);
         expect(defaultUser.tier).toEqual(1);
+    });
+
+    it("defaultMines has correct default values", ()=>{
+       expect(defaultMines.mines[0].content).toEqual("Coal");
+       expect(defaultMines.mines[0].tier).toEqual(1);
+       expect(defaultMines.mines[4].content).toEqual("Water");
+       expect(defaultMines.mines[4].tier).toEqual(2);
+       expect(defaultMines.mines[6].content).toEqual("Sulfur");
+       expect(defaultMines.mines[6].tier).toEqual(3);
+
     });
 });

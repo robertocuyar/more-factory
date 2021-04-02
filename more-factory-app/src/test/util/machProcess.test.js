@@ -13,6 +13,7 @@ const boltAssem =
         consume: 10,
         isOn: false,
         process: 1500,
+        tier: 2,
         input: [
             {
                 numContent: 0,

@@ -13,15 +13,24 @@ const useStyles = makeStyles((theme) => ({
 const BuildMenu = ()=>{
     const classes = useStyles();
     const buildList = useSelector(state => state.buildOpt);
+    const tier = useSelector(state => state.userStats);
 
     const buildDisplay = ()=>{
         if(buildList.machines.length !== 0) {
             return buildList.machines.map(option => {
-                return (
-                    <Grid item xs={12}>
-                        <BuildOption option={option}/>
-                    </Grid>
-                )
+                if(tier.tier >= option.tier) {
+                    return (
+                        <Grid item xs={12}>
+                            <BuildOption option={option}/>
+                        </Grid>
+                    )
+                } else {
+                    return (
+                        <Grid item xs={12}>
+                            Locked
+                        </Grid>
+                    )
+                }
             });
         }
             return (
@@ -29,9 +38,7 @@ const BuildMenu = ()=>{
                     <h2>All Buildings Built!</h2>
                 </Grid>
             )
-
     }
-
     return (
         <div className={classes.root}>
            <Grid container spacing={3}>
