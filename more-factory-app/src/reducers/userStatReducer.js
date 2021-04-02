@@ -1,7 +1,7 @@
 import {defaultUser} from "./initialStates";
 import {MONEY_ADD, MONEY_TAKE, STAT_RENDER, UPGRADE_TIER} from "../actions/types";
 
-export const userStatReducer = function(state = defaultUser, action){
+export const userStatReducer = (state = defaultUser, action) =>{
     switch(action.type){
         case STAT_RENDER:
             return action.payload;
