@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, powerChange, upgradeTier} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, moneyAdd, moneyTake, upgradeTier} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -9,7 +9,7 @@ import {
     MACHINE_RENDER,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE, OPERATE_MACHINE, UPGRADE_TIER
+    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE, OPERATE_MACHINE, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE
 } from "../../actions/types";
 import {
     firstCoal,
@@ -152,4 +152,26 @@ test("upgradeTier to return correct payload",()=>{
        type: UPGRADE_TIER,
        payload: 1
    });
+});
+
+test("moneyAdd to be defined", ()=>{
+    expect(moneyAdd).toBeDefined();
+});
+
+test("moneyAdd to return correct payload", ()=>{
+    expect(moneyAdd(500)).toEqual({
+        type: MONEY_ADD,
+        payload: 500
+    });
+});
+
+test("moneyTake to be defined", ()=>{
+    expect(moneyTake).toBeDefined();
+});
+
+test("moneyTake to return correct payload", ()=>{
+    expect(moneyTake(500)).toEqual({
+        type: MONEY_TAKE,
+        payload: 500
+    });
 });

@@ -19,13 +19,17 @@ function createData(name, value) {
 }
 
 
-export default function UserStats() {
+export default function UserInfo() {
     const classes = useStyles();
     const userStat = useSelector(state=> state.userStats);
     const power = useSelector( state=> state.machines.power);
-    const powerDisplay = `${power.current} / ${power.capacity} MW`
+    const powerStr = `${power.current} / ${power.capacity} MW`;
+    const moneyStr = `$ ${userStat.currency}`;
+
     const rows = [
-        createData("Power", powerDisplay),
+        createData("Power:", powerStr),
+        createData("Money:", moneyStr),
+        createData("Tier:", userStat.tier)
     ];
 
     return (

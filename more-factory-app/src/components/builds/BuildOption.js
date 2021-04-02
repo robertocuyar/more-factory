@@ -51,7 +51,7 @@ const BuildOption = ({option})=>{
         const buildReq = ()=>{
             return option.build.map(req => {
                 return (
-                    <Grid item container xs={12}>
+                    <Grid key={req.content} item container xs={12}>
                         <Grid item xs={4} container justify={'center'}>
                             <img src={req.imgUrl} alt={req.content}/>
                         </Grid>
@@ -86,7 +86,7 @@ const BuildOption = ({option})=>{
     const inputDisplay = ()=> {
         return option.build.map(item => {
             return (
-                <Grid item container justify={'center'} alignItems={'center'} xs spacing={1}>
+                <Grid key={item.content} item container justify={'center'} alignItems={'center'} xs spacing={1}>
                     <Grid item container justify={'center'} xs={12}>
                         <Button variant={"outlined"} onClick={()=> inputChange(item)}>Add {item.content}</Button>
                     </Grid>

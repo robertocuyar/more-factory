@@ -5,25 +5,22 @@ import {shallow, configure} from "enzyme";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {defaultUser} from "../../../reducers/initialStates";
-import UserStats from "../../../components/user_tools/UserStats";
+import UserInfo from "../../../components/user_tools/UserInfo";
 
-
-const UserStatsTest = require('../../../components/user_tools/UserStats');
-
-test("UserStats.js is defined", ()=>{
-    expect(UserStatsTest).toBeDefined();
+test("UserInfo.js is defined", ()=>{
+    expect(UserInfo).toBeDefined();
 });
 
 configure({adapter : new Adapter()});
 
-describe("UserStats", ()=>{
+describe("UserInfo", ()=>{
     let wrapper, store;
     const initialState = {userStats: defaultUser};
     const mockStore = configureStore();
 
     beforeEach(()=>{
         store = mockStore(initialState);
-        wrapper = shallow(<Provider store={store}><UserStats/></Provider>);
+        wrapper = shallow(<Provider store={store}><UserInfo/></Provider>);
     });
 
     it("renders correctly", ()=>{

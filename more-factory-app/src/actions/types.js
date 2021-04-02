@@ -12,3 +12,5 @@ export const REMOVE_OPTION = "REMOVE_OPTION";
 export const ADD_MACHINE = "ADD_MACHINE";
 export const STAT_RENDER = "STAT_RENDER";
 export const UPGRADE_TIER = "UPGRADE_TIER";
+export const MONEY_ADD = "MONEY_ADD";
+export const MONEY_TAKE = "MONEY_TAKE";

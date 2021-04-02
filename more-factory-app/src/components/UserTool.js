@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import UserBag from "./user_tools/UserBag";
-import UserStats from "./user_tools/UserStats";
+import UserInfo from "./user_tools/UserInfo";
 import UserInventory from "./user_tools/UserInventory";
 import Box from "@material-ui/core/Box";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
@@ -35,7 +35,7 @@ const UserTool = ()=> {
                     </Grid>
                     <Grid item xs={6}>
                         <Paper className={classes.paper}>
-                            <UserStats/>
+                            <UserInfo/>
                         </Paper>
                     </Grid>
                 </React.Fragment>

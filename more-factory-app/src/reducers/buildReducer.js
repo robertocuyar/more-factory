@@ -1,7 +1,7 @@
 import {BUILD_RENDER, REMOVE_OPTION} from "../actions/types";
 import {defaultBuild} from "./initialStates";
 
-export default (state = defaultBuild, action)=>{
+export const buildReducer = function (state = defaultBuild, action){
     switch(action.type){
         case BUILD_RENDER:
             return action.payload;
@@ -12,3 +12,4 @@ export default (state = defaultBuild, action)=>{
             return state;
     }
 }
+

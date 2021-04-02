@@ -7,7 +7,7 @@ import green from "../../img/green_light.png";
 import red from "../../img/red_light.png";
 import {useSelector, useDispatch} from "react-redux";
 import {outInv} from "../../util/outInv";
-import {inventorySlots, machineRender, powerChange, operateMachine} from "../../actions";
+import {inventorySlots, machineRender, operateMachine} from "../../actions";
 import {machProcess} from "../../util/machProcess";
 import {invManager} from "../../util/invManager";
 import {invDisplay} from "../../util/invDisplay";
@@ -95,7 +95,7 @@ const Machine = ({machine})=> {
 
         return machArr.map(item =>{
             return (
-                    <Grid item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
+                    <Grid key={item.content} item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
                         <Grid item xs={12}>
                             {buttonType(item.content, item)}
                         </Grid>

@@ -23,6 +23,8 @@ const MiningMenu = () => {
                         <Mines type={mine.content}/>
                     </Grid>
                 )
+            } else {
+                return null;
             }
         });
 

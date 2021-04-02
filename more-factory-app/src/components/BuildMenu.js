@@ -20,7 +20,7 @@ const BuildMenu = ()=>{
             return buildList.machines.map(option => {
                 if(tier.tier >= option.tier) {
                     return (
-                        <Grid item xs={12}>
+                        <Grid key={option.content} item xs={12}>
                             <BuildOption option={option}/>
                         </Grid>
                     )

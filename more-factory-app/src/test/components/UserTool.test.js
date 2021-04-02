@@ -4,7 +4,7 @@ import Adapter from "enzyme-adapter-react-16";
 import {shallow, configure} from "enzyme";
 import UserTool from "../../components/UserTool";
 import UserBag from "../../components/user_tools/UserBag";
-import UserStats from "../../components/user_tools/UserStats";
+import UserInfo from "../../components/user_tools/UserInfo";
 
 test("UserTool.js is defined", () => {
     expect(UserTool).toBeDefined();
@@ -35,7 +35,7 @@ describe("UserTool", () => {
     it("Contains bag container", () => {
         expect(wrapper.containsAnyMatchingElements([
             <UserBag/>,
-            <UserStats/>
+            <UserInfo/>
         ])).toEqual(true);
     });
 

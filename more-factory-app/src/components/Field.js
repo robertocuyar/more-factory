@@ -23,7 +23,7 @@ const Field = ()=>{
 
     const fieldDisplay = ()=> {
         return machines.machines.map(machine => {
-            return <Avatar alt={machine.content} src={machine.imgUrl} className={classes.large}/>
+            return <Avatar key={machine.content} alt={machine.content} src={machine.imgUrl} className={classes.large}/>
         })
     }
 

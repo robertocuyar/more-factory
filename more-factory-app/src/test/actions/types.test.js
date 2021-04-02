@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {INVENTORY_SLOTS, SLOT_FILL, SLOT_EMPTY, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER, OPERATE_MACHINE, BUILD_RENDER, REMOVE_OPTION, ADD_MACHINE, STAT_RENDER, POWER_CHANGE, UPGRADE_TIER} from "../../actions/types";
+import {INVENTORY_SLOTS, SLOT_FILL, SLOT_EMPTY, MINE_COAL, MINE_IRON, MINE_COPPER, MINE_LIMESTONE, MACHINE_RENDER, OPERATE_MACHINE, BUILD_RENDER, REMOVE_OPTION, ADD_MACHINE, STAT_RENDER, MONEY_ADD, MONEY_TAKE, UPGRADE_TIER} from "../../actions/types";
 
 test("INVENTORY_SLOTS returns correct string", ()=>{
     expect(INVENTORY_SLOTS).toBe("INVENTORY_SLOTS");
@@ -55,4 +55,12 @@ test("STAT_RENDER returns correct string", ()=>{
 
 test("UPGRADE_TIER returns correct string", ()=>{
    expect(UPGRADE_TIER).toBe("UPGRADE_TIER");
+});
+
+test("MONEY_ADD returns correct string", ()=>{
+   expect(MONEY_ADD).toBe("MONEY_ADD");
+});
+
+test("MONEY_TAKE returns correct string", ()=>{
+   expect(MONEY_TAKE).toBe("MONEY_TAKE");
 });
