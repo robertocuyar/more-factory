@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, moneyAdd, moneyTake, upgradeTier} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, moneyAdd, moneyTake, upgradeTier, changeClients} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -9,7 +9,7 @@ import {
     MACHINE_RENDER,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION, STAT_RENDER, POWER_CHANGE, OPERATE_MACHINE, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE
+    REMOVE_OPTION, STAT_RENDER, OPERATE_MACHINE, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE, CHANGE_CLIENTS
 } from "../../actions/types";
 import {
     firstCoal,
@@ -174,4 +174,16 @@ test("moneyTake to return correct payload", ()=>{
         type: MONEY_TAKE,
         payload: 500
     });
+});
+
+test("changeClients to be defined", ()=>{
+   expect(changeClients).toBeDefined();
+});
+
+test("changeClients to return correct payload", ()=>{
+    const clients = [];
+   expect(changeClients(clients)).toEqual({
+       type: CHANGE_CLIENTS,
+       payload: clients
+   })
 });

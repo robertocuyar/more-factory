@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import React from 'react';
 import Adapter from "enzyme-adapter-react-16";
-import {configure, shallow} from "enzyme";
+import {configure} from "enzyme";
 import {invDisplay} from "../../util/invDisplay";
 import {firstIron} from "../../reducers/initialStates";
 import MineInventoryContainer from "../../components/mines/MineInventoryContainer";
@@ -9,7 +9,6 @@ import MineInventoryContainer from "../../components/mines/MineInventoryContaine
 const testItem = firstIron;
 
 test("invDisplay.js is defined", ()=>{
-    console.log(invDisplay(firstIron))
    expect(invDisplay).toBeDefined();
 });
 

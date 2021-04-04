@@ -224,7 +224,8 @@ export const defaultBuild = {
 
 export const defaultUser = {
     currency: 0,
-    tier: 1
+    tier: 1,
+    clients: []
 }
 
 export const defaultMines = {

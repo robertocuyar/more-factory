@@ -7,7 +7,7 @@ import {
     MACHINE_RENDER,
     OPERATE_MACHINE,
     BUILD_RENDER,
-    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE
+    ADD_MACHINE, REMOVE_OPTION, STAT_RENDER, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE, CHANGE_CLIENTS
 } from "./types";
 
 export const inventorySlots = slots => {
@@ -66,4 +66,9 @@ export const moneyAdd = amt => {
 
 export const moneyTake = amt => {
     return {type: MONEY_TAKE, payload: amt};
+}
+
+export const changeClients = clients => {
+    return {type: CHANGE_CLIENTS, payload: clients};
+
 }
