@@ -9,6 +9,7 @@ import MachinesMenu from "./MachinesMenu";
 import MiningMenu from "./MiningMenu";
 import OrdersMenu from "./OrdersMenu";
 import UpgradesMenu from "./UpgradesMenu";
+import ExpeditionMenu from "./ExpeditionMenu";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -64,8 +65,9 @@ export default function CenteredTabs() {
                 <Tab label="Mine" {...a11yProps(0)}/>
                 <Tab label="Machines" {...a11yProps(1)} />
                 <Tab label="Build" {...a11yProps(2)} />
-                <Tab label="Orders" {...a11yProps(3)} disabled />
+                <Tab label="Orders" {...a11yProps(3)} />
                 <Tab label="Upgrades" {...a11yProps(4)} disabled />
+                <Tab label={"Expeditions"} {...a11yProps(5)} disabled />
             </Tabs>
             <TabPanel value={value} index={0}>
                 <MiningMenu id={"mining-menu"}/>
@@ -81,6 +83,9 @@ export default function CenteredTabs() {
             </TabPanel>
             <TabPanel value={value} index={4}>
               <UpgradesMenu/>
+            </TabPanel>
+            <TabPanel value={value} index={5}>
+                <ExpeditionMenu/>
             </TabPanel>
         </div>
     );
