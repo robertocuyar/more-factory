@@ -1,7 +1,7 @@
 import {expect} from "@jest/globals";
 import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
-import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild, defaultUser, defaultMines} from "../../reducers/initialStates";
+import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild, defaultUser, defaultMines, products} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
@@ -169,6 +169,12 @@ describe("initialState", ()=>{
        expect(defaultMines.mines[4].tier).toEqual(2);
        expect(defaultMines.mines[6].content).toEqual("Sulfur");
        expect(defaultMines.mines[6].tier).toEqual(3);
+    });
 
+    it("products contains correct values",()=>{
+       expect(products[1].content).toEqual("Copper Ingot") ;
+       expect(products[1].price).toEqual(25);
+       expect(products[1].tier).toEqual(1);
+       expect(products[1].imgUrl).toEqual(copperBar);
     });
 });

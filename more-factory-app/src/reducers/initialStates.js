@@ -260,3 +260,18 @@ export const defaultMines = {
         },
     ]
 }
+
+export const products = [
+    {
+        content: "Iron Ingot",
+        price: 20,
+        tier: 1,
+        imgUrl: ironBar
+    },
+    {
+        content: "Copper Ingot",
+        price: 25,
+        tier: 1,
+        imgUrl: copperBar
+    }
+]

@@ -26,9 +26,10 @@ test("userStatReducer changes state of currency by subtraction with moneySubtrac
 });
 
 test("userStatReducer changes state of clients with changeClients", ()=>{
-   const newClients = [{content: "Iron Ingot", need: 50, numContent: 0}, {}, {}, {},{}];
+   const newClients = [{input:[{content: "Iron Ingot", need: 50, numContent: 0}], pay: 500}, {}, {}, {},{}];
    const newState = userStatReducer(defaultUser, changeClients(newClients)).clients[0];
-   expect(newState.content).toEqual("Iron Ingot");
-   expect(newState.need).toEqual(50);
-   expect(newState.numContent).toEqual(0);
-})
+   expect(newState.input[0].content).toEqual("Iron Ingot");
+   expect(newState.input[0].need).toEqual(50);
+   expect(newState.input[0].numContent).toEqual(0);
+   expect(newState.pay).toEqual(500);
+});
