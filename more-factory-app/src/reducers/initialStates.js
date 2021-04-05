@@ -271,7 +271,19 @@ export const products = [
     {
         content: "Copper Ingot",
         price: 25,
-        tier: 1,
+        tier: 3,
         imgUrl: copperBar
+    },
+    {
+        content: "Plastic",
+        price: 70,
+        tier: 3,
+        imgUrl: ""
+    },
+    {
+        content: "Sulfuric Acid",
+        price: 95,
+        tier: 3,
+        imgUrl: ""
     }
 ]
