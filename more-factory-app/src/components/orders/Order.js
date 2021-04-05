@@ -1,9 +1,9 @@
 import React from "react";
 
-const Order = ()=>{
+const Order = ({client})=>{
     return (
         <div>
-            Order
+            {client.pay}
         </div>
     )
 }
