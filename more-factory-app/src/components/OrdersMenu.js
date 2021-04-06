@@ -6,6 +6,7 @@ import {genClients} from "../util/genClients";
 import {changeClients} from "../actions";
 import {useDispatch} from "react-redux";
 import Order from "./orders/Order";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,26 +19,20 @@ const OrdersMenu = ()=>{
     const stats = useSelector(state => state.userStats);
     const dispatch = useDispatch();
 
-    console.log(stats.clients.length);
-       if (stats.clients.length === 0){
-          dispatch(changeClients(genClients(stats.clients, stats.tier)))
-       }
-       console.log(stats);
-
-       const clientDisplay = (()=>{
-          return stats.clients.map(client => {
-             return (
-                 <Grid key={client.pay} item xs={12}>
-                     <Order client={client}/>
-                 </Grid>
-             )
-          });
-       });
+       const clientDisplay = ()=> {
+               return stats.clients.map(client => {
+                   return (
+                       <Grid key={client.pay} item xs={12}>
+                           <Order info={client}/>
+                       </Grid>
+                   )
+               });
+       };
 
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
-                {clientDisplay}
+                {clientDisplay()}
             </Grid>
         </div>
     )

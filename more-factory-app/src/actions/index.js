@@ -70,5 +70,4 @@ export const moneyTake = amt => {
 
 export const changeClients = clients => {
     return {type: CHANGE_CLIENTS, payload: clients};
-
 }

@@ -7,6 +7,34 @@ import ironFurnace from "../img/iron_furnace.png";
 import copperFurnace from "../img/copper_furnace.png";
 import copperBar from "../img/copper_bar.png";
 import coalGen from "../img/coal_gen.png";
+import {genClients} from "../util/genClients";
+
+export const products = [
+    {
+        content: "Iron Ingot",
+        price: 20,
+        tier: 1,
+        imgUrl: ironBar
+    },
+    {
+        content: "Copper Ingot",
+        price: 25,
+        tier: 3,
+        imgUrl: copperBar
+    },
+    {
+        content: "Plastic",
+        price: 70,
+        tier: 3,
+        imgUrl: ""
+    },
+    {
+        content: "Sulfuric Acid",
+        price: 95,
+        tier: 3,
+        imgUrl: ""
+    }
+]
 
 export const defaultBag =
     {
@@ -225,7 +253,7 @@ export const defaultBuild = {
 export const defaultUser = {
     currency: 0,
     tier: 1,
-    clients: []
+    clients: genClients([], 1)
 }
 
 export const defaultMines = {
@@ -260,30 +288,3 @@ export const defaultMines = {
         },
     ]
 }
-
-export const products = [
-    {
-        content: "Iron Ingot",
-        price: 20,
-        tier: 1,
-        imgUrl: ironBar
-    },
-    {
-        content: "Copper Ingot",
-        price: 25,
-        tier: 3,
-        imgUrl: copperBar
-    },
-    {
-        content: "Plastic",
-        price: 70,
-        tier: 3,
-        imgUrl: ""
-    },
-    {
-        content: "Sulfuric Acid",
-        price: 95,
-        tier: 3,
-        imgUrl: ""
-    }
-]
