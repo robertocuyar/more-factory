@@ -1,12 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import {useSelector} from "react-redux";
-import {genClients} from "../util/genClients";
-import {changeClients} from "../actions";
-import {useDispatch} from "react-redux";
 import Order from "./orders/Order";
-import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 const OrdersMenu = ()=>{
     const classes = useStyles();
     const stats = useSelector(state => state.userStats);
-    const dispatch = useDispatch();
 
        const clientDisplay = ()=> {
                return stats.clients.map(client => {

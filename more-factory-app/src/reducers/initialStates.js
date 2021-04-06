@@ -19,13 +19,13 @@ export const products = [
     {
         content: "Copper Ingot",
         price: 25,
-        tier: 3,
+        tier: 1,
         imgUrl: copperBar
     },
     {
         content: "Plastic",
         price: 70,
-        tier: 3,
+        tier: 2,
         imgUrl: ""
     },
     {
