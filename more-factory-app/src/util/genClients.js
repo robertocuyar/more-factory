@@ -6,7 +6,6 @@ export const genClients = (arr, tier) => {
     let rem = 5 - arr.length;
     if(rem > 0){
        const actProducts = products.filter(product => product.tier <= tier);
-       console.log(actProducts.length);
         for(let i = 1; i <= rem; i++){
             let newClient = {};
             let payment = 0;

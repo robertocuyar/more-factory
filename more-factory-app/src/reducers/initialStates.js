@@ -12,13 +12,13 @@ import {genClients} from "../util/genClients";
 export const products = [
     {
         content: "Iron Ingot",
-        price: 20,
+        price: 5,
         tier: 1,
         imgUrl: ironBar
     },
     {
         content: "Copper Ingot",
-        price: 25,
+        price: 7,
         tier: 1,
         imgUrl: copperBar
     },

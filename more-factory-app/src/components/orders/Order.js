@@ -3,6 +3,8 @@ import {makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import Button from "@material-ui/core/Button";
+import Paper from "@material-ui/core/Paper";
+import {invDisplay} from "../../util/invDisplay";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,30 +29,41 @@ const useStyles = makeStyles((theme) => ({
 const Order = ({info})=>{
     const classes = useStyles();
 
+    const reqDisplay = ()=>{
+        return info.input.map(item=>{
+            return (
+                    <Grid item container xs={12} alignItems={'center'}>
+                        {item.need + " " + item.content}
+                    </Grid>
+            )
+        });
+    }
+
     const inputDisplay = ()=>{
         return info.input.map(item =>{
             return (
-                <Grid item container xs justify={'center'} alignItems={'center'} spacing={2}>
-                    <Grid item container xs={12}>
-                        {item.need + " " + item.content}
+                <Grid key={item.content} item container xs justify={'center'} alignItems={'center'} spacing={1}>
+                    <Grid item container justify={'center'} alignItems={'center'} xs={12}>
+                        <div className={classes.containerRoot}>
+                            <Paper className={"inventory-box"}>
+                                {invDisplay(item)}
+                            </Paper>
+                        </div>
+                    </Grid>
+                    <Grid item container justify={'center'} alignItems={'center'} xs={12}>
+                        <Button variant={"outlined"}>Add {item.content}</Button>
                     </Grid>
                 </Grid>
             )
         });
     }
-    const reqDisplay = ()=>{
+    const placeDisplay = ()=>{
         return (
           <React.Fragment>
-              <Grid item container xs={8} justify={'center'} alignItems={'center'} spacing={2}>
-                  <Grid item container xs={12} alignItems={'center'} spacing={2}>
-                      Buying:
-                  </Grid>
+              <Grid item container xs={12} justify={'center'} alignItems={'center'} spacing={1}>
                  <Grid item container xs ={12} alignItems={'center'} justify={'center'} spacing={2}>
                      {inputDisplay()}
                  </Grid>
-              </Grid>
-              <Grid item container xs={4} justify={'center'} alignItems={'center'} spacing={2}>
-                  {"$" + info.pay}
               </Grid>
           </React.Fragment>
         )
@@ -58,14 +71,20 @@ const Order = ({info})=>{
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
-                <Grid item container xs={3} justify={'center'} alignItems={'center'} direction={'column'} spacing={2}>
-                    <AccountCircleOutlinedIcon style={{ fontSize: 80}}/>
+                <Grid item container xs={3} justify={'center'} alignItems={'center'} spacing={2}>
+                    <AccountCircleOutlinedIcon style={{ fontSize: 160}}/>
                 </Grid>
-                <Grid item container xs={6} justify={'center'} alignItems={'center'} spacing={2}>
+                <Grid item container xs={2} justify={'center'} alignItems={'center'} direction={'column'}>
+                    <Grid item container xs={12} alignItems={'center'}>
+                        Buying:
+                    </Grid>
                     {reqDisplay()}
                 </Grid>
-                <Grid item container xs={3} justify={'center'} alignItems={'center'} direction={'column'} spacing={2}>
-                    <Button variant={"outlined"}>Sell</Button>
+                <Grid item container xs={5} justify={'center'} alignItems={'center'} spacing={2}>
+                    {placeDisplay()}
+                </Grid>
+                <Grid item container xs={2} justify={'center'} alignItems={'center'} direction={'column'} spacing={2}>
+                    <Button variant={"outlined"}>{"Sell for $" + info.pay}</Button>
                 </Grid>
             </Grid>
         </div>
