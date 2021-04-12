@@ -25,5 +25,5 @@ describe ("Navbar", ()=>{
     it("Contains app name", ()=>{
         expect(wrapper.containsAnyMatchingElements([<Typography>More-Factory</Typography>])).toEqual(true);
     });
-})
+});
 

@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import slotReducer from "../../reducers/slotReducer";
+import {slotReducer}from "../../reducers/slotReducer";
 import {inventorySlots} from "../../actions";
 
 test("slotReducer.js is defined", ()=>{
