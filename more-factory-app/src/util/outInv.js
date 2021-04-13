@@ -25,7 +25,7 @@ export const outInv = (itemReq, machContent, inventoryCur, machineCur, limit) =>
     });
 
     const resultMach = machineCur.machines.map(machine => {
-        if (machine.content === machContent) {
+        if (machine.content + "" === machContent + "") {
             machine.input.forEach(request => {
                 if (itemReq.content === request.content) {
                     request.numContent = itemReq.numContent;

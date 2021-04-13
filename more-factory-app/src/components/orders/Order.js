@@ -30,9 +30,9 @@ const Order = ({info}) => {
     const classes = useStyles();
 
     const reqDisplay = () => {
-        return info.input.map(item => {
+        return info.input.map((item, index) => {
             return (
-                <Grid item container xs={12} alignItems={'center'}>
+                <Grid key={item.content + item.need + index} item container xs={12} alignItems={'center'}>
                     {item.need + " " + item.content}
                 </Grid>
             )
@@ -40,9 +40,9 @@ const Order = ({info}) => {
     }
 
     const inputDisplay = () => {
-        return info.input.map(item => {
+        return info.input.map((item, index) => {
             return (
-                <Grid key={item.content} item container xs justify={'center'} alignItems={'center'} spacing={1}>
+                <Grid key={item.content + index} item container xs justify={'center'} alignItems={'center'} spacing={1}>
                     <Grid item container justify={'center'} alignItems={'center'} xs={12}>
                         <div className={classes.containerRoot}>
                             <Paper className={"inventory-box"}>
