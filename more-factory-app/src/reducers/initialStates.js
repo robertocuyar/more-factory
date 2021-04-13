@@ -7,7 +7,6 @@ import ironFurnace from "../img/iron_furnace.png";
 import copperFurnace from "../img/copper_furnace.png";
 import copperBar from "../img/copper_bar.png";
 import coalGen from "../img/coal_gen.png";
-import {genClients} from "../util/genClients";
 
 export const products = [
     {
@@ -250,11 +249,7 @@ export const defaultBuild = {
     ]
 }
 
-export const defaultUser = {
-    currency: 0,
-    tier: 1,
-    clients: genClients([], 1)
-}
+
 
 export const defaultMines = {
     mines: [

@@ -4,7 +4,11 @@ import {products} from "../reducers/initialStates";
 export const genClients = (arr, tier) => {
     let resArr = [...arr];
     let rem = 5 - arr.length;
+    let genId = 0;
     if(rem > 0){
+        if(rem !== 5){
+            genId = arr[arr.length-1].id;
+        }
        const actProducts = products.filter(product => product.tier <= tier);
         for(let i = 1; i <= rem; i++){
             let newClient = {};
@@ -19,6 +23,8 @@ export const genClients = (arr, tier) => {
                 inpArr.push(product);
             }
             newClient.input = [...inpArr];
+            genId++;
+            newClient.id = genId;
             newClient.pay = payment;
             resArr.push(newClient);
         }

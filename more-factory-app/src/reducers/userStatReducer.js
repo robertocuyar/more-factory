@@ -1,4 +1,4 @@
-import {defaultUser} from "./initialStates";
+import {defaultUser} from "../data/defaultUser";
 import {CHANGE_CLIENTS, MONEY_ADD, MONEY_TAKE, STAT_RENDER, UPGRADE_TIER} from "../actions/types";
 
 export const userStatReducer = (state = defaultUser, action) =>{
