@@ -3,13 +3,13 @@ import Box from '@material-ui/core/Box';
 import {useSelector} from "react-redux";
 import InventoryItem from "./InventoryItem";
 
-const UserInventory = ()=> {
+const UserInventory = () => {
     const slots = useSelector(state => state.slotsInv);
-    const slotDisplay = ()=> {
+    const slotDisplay = () => {
 
-       return slots.slots.map(slot=> {
-          return <InventoryItem key={"i" + slot.id } item={slot}/>
-       })
+        return slots.slots.map(slot => {
+            return <InventoryItem key={"i" + slot.id} item={slot}/>
+        })
     }
 
     return (

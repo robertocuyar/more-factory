@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import {combineReducers} from "redux";
 import {slotReducer} from "./slotReducer";
 import {coalMineReducer} from "./coalMineReducer";
 import {ironMineReducer} from "./ironMineReducer";

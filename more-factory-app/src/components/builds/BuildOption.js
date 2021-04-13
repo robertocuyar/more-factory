@@ -28,14 +28,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const BuildOption = ({option})=>{
+const BuildOption = ({option}) => {
     const classes = useStyles();
     const inv = useSelector(state => state.slotsInv);
     const opt = useSelector(state => state.buildOpt);
     const dispatch = useDispatch();
 
-    const imageDisplay = ()=>{
-        return(
+    const imageDisplay = () => {
+        return (
             <React.Fragment>
                 <Grid item container xs={12} justify={'center'}>
                     <img src={option.imgUrl} alt={option.content}/>
@@ -47,8 +47,8 @@ const BuildOption = ({option})=>{
         )
     }
 
-    const requireDisplay = ()=>{
-        const buildReq = ()=>{
+    const requireDisplay = () => {
+        const buildReq = () => {
             return option.build.map(req => {
                 return (
                     <Grid key={req.content} item container xs={12}>
@@ -83,12 +83,12 @@ const BuildOption = ({option})=>{
         dispatch(buildRender(res.machine));
 
     }
-    const inputDisplay = ()=> {
+    const inputDisplay = () => {
         return option.build.map(item => {
             return (
                 <Grid key={item.content} item container justify={'center'} alignItems={'center'} xs spacing={1}>
                     <Grid item container justify={'center'} xs={12}>
-                        <Button variant={"outlined"} onClick={()=> inputChange(item)}>Add {item.content}</Button>
+                        <Button variant={"outlined"} onClick={() => inputChange(item)}>Add {item.content}</Button>
                     </Grid>
                     <Grid item container justify={'center'} xs={12}>
                         <div className={classes.containerRoot}>
@@ -105,12 +105,12 @@ const BuildOption = ({option})=>{
     const build = () => {
         let confirm = true;
         for (let req of option.build) {
-            if(req.numContent !== req.need ){
+            if (req.numContent !== req.need) {
                 confirm = false;
                 break;
             }
         }
-        if(confirm){
+        if (confirm) {
             dispatch(addMachine(option));
             dispatch(removeOption(option));
         }
@@ -131,7 +131,7 @@ const BuildOption = ({option})=>{
                     {inputDisplay()}
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={'outlined'} onClick={()=> build()}>Build</Button>
+                    <Button variant={'outlined'} onClick={() => build()}>Build</Button>
                 </Grid>
             </Grid>
         </div>

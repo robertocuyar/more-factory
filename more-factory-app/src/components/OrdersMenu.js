@@ -10,19 +10,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const OrdersMenu = ()=>{
+const OrdersMenu = () => {
     const classes = useStyles();
     const stats = useSelector(state => state.userStats);
 
-       const clientDisplay = ()=> {
-               return stats.clients.map(client => {
-                   return (
-                       <Grid key={client.pay} item xs={12}>
-                           <Order info={client}/>
-                       </Grid>
-                   )
-               });
-       };
+    const clientDisplay = () => {
+        return stats.clients.map(client => {
+            return (
+                <Grid key={client.pay} item xs={12}>
+                    <Order info={client}/>
+                </Grid>
+            )
+        });
+    };
 
     return (
         <div className={classes.root}>

@@ -32,23 +32,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Machine = ({machine})=> {
+const Machine = ({machine}) => {
     const classes = useStyles();
-    const inv = useSelector(state=> state.slotsInv);
-    const mach = useSelector(state=> state.machines);
-    const user = useSelector(state=> state.userStats);
+    const inv = useSelector(state => state.slotsInv);
+    const mach = useSelector(state => state.machines);
+    const user = useSelector(state => state.userStats);
     const dispatch = useDispatch();
     let resultMachines = {...mach, machines: []};
 
-    useEffect(()=>{
-        if(machine.isOn){
+    useEffect(() => {
+        if (machine.isOn) {
             const changeState = machProcess(machine.content, machine.input, machine.output, mach, user.power);
-                dispatch(operateMachine(changeState, machine.process));
+            dispatch(operateMachine(changeState, machine.process));
         }
     });
-    const toggleOn = ()=>{
-        resultMachines.machines = mach.machines.map(item=>{
-            if(item.content === machine.content){
+    const toggleOn = () => {
+        resultMachines.machines = mach.machines.map(item => {
+            if (item.content === machine.content) {
                 item.isOn = true;
             }
             return item;
@@ -62,18 +62,18 @@ const Machine = ({machine})=> {
         dispatch(machineRender(res.machine));
     }
 
-    const inventoryMove = output =>{
-        if(output.numContent === 0){
+    const inventoryMove = output => {
+        if (output.numContent === 0) {
             return;
         }
         let newInv = {
             slots: invManager(output, inv)
         }
         dispatch(inventorySlots(newInv));
-        resultMachines.machines = mach.machines.map(item=>{
-            if(item.content === machine.content){
+        resultMachines.machines = mach.machines.map(item => {
+            if (item.content === machine.content) {
                 item.output = item.output.map(product => {
-                    if(product.content === output.content){
+                    if (product.content === output.content) {
                         product.numContent = output.numContent;
                     }
                     return product;
@@ -84,56 +84,59 @@ const Machine = ({machine})=> {
         dispatch(machineRender(resultMachines));
     }
 
-    const ioDisplay = (machArr, type)=>{
+    const ioDisplay = (machArr, type) => {
 
-        const buttonType = (content, req)=> {
-            if (content === 'Current Power Production'){
+        const buttonType = (content, req) => {
+            if (content === 'Current Power Production') {
                 return <h3>{content}</h3>
             }
-            return type === 'input' ? <Button variant={"outlined"} onClick={()=> inputChange(req)}>Add {content}</Button> : <Button variant={"outlined"} onClick={()=> inventoryMove(req)}>Take {content}</Button>
+            return type === 'input' ?
+                <Button variant={"outlined"} onClick={() => inputChange(req)}>Add {content}</Button> :
+                <Button variant={"outlined"} onClick={() => inventoryMove(req)}>Take {content}</Button>
         }
 
-        return machArr.map(item =>{
+        return machArr.map(item => {
             return (
-                    <Grid key={item.content} item container justify={'center'} alignItems={'center'} direction={'column'} spacing={1}>
-                        <Grid item xs={12}>
-                            {buttonType(item.content, item)}
-                        </Grid>
-                        <Grid item xs={12}>
-                            <div className={classes.containerRoot}>
-                                <Paper className={"inventory-box"}>
-                                    {invDisplay(item)}
-                                </Paper>
-                            </div>
-                        </Grid>
+                <Grid key={item.content} item container justify={'center'} alignItems={'center'} direction={'column'}
+                      spacing={1}>
+                    <Grid item xs={12}>
+                        {buttonType(item.content, item)}
                     </Grid>
-                )
+                    <Grid item xs={12}>
+                        <div className={classes.containerRoot}>
+                            <Paper className={"inventory-box"}>
+                                {invDisplay(item)}
+                            </Paper>
+                        </div>
+                    </Grid>
+                </Grid>
+            )
         });
     }
 
-    const contentDisplay = ()=>{
-        const light = ()=>{
-            if (machine.isOn){
+    const contentDisplay = () => {
+        const light = () => {
+            if (machine.isOn) {
                 return (
                     <React.Fragment>
-                    <Grid item>
-                        <Button variant={"outlined"} disabled>Turn on</Button>
-                    </Grid>
-                <Grid item>
-                    <img src={green} alt={"Green Light"}/>
-                </Grid>
+                        <Grid item>
+                            <Button variant={"outlined"} disabled>Turn on</Button>
+                        </Grid>
+                        <Grid item>
+                            <img src={green} alt={"Green Light"}/>
+                        </Grid>
                     </React.Fragment>
                 )
-            } else{
+            } else {
                 return (
-                <React.Fragment>
-                    <Grid item>
-                        <Button variant={"outlined"} onClick={()=> toggleOn()}>Turn on</Button>
-                    </Grid>
-                    <Grid item>
-                        <img src={red} alt = "Red Light"/>
-                    </Grid>
-                </React.Fragment>
+                    <React.Fragment>
+                        <Grid item>
+                            <Button variant={"outlined"} onClick={() => toggleOn()}>Turn on</Button>
+                        </Grid>
+                        <Grid item>
+                            <img src={red} alt="Red Light"/>
+                        </Grid>
+                    </React.Fragment>
                 )
             }
         }

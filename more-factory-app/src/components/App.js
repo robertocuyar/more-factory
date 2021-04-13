@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import NavBar from "./NavBar";
@@ -19,18 +19,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const App = ()=> {
+const App = () => {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
-                    <NavBar />
+                    <NavBar/>
                 </Grid>
                 <Grid item xs={12}>
                     <Paper className={classes.paper}>
-                    <UserTool/>
+                        <UserTool/>
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>
@@ -39,7 +39,7 @@ const App = ()=> {
                     </Paper>
                 </Grid>
                 <Grid item xs={12}>
-                        <TabOptions/>
+                    <TabOptions/>
                 </Grid>
                 <Grid item xs={12}>
                     <Footer/>

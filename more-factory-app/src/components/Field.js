@@ -1,8 +1,8 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Field = ()=>{
+const Field = () => {
     const classes = useStyles();
     const machines = useSelector(state => state.machines);
 
-    const fieldDisplay = ()=> {
+    const fieldDisplay = () => {
         return machines.machines.map(machine => {
             return <Avatar key={machine.content} alt={machine.content} src={machine.imgUrl} className={classes.large}/>
         })

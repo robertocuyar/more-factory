@@ -15,9 +15,9 @@ const MiningMenu = () => {
     const classes = useStyles();
     const tier = useSelector(state => state.userStats);
 
-    const mineDisplay = ()=> {
+    const mineDisplay = () => {
         return defaultMines.mines.map(mine => {
-            if(tier.tier >= mine.tier) {
+            if (tier.tier >= mine.tier) {
                 return (
                     <Grid key={mine.content} item xs={6}>
                         <Mines type={mine.content}/>

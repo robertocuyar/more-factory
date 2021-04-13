@@ -26,21 +26,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Order = ({info})=>{
+const Order = ({info}) => {
     const classes = useStyles();
 
-    const reqDisplay = ()=>{
-        return info.input.map(item=>{
+    const reqDisplay = () => {
+        return info.input.map(item => {
             return (
-                    <Grid item container xs={12} alignItems={'center'}>
-                        {item.need + " " + item.content}
-                    </Grid>
+                <Grid item container xs={12} alignItems={'center'}>
+                    {item.need + " " + item.content}
+                </Grid>
             )
         });
     }
 
-    const inputDisplay = ()=>{
-        return info.input.map(item =>{
+    const inputDisplay = () => {
+        return info.input.map(item => {
             return (
                 <Grid key={item.content} item container xs justify={'center'} alignItems={'center'} spacing={1}>
                     <Grid item container justify={'center'} alignItems={'center'} xs={12}>
@@ -57,22 +57,22 @@ const Order = ({info})=>{
             )
         });
     }
-    const placeDisplay = ()=>{
+    const placeDisplay = () => {
         return (
-          <React.Fragment>
-              <Grid item container xs={12} justify={'center'} alignItems={'center'} spacing={1}>
-                 <Grid item container xs ={12} alignItems={'center'} justify={'center'} spacing={2}>
-                     {inputDisplay()}
-                 </Grid>
-              </Grid>
-          </React.Fragment>
+            <React.Fragment>
+                <Grid item container xs={12} justify={'center'} alignItems={'center'} spacing={1}>
+                    <Grid item container xs={12} alignItems={'center'} justify={'center'} spacing={2}>
+                        {inputDisplay()}
+                    </Grid>
+                </Grid>
+            </React.Fragment>
         )
     }
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={3} justify={'center'} alignItems={'center'} spacing={2}>
-                    <AccountCircleOutlinedIcon style={{ fontSize: 160}}/>
+                    <AccountCircleOutlinedIcon style={{fontSize: 160}}/>
                 </Grid>
                 <Grid item container xs={2} justify={'center'} alignItems={'center'} direction={'column'}>
                     <Grid item container xs={12} alignItems={'center'}>

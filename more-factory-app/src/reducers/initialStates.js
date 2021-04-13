@@ -40,49 +40,49 @@ export const defaultBag =
         slots:
             [
                 {
-                    id  : 1,
+                    id: 1,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 2,
+                    id: 2,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 3,
+                    id: 3,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 4,
+                    id: 4,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 5,
+                    id: 5,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 6,
+                    id: 6,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 7,
+                    id: 7,
                     content: null,
                     numContent: null,
                     imgUrl: ""
                 },
                 {
-                    id : 8,
+                    id: 8,
                     content: null,
                     numContent: null,
                     imgUrl: ""
@@ -116,8 +116,8 @@ export const firstLimestone = {
 
 export const defaultMachine = {
     power: {
-      current: 0,
-      capacity: 500
+        current: 0,
+        capacity: 500
     },
     machines: [
         {
@@ -142,14 +142,14 @@ export const defaultMachine = {
                     use: 1
 
                 }
-                ],
+            ],
             output: [
                 {
                     numContent: 0,
                     content: "Iron Ingot",
                     imgUrl: ironBar,
                     give: 1
-            }
+                }
             ]
         }
     ]
@@ -248,7 +248,6 @@ export const defaultBuild = {
         }
     ]
 }
-
 
 
 export const defaultMines = {

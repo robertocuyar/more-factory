@@ -5,20 +5,20 @@ import Grid from "@material-ui/core/Grid";
 import BuildOption from "./builds/BuildOption";
 
 const useStyles = makeStyles((theme) => ({
-   root: {
-       flexGrow: 1,
-   }
+    root: {
+        flexGrow: 1,
+    }
 }));
 
-const BuildMenu = ()=>{
+const BuildMenu = () => {
     const classes = useStyles();
     const buildList = useSelector(state => state.buildOpt);
     const tier = useSelector(state => state.userStats);
 
-    const buildDisplay = ()=>{
-        if(buildList.machines.length !== 0) {
+    const buildDisplay = () => {
+        if (buildList.machines.length !== 0) {
             return buildList.machines.map(option => {
-                if(tier.tier >= option.tier) {
+                if (tier.tier >= option.tier) {
                     return (
                         <Grid key={option.content} item xs={12}>
                             <BuildOption option={option}/>
@@ -33,17 +33,17 @@ const BuildMenu = ()=>{
                 }
             });
         }
-            return (
-                <Grid item xs={12} container justify={'center'}>
-                    <h2>All Buildings Built!</h2>
-                </Grid>
-            )
+        return (
+            <Grid item xs={12} container justify={'center'}>
+                <h2>All Buildings Built!</h2>
+            </Grid>
+        )
     }
     return (
         <div className={classes.root}>
-           <Grid container spacing={3}>
-               {buildDisplay()}
-           </Grid>
+            <Grid container spacing={3}>
+                {buildDisplay()}
+            </Grid>
         </div>
     )
 }

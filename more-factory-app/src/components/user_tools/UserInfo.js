@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -15,14 +15,14 @@ const useStyles = makeStyles({
 });
 
 function createData(name, value) {
-    return { name, value };
+    return {name, value};
 }
 
 
 export default function UserInfo() {
     const classes = useStyles();
-    const userStat = useSelector(state=> state.userStats);
-    const power = useSelector( state=> state.machines.power);
+    const userStat = useSelector(state => state.userStats);
+    const power = useSelector(state => state.machines.power);
     const powerStr = `${power.current} / ${power.capacity} MW`;
     const moneyStr = `$ ${userStat.currency}`;
 

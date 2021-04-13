@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import UserBag from "./user_tools/UserBag";
@@ -19,18 +19,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const UserTool = ()=> {
+const UserTool = () => {
     const [bag, setBag] = useState("closed")
     const classes = useStyles();
 
-    const displayContent = () =>{
+    const displayContent = () => {
 
-        if (bag === "closed"){
+        if (bag === "closed") {
             return (
                 <React.Fragment>
                     <Grid item xs={6}>
-                        <Paper onClick={()=> setBag("open")} id={"bag-container"} className={classes.paper}>
-                            <UserBag />
+                        <Paper onClick={() => setBag("open")} id={"bag-container"} className={classes.paper}>
+                            <UserBag/>
                         </Paper>
                     </Grid>
                     <Grid item xs={6}>
@@ -42,25 +42,29 @@ const UserTool = ()=> {
             )
         } else {
             return (
-            <React.Fragment>
-                <Grid item xs={12} container justify={'center'}>
-                    <Paper className={classes.paper}>
-                        <Box display={"flex"} justifyContent={"flex-end"}>
-                           <Box display={"flex"} alignItems={"center"} m={1} id={"back-arrow"} onClick={()=>{setBag("closed")}}><ArrowBackIcon/></Box>
-                           <Box onClick={()=>{setBag("closed")}} m={1}><p>Close Bag</p></Box>
-                        </Box>
-                        <div id={"user-inventory"}>
-                            <UserInventory/>
-                        </div>
-                    </Paper>
-                </Grid>
-            </React.Fragment>
+                <React.Fragment>
+                    <Grid item xs={12} container justify={'center'}>
+                        <Paper className={classes.paper}>
+                            <Box display={"flex"} justifyContent={"flex-end"}>
+                                <Box display={"flex"} alignItems={"center"} m={1} id={"back-arrow"} onClick={() => {
+                                    setBag("closed")
+                                }}><ArrowBackIcon/></Box>
+                                <Box onClick={() => {
+                                    setBag("closed")
+                                }} m={1}><p>Close Bag</p></Box>
+                            </Box>
+                            <div id={"user-inventory"}>
+                                <UserInventory/>
+                            </div>
+                        </Paper>
+                    </Grid>
+                </React.Fragment>
             )
         }
 
     }
 
-    return(
+    return (
         <div className={classes.root}>
             <Grid container spacing={3}>
                 {displayContent()}

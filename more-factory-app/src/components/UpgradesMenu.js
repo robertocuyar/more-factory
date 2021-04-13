@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UpgradesMenu = ()=>{
+const UpgradesMenu = () => {
     return (
         <div>
             UpgradesMenu

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ExpeditionMenu = ()=> {
+const ExpeditionMenu = () => {
     return (
         <div>
             ExpeditionMenu

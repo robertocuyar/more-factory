@@ -10,12 +10,12 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const MachinesMenu = ()=>{
+const MachinesMenu = () => {
     const classes = useStyles();
     const machineList = useSelector(state => state.machines);
-    const machineDisplay = ()=>{
+    const machineDisplay = () => {
         return machineList.machines.map(machine => {
-            return(
+            return (
                 <Grid key={machine.content} item xs={12}>
                     <Machine machine={machine}/>
                 </Grid>

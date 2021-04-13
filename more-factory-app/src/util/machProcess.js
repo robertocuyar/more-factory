@@ -6,28 +6,28 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
     let newPow = machineCur.power.current;
     const powerTitle = "Current Power Production";
 
-    for(let input of machInput){
-        if (input.numContent < input.use){
+    for (let input of machInput) {
+        if (input.numContent < input.use) {
             continueIn = false;
             break;
         }
     }
 
-    for(let output of machOutput){
-        if (output.numContent === 80){
+    for (let output of machOutput) {
+        if (output.numContent === 80) {
             continueOut = false;
             break;
         }
     }
 
-    if(continueIn && continueOut){
-         newMachines = machineCur.machines.map(mach => {
-            if (mach.content === machContent){
-                    if(mach.needsPower){
-                        newPow-= mach.consume;
-                    if (newPow < 0){
-                            newPow = machineCur.power.current;
-                            return mach;
+    if (continueIn && continueOut) {
+        newMachines = machineCur.machines.map(mach => {
+            if (mach.content === machContent) {
+                if (mach.needsPower) {
+                    newPow -= mach.consume;
+                    if (newPow < 0) {
+                        newPow = machineCur.power.current;
+                        return mach;
                     }
                 }
                 mach.input = mach.input.map(input => {
@@ -35,10 +35,10 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
                     return input;
                 });
                 mach.output = mach.output.map(output => {
-                    if(output.content === powerTitle){
+                    if (output.content === powerTitle) {
                         output.numContent = output.give;
                         newPow += output.give;
-                        if(newPow >= machineCur.power.capacity){
+                        if (newPow >= machineCur.power.capacity) {
                             newPow = machineCur.power.capacity;
                         }
                     } else {
@@ -52,14 +52,14 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
 
     } else {
         newMachines = machineCur.machines.map(mach => {
-            if (mach.content === machContent){
+            if (mach.content === machContent) {
                 mach.isOn = false;
-                if(mach.output[0].content === powerTitle){
+                if (mach.output[0].content === powerTitle) {
                     mach.output[0].numContent = 0;
                 }
             }
             return mach;
         });
     }
-    return {power: {current: newPow, capacity: machineCur.power.capacity}, machines: newMachines }
+    return {power: {current: newPow, capacity: machineCur.power.capacity}, machines: newMachines}
 }

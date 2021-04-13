@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const InventoryItem = ({item}) =>{
+const InventoryItem = ({item}) => {
     const classes = useStyles();
 
-    if (item.content === null){
+    if (item.content === null) {
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
@@ -29,7 +29,7 @@ const InventoryItem = ({item}) =>{
         return (
             <div className={classes.root}>
                 <Paper className={"inventory-box"}>
-                   <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl} />
+                    <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
                 </Paper>
             </div>
         )

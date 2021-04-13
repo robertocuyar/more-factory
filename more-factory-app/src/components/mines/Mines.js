@@ -36,27 +36,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Mines = ({type})=>{
+const Mines = ({type}) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    const inv = useSelector(state=> state.slotsInv);
+    const inv = useSelector(state => state.slotsInv);
     const lime = useSelector(state => state.limeMined);
     const coal = useSelector(state => state.coalMined);
     const iron = useSelector(state => state.ironMined);
-    const copper = useSelector( state => state.copperMined);
+    const copper = useSelector(state => state.copperMined);
 
     let item, itemImg, itemStr, firstItem, actionFirst, actionFull, actionNew, actionZero;
 
     const itemSetup = itemCheck => {
-        if (itemCheck !== null && itemCheck.numContent < 20){
+        if (itemCheck !== null && itemCheck.numContent < 20) {
             const newItem = JSON.parse(JSON.stringify(itemCheck));
             newItem.numContent++;
             return newItem;
         }
     }
 
-    switch(type){
+    switch (type) {
         case "Limestone":
             item = lime;
             itemImg = limeImg;
@@ -105,11 +105,12 @@ const Mines = ({type})=>{
     }
 
     const containerDisplay = () => {
-        return item === null ? null : <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
+        return item === null ? null :
+            <MineInventoryContainer content={item.content} numContent={item.numContent} imgUrl={item.imgUrl}/>
     }
 
-    const mine = () =>{
-        if(item === null){
+    const mine = () => {
+        if (item === null) {
             firstItem.numContent = 1;
             return dispatch(actionFirst);
         } else if (item.numContent === 20) {
@@ -120,20 +121,20 @@ const Mines = ({type})=>{
     }
 
     const inventoryMove = () => {
-        if (item === null){
+        if (item === null) {
             return;
         }
         let newInv = {
             slots: invManager(item, inv)
         }
         dispatch(inventorySlots(newInv));
-        if(item.numContent === 0){
-           return dispatch(actionZero);
+        if (item.numContent === 0) {
+            return dispatch(actionZero);
         }
     }
 
     const header = () => {
-        switch(type){
+        switch (type) {
             case "Limestone":
                 return <h1>Limestone</h1>;
             case "Coal":
@@ -157,13 +158,13 @@ const Mines = ({type})=>{
                     </Box>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <Button variant={"outlined"} onClick={()=> mine()}>
+                    <Button variant={"outlined"} onClick={() => mine()}>
                         <span className={"button-text"}>Mine</span>
                         <img className={"button-image"} src={pickImg} alt="Pickaxe"/>
                     </Button>
                 </Grid>
                 <Grid item container xs={12} justify={'center'}>
-                    <div className={classes.containerRoot} onDoubleClick={()=> inventoryMove()}>
+                    <div className={classes.containerRoot} onDoubleClick={() => inventoryMove()}>
                         <Paper className={"inventory-box"}>
                             {containerDisplay()}
                         </Paper>

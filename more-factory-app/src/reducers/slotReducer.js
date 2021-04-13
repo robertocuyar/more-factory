@@ -2,7 +2,7 @@ import {INVENTORY_SLOTS} from "../actions/types";
 import {defaultBag} from "./initialStates";
 
 export const slotReducer = (state = defaultBag, action) => {
-    switch (action.type){
+    switch (action.type) {
         case INVENTORY_SLOTS:
             return action.payload;
         default:
