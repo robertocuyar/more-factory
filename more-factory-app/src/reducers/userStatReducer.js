@@ -8,7 +8,7 @@ export const userStatReducer = (state = defaultUser, action) => {
         case UPGRADE_TIER:
             return {...state, tier: state.tier + action.payload};
         case CLIENT_PAY:
-            return {...state, currency: state.currency + action.payload.currency};
+            return {...state, currency: state.currency + action.payload.currency, clients: action.payload.clients};
         case MONEY_TAKE:
             return {...state, currency: state.currency - action.payload};
         case CHANGE_CLIENTS:

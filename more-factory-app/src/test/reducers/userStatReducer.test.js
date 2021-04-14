@@ -82,11 +82,12 @@ test("userStatReducer changes state of the tier with upgradeTier", () => {
 });
 
 test("userStatReducer changes state of currency by addition and adds a new generated client with clientPay", () => {
-
     const filterClients = testUser.clients.slice(1);
+    filterClients.push({id: 6, input: [], pay: 500});
     const newStats = userStatReducer(testUser, clientPay(500, filterClients));
     expect(newStats.currency).toEqual(500);
     expect(newStats.clients[0].id).toEqual(2);
+    expect(newStats.clients.length).toEqual(5);
 });
 
 test("userStatReducer changes state of currency by subtraction with moneySubtract", () => {
