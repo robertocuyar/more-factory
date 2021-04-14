@@ -1,5 +1,5 @@
 import {expect} from "@jest/globals";
-import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, moneyAdd, moneyTake, upgradeTier, changeClients} from "../../actions";
+import {inventorySlots, mineCoal, mineIron, mineCopper, mineLimestone, machineRender, operateMachine, buildRender, addMachine, removeOption, statRender, clientPay, moneyTake, upgradeTier, changeClients} from "../../actions";
 import {
     INVENTORY_SLOTS,
     MINE_COAL,
@@ -9,7 +9,7 @@ import {
     MACHINE_RENDER,
     BUILD_RENDER,
     ADD_MACHINE,
-    REMOVE_OPTION, STAT_RENDER, OPERATE_MACHINE, UPGRADE_TIER, MONEY_ADD, MONEY_TAKE, CHANGE_CLIENTS
+    REMOVE_OPTION, STAT_RENDER, OPERATE_MACHINE, UPGRADE_TIER, CLIENT_PAY, MONEY_TAKE, CHANGE_CLIENTS
 } from "../../actions/types";
 import {
     firstCoal,
@@ -18,9 +18,9 @@ import {
     firstLimestone,
     defaultMachine,
     defaultBag,
-    defaultBuild,
-    defaultUser
+    defaultBuild
 } from "../../reducers/initialStates";
+import {defaultUser} from "../../data/defaultUser";
 
 test("inventorySlots to be defined", ()=>{
     expect(inventorySlots).toBeDefined();
@@ -154,17 +154,6 @@ test("upgradeTier to return correct payload",()=>{
    });
 });
 
-test("moneyAdd to be defined", ()=>{
-    expect(moneyAdd).toBeDefined();
-});
-
-test("moneyAdd to return correct payload", ()=>{
-    expect(moneyAdd(500)).toEqual({
-        type: MONEY_ADD,
-        payload: 500
-    });
-});
-
 test("moneyTake to be defined", ()=>{
     expect(moneyTake).toBeDefined();
 });
@@ -186,4 +175,18 @@ test("changeClients to return correct payload", ()=>{
        type: CHANGE_CLIENTS,
        payload: clients
    })
+});
+
+test("clientPay to be defined", ()=>{
+    expect(clientPay).toBeDefined();
+});
+
+test("clientPay to return correct payload", ()=>{
+    expect(clientPay(500, ["client1", "client2"])).toEqual({
+        type: CLIENT_PAY,
+        payload: {
+            currency: 500,
+            clients: ["client1", "client2"]
+        }
+    });
 });
