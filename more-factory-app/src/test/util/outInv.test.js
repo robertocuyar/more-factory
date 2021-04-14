@@ -81,3 +81,28 @@ test("outInv does not take away any more coal from the given inventory if the in
    expect(invMachineResult.machine.machines[0].input[1].content).toBe("Coal");
    expect(invMachineResult.machine.machines[0].input[1].numContent).toBe(80);
 });
+
+test("outInv is open to also remove items from the inventory and add it to the specified client inputs", ()=>{
+   testSlots[0].content = "Iron Ingot";
+   testSlots[0].numContent = 30;
+   testSlots[0].imgUrl = "";
+
+   const testClient = [
+       {
+          id: 1,
+          pay: 300,
+          input: [
+             {
+                content: "Iron Ingot",
+                numContent: 0,
+                imgUrl: "",
+                need: 40
+             }
+          ]}]
+
+   const newClients = outInv(testClient[0].input[0], 1, defaultBag, testClient, 80)
+
+   expect(newClients.machine.machines[0].id).toEqual(1);
+   expect(newClients.machine.machines[0].input[0].numContent).toEqual(30);
+   expect(newClients.inventory.slots[0].numContent).toEqual(null);
+});
