@@ -5,6 +5,9 @@ import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined'
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import {invDisplay} from "../../util/invDisplay";
+import {outInv} from "../../util/outInv";
+import {inventorySlots, changeClients} from "../../actions";
+import {useSelector, useDispatch} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Order = ({info}) => {
     const classes = useStyles();
+    const inv = useSelector(state => state.slotsInv);
+    const user = useSelector(state => state.userStats);
+    const dispatch = useDispatch();
 
     const reqDisplay = () => {
         return info.input.map((item, index) => {
@@ -51,12 +57,19 @@ const Order = ({info}) => {
                         </div>
                     </Grid>
                     <Grid item container justify={'center'} alignItems={'center'} xs={12}>
-                        <Button variant={"outlined"}>Add {item.content}</Button>
+                        <Button variant={"outlined"} onClick={() => inputChange(item)}>Add {item.content}</Button>
                     </Grid>
                 </Grid>
             )
         });
     }
+
+    const inputChange = inputReq => {
+        let res = outInv(inputReq, info.id, inv, user.clients, 80);
+        dispatch(inventorySlots(res.inventory));
+        dispatch(changeClients(res.machine.machines));
+    }
+
     const placeDisplay = () => {
         return (
             <React.Fragment>
@@ -68,6 +81,7 @@ const Order = ({info}) => {
             </React.Fragment>
         )
     }
+
     return (
         <div className={classes.root}>
             <Grid container alignItems={'center'}>
