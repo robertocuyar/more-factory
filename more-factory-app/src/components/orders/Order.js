@@ -6,8 +6,9 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import {invDisplay} from "../../util/invDisplay";
 import {outInv} from "../../util/outInv";
-import {inventorySlots, changeClients} from "../../actions";
+import {inventorySlots, changeClients, clientPay} from "../../actions";
 import {useSelector, useDispatch} from "react-redux";
+import {genClients} from "../../util/genClients";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -65,7 +66,7 @@ const Order = ({info}) => {
     }
 
     const inputChange = inputReq => {
-        let res = outInv(inputReq, info.id, inv, user.clients, 80);
+        let res = outInv(inputReq, info.id, inv, user.clients, inputReq.need);
         dispatch(inventorySlots(res.inventory));
         dispatch(changeClients(res.machine.machines));
     }
@@ -80,6 +81,19 @@ const Order = ({info}) => {
                 </Grid>
             </React.Fragment>
         )
+    }
+
+    const completeSale = pay => {
+        let isComplete = true;
+        info.input.forEach(req => {
+            if (req.numContent !== req.need) {
+                isComplete = false;
+            }
+        })
+        if (isComplete) {
+            const remClients = genClients(user.clients.filter(client => client.id !== info.id), user.tier);
+            dispatch(clientPay(pay, remClients));
+        }
     }
 
     return (
@@ -98,7 +112,8 @@ const Order = ({info}) => {
                     {placeDisplay()}
                 </Grid>
                 <Grid item container xs={2} justify={'center'} alignItems={'center'} direction={'column'} spacing={2}>
-                    <Button variant={"outlined"}>{"Sell for $" + info.pay}</Button>
+                    <Button onClick={() => completeSale(info.pay)}
+                            variant={"outlined"}>{"Sell for $" + info.pay}</Button>
                 </Grid>
             </Grid>
         </div>
