@@ -245,10 +245,97 @@ export const defaultBuild = {
                     give: 50
                 }
             ]
+        },
+        {
+            content: "Bolt Press",
+            needsPower: true,
+            description: "Uses 1 IRON INGOT to make 2 IRON BOLTS",
+            isOn: false,
+            consume: 10,
+            process: 500,
+            imgUrl: "",
+            tier: 1,
+            build: [
+                {
+                    content: "Iron Ingot",
+                    numContent: 0,
+                    imgUrl: ironBar,
+                    need: 50
+                },
+                {
+                    content: "Copper Wire",
+                    numContent: 0,
+                    imgUrl: "",
+                    need: 30
+                }
+            ],
+            input: [
+                {
+                    content: "Iron Ingot",
+                    numContent: 0,
+                    imgUrl: ironBar,
+                    use: 1
+                }
+            ],
+            output: [
+                {
+                    content: "Iron Bolt",
+                    numContent: 0,
+                    imgUrl: "",
+                    give: 2
+                }
+            ]
+        },
+        {
+            content: "Copper Wire Maker",
+            needsPower: true,
+            description: "Uses 1 COPPER INGOT to make 2 COPPER WIRE",
+            isOn: false,
+            consume: 10,
+            process: 500,
+            imgUrl: "",
+            tier: 1,
+            build: [
+                {
+                    content: "Iron Ingot",
+                    numContent: 0,
+                    imgUrl: ironBar,
+                    need: 40
+                },
+                {
+                    content: "Copper Ingot",
+                    numContent: 0,
+                    imgUrl: copperBar,
+                    need: 20
+                },
+                {
+                    content: "Limestone",
+                    numContent: 0,
+                    imgUrl: lime,
+                    need: 10
+                }
+            ],
+            input: [
+                {
+                    content: "Copper Ingot",
+                    numContent: 0,
+                    imgUrl: copperBar,
+                    use: 1
+                }
+            ],
+            output: [
+                {
+                    content: "Copper Wire",
+                    numContent: 0,
+                    imgUrl: "",
+                    give: 2
+                }
+            ]
         }
+
+
     ]
 }
-
 
 export const defaultMines = {
     mines: [
