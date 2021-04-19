@@ -22,6 +22,18 @@ export const products = [
         imgUrl: copperBar
     },
     {
+        content: "Copper Wire",
+        price: 9,
+        tier: 1,
+        imgUrl: ""
+    },
+    {
+        content: "Iron Bolt",
+        price: 3,
+        tier: 1,
+        imgUrl: ""
+    },
+    {
         content: "Plastic",
         price: 70,
         tier: 2,
