@@ -7,6 +7,7 @@ import ironFurnace from "../img/iron_furnace.png";
 import copperFurnace from "../img/copper_furnace.png";
 import copperBar from "../img/copper_bar.png";
 import coalGen from "../img/coal_gen.png";
+import boltPress from "../img/bolt_press.png";
 
 export const products = [
     {
@@ -265,7 +266,7 @@ export const defaultBuild = {
             isOn: false,
             consume: 10,
             process: 500,
-            imgUrl: "",
+            imgUrl: boltPress,
             tier: 1,
             build: [
                 {
