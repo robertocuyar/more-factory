@@ -53,7 +53,7 @@ test("genClients will generate client's product requests that is less than or eq
     expect(tierCount).toEqual(0);
 });
 
-test("genClients will assign an id number to each client from the first client having id 1 to last client having id of 5", ()=>{
+test("genClients will assign an id number to each client from the first client having id 1 to last client having id of 5", () => {
     const newClients = genClients([], 1);
 
     expect(newClients[0].id).toEqual(1);
@@ -63,36 +63,36 @@ test("genClients will assign an id number to each client from the first client h
     expect(newClients[4].id).toEqual(5);
 });
 
-test("genClients will assign new ids for newly generated clients from a partial array of clients.",()=>{
-   const exClients = [
-       {
-           id: 3,
-           input: [
-               {
-                   content: "Iron Ingot",
-                   numContent: 0,
-                   need: 35,
-                   imgUrl: ""
-               }
-           ],
-           pay: 500
-       },
-       {
-           id: 4,
-           input: [
-               {
-                   content: "Copper Ingot",
-                   numContent: 0,
-                   need: 30,
-                   imgUrl: ""
-               }
-           ]
-       }
-   ]
+test("genClients will assign new ids for newly generated clients from a partial array of clients.", () => {
+    const exClients = [
+        {
+            id: 3,
+            input: [
+                {
+                    content: "Iron Ingot",
+                    numContent: 0,
+                    need: 35,
+                    imgUrl: ""
+                }
+            ],
+            pay: 500
+        },
+        {
+            id: 4,
+            input: [
+                {
+                    content: "Copper Ingot",
+                    numContent: 0,
+                    need: 30,
+                    imgUrl: ""
+                }
+            ]
+        }
+    ]
     const newClients = genClients(exClients, 1);
-   expect(newClients[0].id).toEqual(3);
-   expect(newClients[1].id).toEqual(4);
-   expect(newClients[2].id).toEqual(5);
-   expect(newClients[3].id).toEqual(6);
-   expect(newClients[4].id).toEqual(7);
+    expect(newClients[0].id).toEqual(3);
+    expect(newClients[1].id).toEqual(4);
+    expect(newClients[2].id).toEqual(5);
+    expect(newClients[3].id).toEqual(6);
+    expect(newClients[4].id).toEqual(7);
 });

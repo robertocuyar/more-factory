@@ -1,7 +1,17 @@
 import {expect} from "@jest/globals";
 import Adapter from "enzyme-adapter-react-16";
 import {configure} from "enzyme";
-import {defaultBag, firstIron, firstCoal, firstCopper, firstLimestone, defaultMachine, defaultBuild, defaultMines, products} from "../../reducers/initialStates";
+import {
+    defaultBag,
+    firstIron,
+    firstCoal,
+    firstCopper,
+    firstLimestone,
+    defaultMachine,
+    defaultBuild,
+    defaultMines,
+    products
+} from "../../reducers/initialStates";
 import coal from "../../img/coal_inv.png";
 import iron from "../../img/iron_inv.png";
 import copper from "../../img/copper_inv.png";
@@ -13,56 +23,56 @@ import copperFurnace from "../../img/copper_furnace.png";
 
 configure({adapter: new Adapter()});
 
-describe("initialState", ()=>{
+describe("initialState", () => {
     let bagTest;
-    beforeEach(()=>{
-        bagTest =  {
+    beforeEach(() => {
+        bagTest = {
             slots:
                 [
                     {
-                        id  : 1,
+                        id: 1,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 2,
+                        id: 2,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 3,
+                        id: 3,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 4,
+                        id: 4,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 5,
+                        id: 5,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 6,
+                        id: 6,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 7,
+                        id: 7,
                         content: null,
                         numContent: null,
                         imgUrl: ""
                     },
                     {
-                        id : 8,
+                        id: 8,
                         content: null,
                         numContent: null,
                         imgUrl: ""
@@ -70,38 +80,38 @@ describe("initialState", ()=>{
                 ]
         }
     })
-    it("defaultBag has correct default values", ()=>{
+    it("defaultBag has correct default values", () => {
         expect(defaultBag.slots[0].id).toEqual(bagTest.slots[0].id);
         expect(defaultBag.slots[0].imgUrl).toEqual(bagTest.slots[0].imgUrl)
         expect(defaultBag.slots[1].content).toBeNull();
         expect(defaultBag.slots[5].numContent).toBeNull();
     });
 
-    it("firstIron has correct default values", ()=>{
+    it("firstIron has correct default values", () => {
         expect(firstIron.content).toEqual("Iron Ore");
         expect(firstIron.numContent).toEqual(1);
         expect(firstIron.imgUrl).toEqual(iron);
     });
 
-    it("firstCoal has correct default values", ()=>{
+    it("firstCoal has correct default values", () => {
         expect(firstCoal.content).toEqual("Coal");
         expect(firstCoal.numContent).toEqual(1);
         expect(firstCoal.imgUrl).toEqual(coal);
     });
 
-    it("firstCopper has correct default values", ()=>{
+    it("firstCopper has correct default values", () => {
         expect(firstCopper.content).toEqual("Copper");
         expect(firstCopper.numContent).toEqual(1);
         expect(firstCopper.imgUrl).toEqual(copper);
     });
 
-    it("fistLimestone has correct default values", ()=>{
+    it("fistLimestone has correct default values", () => {
         expect(firstLimestone.content).toEqual("Limestone");
         expect(firstLimestone.numContent).toEqual(1);
         expect(firstLimestone.imgUrl).toEqual(lime);
     });
 
-    it("defaultMachine has correct default values", ()=>{
+    it("defaultMachine has correct default values", () => {
         const firstMachine = defaultMachine.machines[0];
         expect(defaultMachine.power.current).toEqual(0);
         expect(defaultMachine.power.capacity).toEqual(500)
@@ -126,7 +136,7 @@ describe("initialState", ()=>{
         expect(firstMachine.output[0].give).toEqual(1);
     });
 
-    it("defaultBuild has correct default values", ()=>{
+    it("defaultBuild has correct default values", () => {
         const firstOption = defaultBuild.options[0];
         expect(firstOption.content).toEqual("Copper Furnace");
         expect(firstOption.needsPower).toEqual(false);
@@ -157,20 +167,19 @@ describe("initialState", ()=>{
     });
 
 
-
-    it("defaultMines has correct default values", ()=>{
-       expect(defaultMines.mines[0].content).toEqual("Coal");
-       expect(defaultMines.mines[0].tier).toEqual(1);
-       expect(defaultMines.mines[4].content).toEqual("Water");
-       expect(defaultMines.mines[4].tier).toEqual(2);
-       expect(defaultMines.mines[6].content).toEqual("Sulfur");
-       expect(defaultMines.mines[6].tier).toEqual(3);
+    it("defaultMines has correct default values", () => {
+        expect(defaultMines.mines[0].content).toEqual("Coal");
+        expect(defaultMines.mines[0].tier).toEqual(1);
+        expect(defaultMines.mines[4].content).toEqual("Water");
+        expect(defaultMines.mines[4].tier).toEqual(2);
+        expect(defaultMines.mines[6].content).toEqual("Sulfur");
+        expect(defaultMines.mines[6].tier).toEqual(3);
     });
 
-    it("products contains correct values",()=>{
-       expect(products[1].content).toEqual("Copper Ingot") ;
-       expect(products[1].price).toEqual(25);
-       expect(products[1].tier).toEqual(1);
-       expect(products[1].imgUrl).toEqual(copperBar);
+    it("products contains correct values", () => {
+        expect(products[1].content).toEqual("Copper Ingot");
+        expect(products[1].price).toEqual(25);
+        expect(products[1].tier).toEqual(1);
+        expect(products[1].imgUrl).toEqual(copperBar);
     });
 });

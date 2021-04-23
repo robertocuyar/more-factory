@@ -31,46 +31,46 @@ const boltAssem =
             }
         ]
     };
- defaultMachine.machines[1] = boltAssem;
+defaultMachine.machines[1] = boltAssem;
 const machineCur = defaultMachine;
 const machInput = defaultMachine.machines[0].input;
 const machOutput = defaultMachine.machines[0].output;
 machineCur.machines[0].isOn = true;
 const coalGen = {
     content: "Coal Generator",
-        needsPower: false,
+    needsPower: false,
     description: "Burns coal to generate 50 MW of power",
     isOn: true,
     process: 1000,
     imgUrl: "",
     input: [
-    {
-        content: "Coal",
-        numContent: 5,
-        imgUrl: "",
-        use: 1
-    }
-],
+        {
+            content: "Coal",
+            numContent: 5,
+            imgUrl: "",
+            use: 1
+        }
+    ],
     output: [
-    {
-        content: "Current Power Production",
-        numContent: 50,
-        give: 50
-    }
-]
+        {
+            content: "Current Power Production",
+            numContent: 50,
+            give: 50
+        }
+    ]
 }
 
 const machContent3 = coalGen.content;
 
-test("machProcess.js is defined", ()=>{
-   expect(machProcess).toBeDefined();
+test("machProcess.js is defined", () => {
+    expect(machProcess).toBeDefined();
 });
 
-test("machProcess returns an object type.", ()=>{
-   expect(typeof machProcess(machContent, machInput, machOutput, machineCur)).toBe("object");
+test("machProcess returns an object type.", () => {
+    expect(typeof machProcess(machContent, machInput, machOutput, machineCur)).toBe("object");
 });
 
-test("machProcess with Iron Furnace takes away 1 coal and 1 iron input and returns 1 iron ingot output within the new machines object state",()=>{
+test("machProcess with Iron Furnace takes away 1 coal and 1 iron input and returns 1 iron ingot output within the new machines object state", () => {
     machineCur.machines[0].input[0].numContent = 5;
     machineCur.machines[0].input[1].numContent = 7;
     const machUpdate = machProcess(machContent, machInput, machOutput, machineCur).machines[0];
@@ -80,11 +80,11 @@ test("machProcess with Iron Furnace takes away 1 coal and 1 iron input and retur
     expect(machUpdate.output[0].numContent).toBe(1);
 });
 
-test("machProcess with Iron Furnace won't process an output of Iron Ingot if there is an input of 1 Coal and 0 Iron Ore",()=>{
+test("machProcess with Iron Furnace won't process an output of Iron Ingot if there is an input of 1 Coal and 0 Iron Ore", () => {
     machineCur.machines[0].input[0].numContent = 1;
     machineCur.machines[0].input[1].numContent = 0;
     machineCur.machines[0].isOn = true;
-    const machUpdate = machProcess(machContent,machInput, machOutput, machineCur).machines[0];
+    const machUpdate = machProcess(machContent, machInput, machOutput, machineCur).machines[0];
 
     expect(machUpdate.input[0].numContent).toBe(1);
     expect(machUpdate.input[1].numContent).toBe(0);
@@ -92,52 +92,52 @@ test("machProcess with Iron Furnace won't process an output of Iron Ingot if the
     expect(machUpdate.isOn).toBe(false);
 });
 
-test("machProcess with Iron Furnace won't process input items if output slot is full with 80 iron ingot.",()=>{
-   machineCur.machines[0].input[0].numContent = 12;
-   machineCur.machines[0].input[1].numContent = 10;
-   machineCur.machines[0].output[0].numContent = 80;
-   const machUpdate = machProcess(machContent, machInput, machOutput, machineCur).machines[0];
+test("machProcess with Iron Furnace won't process input items if output slot is full with 80 iron ingot.", () => {
+    machineCur.machines[0].input[0].numContent = 12;
+    machineCur.machines[0].input[1].numContent = 10;
+    machineCur.machines[0].output[0].numContent = 80;
+    const machUpdate = machProcess(machContent, machInput, machOutput, machineCur).machines[0];
 
-   expect(machUpdate.input[0].numContent).toBe(12);
-   expect(machUpdate.input[1].numContent).toBe(10);
-   expect(machUpdate.output[0].numContent).toBe(80);
-   expect(machUpdate.isOn).toBe(false);
+    expect(machUpdate.input[0].numContent).toBe(12);
+    expect(machUpdate.input[1].numContent).toBe(10);
+    expect(machUpdate.output[0].numContent).toBe(80);
+    expect(machUpdate.isOn).toBe(false);
 });
 
-test("machProcess with Coal Generator with numContent of 50 MW won't add on any extra MW.",()=>{
+test("machProcess with Coal Generator with numContent of 50 MW won't add on any extra MW.", () => {
     defaultMachine.machines[1] = coalGen;
     const machUpdate = machProcess(machContent3, coalGen.input, coalGen.output, machineCur).machines[1];
     expect(machUpdate.output[0].numContent).toBe(50);
 });
 
-test("machProcess returns unchanged power state if machines don't use power.", ()=>{
+test("machProcess returns unchanged power state if machines don't use power.", () => {
     machineCur.power = {current: 150, capacity: 500};
     const machUpdate = machProcess(machContent, machInput, machOutput, machineCur);
     expect(machUpdate.power.current).toBe(150);
 });
 
-test("machProcess returns increased power state if generator adds power to the grid.",()=>{
+test("machProcess returns increased power state if generator adds power to the grid.", () => {
     defaultMachine.machines[1] = coalGen;
     machineCur.power = {current: 200, capacity: 500};
     const machUpdate = machProcess(machContent3, coalGen.input, coalGen.output, machineCur);
     expect(machUpdate.power.current).toEqual(250);
 });
 
-test("machProcess returns a full power state based on capacity after an attempt to add more power to the grid.", ()=>{
+test("machProcess returns a full power state based on capacity after an attempt to add more power to the grid.", () => {
     defaultMachine.machines[1] = coalGen;
     defaultMachine.power = {current: 490, capacity: 500};
     const machUpdate = machProcess(machContent3, coalGen.input, coalGen.output, machineCur);
     expect(machUpdate.power.current).toEqual(500);
 });
 
-test("machProcess returns decreased power state if machine uses power to process", ()=>{
+test("machProcess returns decreased power state if machine uses power to process", () => {
     machineCur.machines[1].input[0].numContent = 6;
     defaultMachine.power = {current: 250, capacity: 500};
     const machUpdate = machProcess(machContent2, machineCur.machines[1].input, machineCur.machines[1].output, machineCur);
     expect(machUpdate.power.current).toEqual(240);
 });
 
-test("machProcess returns unchanged power state and unchanged input and output for a machine if there wasn't enough power to allow the machine to process", ()=>{
+test("machProcess returns unchanged power state and unchanged input and output for a machine if there wasn't enough power to allow the machine to process", () => {
     machineCur.machines[1].input[0].numContent = 10;
     defaultMachine.power = {current: 5, capacity: 500};
     const machUpdate = machProcess(machContent2, machineCur.machines[1].input, machineCur.machines[1].output, machineCur);

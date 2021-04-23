@@ -1,7 +1,8 @@
 import {expect} from "@jest/globals";
 import index from "../../reducers/index";
 import {createStore} from "redux";
-import {defaultBag, defaultMachine, defaultBuild, defaultUser} from "../../reducers/initialStates";
+import {defaultBag, defaultMachine, defaultBuild} from "../../reducers/initialStates";
+import {defaultUser} from "../../data/defaultUser";
 
 test("Reducer Index is defined", ()=>{
     expect(index).toBeDefined();
