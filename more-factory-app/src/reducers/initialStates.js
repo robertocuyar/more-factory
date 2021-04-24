@@ -8,6 +8,7 @@ import copperFurnace from "../img/copper_furnace.png";
 import copperBar from "../img/copper_bar.png";
 import coalGen from "../img/coal_gen.png";
 import boltPress from "../img/bolt_press.png";
+import bolt from "../img/iron_bolt.png";
 
 export const products = [
     {
@@ -294,7 +295,7 @@ export const defaultBuild = {
                 {
                     content: "Iron Bolt",
                     numContent: 0,
-                    imgUrl: "",
+                    imgUrl: bolt,
                     give: 2
                 }
             ]
