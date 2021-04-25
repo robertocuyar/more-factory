@@ -27,6 +27,7 @@ export const machProcess = (machContent, machInput, machOutput, machineCur) => {
                     newPow -= mach.consume;
                     if (newPow < 0) {
                         newPow = machineCur.power.current;
+                        mach.isOn = false;
                         return mach;
                     }
                 }

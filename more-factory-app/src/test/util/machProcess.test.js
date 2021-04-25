@@ -137,10 +137,12 @@ test("machProcess returns decreased power state if machine uses power to process
     expect(machUpdate.power.current).toEqual(240);
 });
 
-test("machProcess returns unchanged power state and unchanged input and output for a machine if there wasn't enough power to allow the machine to process", () => {
+test("machProcess returns unchanged power state and unchanged input and output for a machine if there wasn't enough power to allow the machine to process. Machine will return a isOn of false as well.", () => {
     machineCur.machines[1].input[0].numContent = 10;
+    machineCur.machines[1].isOn = true;
     defaultMachine.power = {current: 5, capacity: 500};
     const machUpdate = machProcess(machContent2, machineCur.machines[1].input, machineCur.machines[1].output, machineCur);
+    expect(machUpdate.machines[1].isOn).toEqual(false);
     expect(machUpdate.power.current).toEqual(5);
     expect(machUpdate.machines[1].input[0].numContent).toEqual(10);
 });
