@@ -25,14 +25,19 @@ export const outInv = (itemReq, machContent, inventoryCur, machineCur, limit) =>
     });
     if (machineCur.machines) {
         resultMach = machineCur.machines.map(machine => {
-            if (machine.content === machContent) {
+            if (machine.content === machContent && machine.build) {
+                machine.build.forEach(request => {
+                    if (itemReq.content === request.content) {
+                        request.numContent = itemReq.numContent;
+                    }
+                });
+            } else if (machine.content === machContent) {
                 machine.input.forEach(request => {
                     if (itemReq.content === request.content) {
                         request.numContent = itemReq.numContent;
                     }
                 });
             }
-
             return machine;
         });
     } else {

@@ -81,8 +81,8 @@ const BuildOption = ({option}) => {
         let res = outInv(buildReq, option.content, inv, opt, buildReq.need);
         dispatch(inventorySlots(res.inventory));
         dispatch(buildRender(res.machine));
-
     }
+
     const inputDisplay = () => {
         return option.build.map(item => {
             return (
