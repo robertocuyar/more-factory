@@ -7,6 +7,8 @@ import UserInfo from "./user_tools/UserInfo";
 import UserInventory from "./user_tools/UserInventory";
 import Box from "@material-ui/core/Box";
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import bagIcon from "../img/user_bag.png";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +32,7 @@ const UserTool = () => {
                 <React.Fragment>
                     <Grid item xs={6}>
                         <Paper onClick={() => setBag("open")} id={"bag-container"} className={classes.paper}>
-                            <UserBag/>
+                            <UserBag bag={bagIcon}/>
                         </Paper>
                     </Grid>
                     <Grid item xs={6}>

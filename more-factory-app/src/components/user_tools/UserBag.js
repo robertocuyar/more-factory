@@ -1,11 +1,10 @@
 import React from 'react';
-import bagIcon from "../../img/user_bag.png";
 
-const UserBag = () => {
+const UserBag = ({bag}) => {
 
     return (
         <div>
-            <img className={"user-bag-img"} src={bagIcon} alt="Beginner Bag"/>
+            <img className={"user-bag-img"} src={bag} alt="Beginner Bag"/>
         </div>
 
     )
