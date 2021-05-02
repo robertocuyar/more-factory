@@ -15,11 +15,7 @@ import {invDisplay} from "../../util/invDisplay";
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-    },
-    large: {
-        width: theme.spacing(8),
-        height: theme.spacing(8),
-        margin: theme.spacing(2)
+        margin: theme.spacing(3),
     },
     containerRoot: {
         display: 'flex',
@@ -163,7 +159,7 @@ const Machine = ({machine}) => {
     }
 
     return (
-        <div className={classes.root}>
+        <Paper variant={"outlined"} className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={3} justify={'center'} alignItems={'center'} direction={"column"} spacing={2}>
                     {ioDisplay(machine.input, 'input')}
@@ -175,7 +171,7 @@ const Machine = ({machine}) => {
                     {ioDisplay(machine.output, 'output')}
                 </Grid>
             </Grid>
-        </div>
+        </Paper>
     )
 }
 

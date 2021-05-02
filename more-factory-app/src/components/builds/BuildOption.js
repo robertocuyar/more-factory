@@ -11,11 +11,7 @@ import {inventorySlots, buildRender, removeOption, addMachine} from "../../actio
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-    },
-    large: {
-        width: theme.spacing(8),
-        height: theme.spacing(8),
-        margin: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     containerRoot: {
         display: 'flex',
@@ -117,7 +113,7 @@ const BuildOption = ({option}) => {
     }
 
     return (
-        <div className={classes.root}>
+        <Paper variant={"outlined"} className={classes.root}>
             <Grid container alignItems={'center'}>
                 <Grid item container xs={12} justify={'center'}>
                     <Grid item container xs={7} justify={'center'}>
@@ -134,7 +130,7 @@ const BuildOption = ({option}) => {
                     <Button variant={'outlined'} onClick={() => build()}>Build</Button>
                 </Grid>
             </Grid>
-        </div>
+        </Paper>
     )
 }
 
