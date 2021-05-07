@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         margin: theme.spacing(3),
+        background: "linear-gradient(to right, #eef2f3, #8e9eab)",
     },
     containerRoot: {
         display: 'flex',
